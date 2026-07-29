@@ -7,3 +7,7 @@ package «lean_oracle» where
 @[default_target]
 lean_exe «rpc_server» where
   root := `rpc_server
+
+lean_lib «GeneratedK3» where
+  roots := #[`GeneratedK3]
+

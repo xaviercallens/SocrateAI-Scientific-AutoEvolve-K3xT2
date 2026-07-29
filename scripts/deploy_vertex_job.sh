@@ -18,7 +18,7 @@ set -euo pipefail
 
 # ── Config ─────────────────────────────────────────────────────────────────
 PROJECT_ID="${GCP_PROJECT_ID:-gen-lang-client-0625573011}"
-REGION="${GCP_REGION:-us-east4}"
+REGION="${GCP_REGION:-us-central1}" # Optimized low-cost region
 REPO_NAME="alphaevolve-k3-t2"
 IMAGE_TAG="${IMAGE_TAG:-latest}"
 IMAGE_URI="gcr.io/${PROJECT_ID}/${REPO_NAME}:${IMAGE_TAG}"
@@ -27,9 +27,9 @@ GCS_CHECKPOINT_DIR="gs://socrateai-datalake-gen-lang-client-0625573011/checkpoin
 JOB_NAME="Phase3_AlphaEvolve_K3_T2_DeepBurn_$(date +%Y%m%d_%H%M%S)"
 
 echo "======================================================================"
-echo "🚀 AlphaEvolve K3×T² — Phase 3 Deep Burn"
+echo "🚀 AlphaEvolve K3×T² — Phase 3 Deep Burn (Sub-$25 Capped)"
 echo "   Project  : ${PROJECT_ID}"
-echo "   Region   : ${REGION}"
+echo "   Region   : ${REGION} (Low-Cost Region)"
 echo "   Image    : ${IMAGE_URI}"
 echo "   Job Name : ${JOB_NAME}"
 echo "======================================================================"
@@ -48,13 +48,14 @@ echo "✅ Docker image built: ${IMAGE_URI}"
 # ── Step 2: Submit Vertex AI Custom Training Job ────────────────────────────
 echo ""
 echo "🖥️  [2/3] Submitting Custom Training Job to Vertex AI..."
+# Note: For strict sub-$25 budget optimization, use: ./scripts/deploy_vertex_job_optimized.sh spot-l4
 gcloud ai custom-jobs create \
     --region="${REGION}" \
     --project="${PROJECT_ID}" \
     --display-name="${JOB_NAME}" \
     --worker-pool-spec="\
-machine-type=n1-standard-16,\
-accelerator-type=NVIDIA_TESLA_T4,\
+machine-type=g2-standard-8,\
+accelerator-type=NVIDIA_L4,\
 accelerator-count=1,\
 replica-count=1,\
 container-image-uri=${IMAGE_URI}" \

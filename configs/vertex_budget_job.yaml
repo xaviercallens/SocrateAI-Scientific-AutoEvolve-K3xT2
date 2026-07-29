@@ -1,0 +1,24 @@
+workerPoolSpecs:
+  - machineSpec:
+      machineType: n1-standard-8
+      acceleratorType: NVIDIA_TESLA_T4
+      acceleratorCount: 1
+    replicaCount: 1
+    containerSpec:
+      imageUri: gcr.io/gen-lang-client-0625573011/alphaevolve-k3-t2:latest
+      env:
+        - name: GCS_CHECKPOINT_DIR
+          value: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints
+        - name: CAMPAIGN_DURATION_HOURS
+          value: "24"
+        - name: CAMPAIGN_BUDGET_USD
+          value: "25.00"
+        - name: HOURLY_RATE_USD
+          value: "0.36"
+        - name: BUDGET_RESERVE_USD
+          value: "1.50"
+        - name: PRESELECT_MAX_CANDIDATES
+          value: "3"
+scheduling:
+  strategy: SPOT
+  timeout: 86400s
