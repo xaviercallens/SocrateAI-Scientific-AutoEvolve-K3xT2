@@ -66,6 +66,11 @@ To regenerate the paper figures locally from live cloud data:
 python3 paper/scripts/generate_figures.py
 ```
 
+## 🗺️ Reproducibility Protocol & Data Lake Cartography
+To guarantee absolute reproducibility, all empirical datasets, formal proofs, and scripts are archived centrally in the GCP Data Lake. 
+
+Please refer to the comprehensive [**Data Lake Cartography & Reproducibility Protocol**](https://github.com/xaviercallens/SocrateAI-Scientific-AutoEvolve-K3xT2/blob/master/README.md) for direct links to the `gs://socrateai-datalake-gen-lang-client-0625573011/` storage buckets and step-by-step instructions to rebuild the environment from scratch.
+
 ---
 
 *Project initiated by the SocrateAI Infrastructure Division, in collaboration with advanced AI agentic systems.*
