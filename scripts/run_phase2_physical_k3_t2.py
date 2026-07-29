@@ -71,8 +71,8 @@ def evaluate_k3_physical(candidates: list) -> list:
         
     return evaluated_candidates
 
-def execute_phase2():
-    logger.info("Initializing Phase 2: Dual-Scale K3xT2 Physical Compute Evolution")
+def execute_phase2(generations: int = 75, pop_size: int = 40):
+    logger.info(f"Initializing Phase 2: Dual-Scale K3xT2 Physical Compute Evolution (Generations={generations}, PopSize={pop_size})")
     
     seed_path = "./configs/cooper_seeds.json"
     if not os.path.exists(seed_path):
@@ -116,8 +116,8 @@ def execute_phase2():
 
     lean_oracle = LeanOracleClient(binary_path)
     
-    GENERATIONS = 25  
-    POP_SIZE = 60     
+    GENERATIONS = generations
+    POP_SIZE = pop_size
     best_overall = None
     
     ckpt = EvolutionCheckpoint()

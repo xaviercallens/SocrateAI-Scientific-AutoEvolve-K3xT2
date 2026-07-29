@@ -17,7 +17,7 @@
 set -euo pipefail
 
 # ── Config ─────────────────────────────────────────────────────────────────
-PROJECT_ID="${GCP_PROJECT_ID:-socrateai-gen-lang-client}"
+PROJECT_ID="${GCP_PROJECT_ID:-gen-lang-client-0625573011}"
 REGION="${GCP_REGION:-us-east4}"
 REPO_NAME="alphaevolve-k3-t2"
 IMAGE_TAG="${IMAGE_TAG:-latest}"
