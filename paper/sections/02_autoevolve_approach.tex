@@ -1,0 +1,20 @@
+\section{The AutoEvolve Approach (Phase 1)}
+
+The AutoEvolve framework is a neuro-symbolic MCMC pipeline designed to explore the continuous parameter space of F-theory compactifications. By mapping Calabi-Yau moduli to phenomenological observables, we construct a loss function (fitness landscape) driven by current astrophysical constraints.
+
+\subsection{Astrophysical Constraints}
+The fitness of a given geometry is evaluated via a joint likelihood function incorporating:
+\begin{itemize}
+    \item \textbf{DESI DR1 + Euclid Q2 (Proxy):} Constraining the Baryon Acoustic Oscillations (BAO) and the $S_8$ weak lensing tension.
+    \item \textbf{NanoGrav PTA Signatures:} Requiring stochastic gravitational wave backgrounds near $\sim 10^{-9}$ Hz.
+    \item \textbf{Planck CMB:} Enforcing baseline bounds on $w_0$ and $\Omega_m$.
+\end{itemize}
+
+\subsection{Cloud-Scale Infrastructure}
+To navigate this complex likelihood surface, AutoEvolve leverages a distributed MCMC architecture on Google Cloud Platform (GCP). The system utilizes Spot T4/L4 GPU instances orchestrated via Vertex AI Custom Training Jobs. A stringent budget guardrail system limits campaign expenditure to \$25 per 24-hour burn, executing dynamic checkpointing to GCS data lakes for fault tolerance.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/budget_projection.pdf}
+    \caption{Vertex AI Budget Guardrail Projection over a 24-hour campaign.}
+\end{figure}

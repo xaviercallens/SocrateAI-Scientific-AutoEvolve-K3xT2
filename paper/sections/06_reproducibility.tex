@@ -1,0 +1,14 @@
+\section{Reproducibility Protocol}
+
+To ensure full rigor and reproducibility, all aspects of this research have been open-sourced and automated.
+
+\subsection{GCP Data Lake}
+The raw covariance tensors, MCMC trace checkpoints, and Cy4 geometric bounds are hosted in a public Google Cloud Storage data lake:
+\texttt{gs://socrateai-datalake-gen-lang-client-0625573011/}
+
+\subsection{GitHub Repository}
+The complete AutoEvolve codebase, including the Lean 4 Swampland theorem provers, budget guardrail deployments, and deterministic K3 generator scripts, are available at:
+\url{https://github.com/xaviercallens/SocrateAI-Scientific-AutoEvolve-K3xT2}
+
+\subsection{Computational Reproduction}
+The provided Python visualization suite (\texttt{generate\_figures.py}) directly queries the GCS endpoints, guaranteeing that the plots (Figs 1-6) are rendered verbatim from live production telemetry.

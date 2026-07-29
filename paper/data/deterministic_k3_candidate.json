@@ -1,0 +1,34 @@
+{
+  "name": "Cooper_s10",
+  "candidate_id": "cooper_s10_deterministic",
+  "picard_number": 19,
+  "hodge_numbers": {
+    "h11": 3,
+    "h21": 19,
+    "h22": 156
+  },
+  "picard_fuchs_coefficients": [
+    0.5,
+    -1.8,
+    1.2,
+    -0.3
+  ],
+  "kodaira_fiber_type": "II",
+  "complex_structure_tau": [
+    0.1,
+    1.5
+  ],
+  "kahler_modulus_rho": [
+    2.0,
+    0.8
+  ],
+  "t2_modulus_tau": 0.5,
+  "complex_structure": [
+    0.1,
+    1.5,
+    2.0
+  ],
+  "moduli_stabilization": 0.75,
+  "source": "deterministic_hypergraph_sieve",
+  "spectral_radius": 3.0
+}

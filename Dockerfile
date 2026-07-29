@@ -45,5 +45,5 @@ RUN if [ -d "test_lean_oracle" ]; then \
         cd lean_oracle && lake build; \
     fi
 
-# ── Entrypoint: Phase 3 NSGA-II orchestrator ─────────────────────────
-ENTRYPOINT ["python3", "scripts/run_phase3_nsga2_k3_t2.py"]
+# ── Entrypoint: Phase 4 MCMC orchestrator ─────────────────────────
+ENTRYPOINT ["python3", "scripts/run_phase4_mcmc.py"]
