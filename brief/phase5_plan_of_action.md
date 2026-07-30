@@ -12,34 +12,34 @@
 **Description**: `paper/scripts/generate_figures.py` currently uses `np.random.seed()` to simulate convergence curves. It must be rewritten to download and parse all 75 GCS checkpoint JSONs to plot actual χ² loss, parameter evolution, and posterior traces from real data.
 
 **DoD**:
-- [ ] `generate_figures.py` reads all 75 `gen_XXXX.json` from GCS (or local cache).
-- [ ] χ² convergence plot uses actual `chi2_loss` values from each generation's `best_candidate`.
-- [ ] Parameter evolution plots use actual `phenotype.w0`, `phenotype.omega_m`, etc.
-- [ ] No `np.random.seed()` or synthetic noise in any publication figure.
-- [ ] Figures re-pushed to GitHub and GCS.
+- [x] `generate_figures.py` reads all 75 `gen_XXXX.json` from GCS (or local cache).
+- [x] χ² convergence plot uses actual `chi2_loss` values from each generation's `best_candidate`.
+- [x] Parameter evolution plots use actual `phenotype.w0`, `phenotype.omega_m`, etc.
+- [x] No `np.random.seed()` or synthetic noise in any publication figure.
+- [x] Figures re-pushed to GitHub and GCS.
 
 ### Directive 5A-2: Formalize the λ₁ → Cooper s₁₀ Bridge Computationally
 **Priority**: HIGH  
 **Description**: The claim that spectral radius λ₁=3.0 "uniquely isolates" Cooper s₁₀ is currently a manual catalog entry. This must be backed by a computational proof that derives the Picard-Fuchs ODE from the W(n) sequence and matches it to the known Cooper s₁₀ ODE coefficients.
 
 **DoD**:
-- [ ] New script `scripts/verify_spectral_bridge.py` that:
+- [x] New script `scripts/verify_spectral_bridge.py` that:
   1. Computes W(n) = Tr(M^n) for n=1..30.
   2. Extracts the holonomic recurrence relation from W(n) using Ore algebra or `guessRec`.
   3. Derives the Picard-Fuchs differential equation from the recurrence.
   4. Compares derived ODE coefficients against Cooper s₁₀'s known `(1 - 12t - 64t²)θ³ + ...`.
-- [ ] Matching score or exact coefficient comparison logged.
-- [ ] Result archived in GCS under `stream4_bridge/spectral_bridge_verification.json`.
+- [x] Matching score or exact coefficient comparison logged.
+- [x] Result archived in GCS under `stream4_bridge/spectral_bridge_verification.json`.
 
 ### Directive 5A-3: Verify Lean 4 Compilation End-to-End
 **Priority**: MEDIUM  
 **Description**: Lean 4 code exists but has not been confirmed to compile via `lake build` on any environment.
 
 **DoD**:
-- [ ] Install elan + Lean 4 toolchain locally (or confirm via Docker build logs).
-- [ ] Run `lake build` in `lean_oracle/` directory.
-- [ ] Capture build output confirming `GeneratedK3.lean` and `rpc_server.lean` compile without errors.
-- [ ] Run the RPC server with a test candidate JSON and capture the `passed_swampland: true` output.
+- [x] Install elan + Lean 4 toolchain locally (or confirm via Docker build logs).
+- [x] Run `lake build` in `lean_oracle/` directory.
+- [x] Capture build output confirming `GeneratedK3.lean` and `rpc_server.lean` compile without errors.
+- [x] Run the RPC server with a test candidate JSON and capture the `passed_swampland: true` output.
 
 ---
 

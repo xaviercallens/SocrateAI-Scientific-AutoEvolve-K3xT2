@@ -80,14 +80,23 @@ def fig1_chi2_convergence():
     """Generate χ² loss vs generation plot."""
     print("  Generating Figure 1: χ² Convergence...")
 
-    # Simulate convergence from Phase 0 data + known endpoints
-    generations = np.arange(1, 76)
-    # Exponential convergence with realistic noise
-    np.random.seed(42)
-    chi2_base = 1e-1 * np.exp(-0.15 * generations) + 4.9e-6
-    chi2_noise = chi2_base * np.random.uniform(0.8, 1.2, len(generations))
-    chi2_noise[0] = 0.12  # Initial high value
-    chi2_noise[-1] = 4.905e-6  # Final converged value
+    # Load actual convergence data from checkpoints
+    generations = []
+    chi2_noise = []
+    checkpoint_dir = Path("paper/data/checkpoints")
+    for f in sorted(checkpoint_dir.glob("*.json")):
+        with open(f) as fp:
+            data = json.load(fp)
+            if "best_candidate" in data:
+                generations.append(data.get("generation", len(generations)+1))
+                chi2_noise.append(data["best_candidate"].get("chi2_loss", 0.1))
+
+    if not generations:
+        print("  Warning: No checkpoints found. Skipping Figure 1.")
+        return
+
+    generations = np.array(generations)
+    chi2_noise = np.array(chi2_noise)
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
 
@@ -128,18 +137,30 @@ def fig2_parameter_evolution():
     """Generate parameter trace plots for w₀, Ωₘ, H₀, S₈."""
     print("  Generating Figure 2: Parameter Evolution...")
 
-    generations = np.arange(1, 76)
-    np.random.seed(123)
+    generations = []
+    w0, omega_m, h0, s8 = [], [], [], []
+    checkpoint_dir = Path("paper/data/checkpoints")
+    
+    for f in sorted(checkpoint_dir.glob("*.json")):
+        with open(f) as fp:
+            data = json.load(fp)
+            if "best_candidate" in data:
+                generations.append(data.get("generation", len(generations)+1))
+                pheno = data["best_candidate"].get("phenotype", {})
+                w0.append(pheno.get("w0", -1.0))
+                omega_m.append(pheno.get("omega_m", 0.3))
+                h0.append(pheno.get("h0", 67.4))
+                s8.append(pheno.get("s8_gradient", 0.83))
 
-    # Simulated convergence traces
-    w0 = -0.85 + (-1.0 - (-0.85)) * (1 - np.exp(-0.08 * generations)) + \
-         np.random.normal(0, 0.005, len(generations)) * np.exp(-0.05 * generations)
-    omega_m = 0.32 + (0.300 - 0.32) * (1 - np.exp(-0.1 * generations)) + \
-              np.random.normal(0, 0.002, len(generations)) * np.exp(-0.05 * generations)
-    h0 = 70.0 + (67.40 - 70.0) * (1 - np.exp(-0.06 * generations)) + \
-         np.random.normal(0, 0.3, len(generations)) * np.exp(-0.05 * generations)
-    s8 = 0.78 + (0.830 - 0.78) * (1 - np.exp(-0.12 * generations)) + \
-         np.random.normal(0, 0.003, len(generations)) * np.exp(-0.05 * generations)
+    if not generations:
+        print("  Warning: No checkpoints found. Skipping Figure 2.")
+        return
+
+    generations = np.array(generations)
+    w0 = np.array(w0)
+    omega_m = np.array(omega_m)
+    h0 = np.array(h0)
+    s8 = np.array(s8)
 
     fig, axes = plt.subplots(2, 2, figsize=(10, 7))
 
