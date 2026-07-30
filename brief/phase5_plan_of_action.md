@@ -113,5 +113,5 @@
 - [x] All figures use real data (Directive 5A-1 complete).
 - [x] Spectral bridge computationally verified (Directive 5A-2 complete).
 - [x] Paper compiled to PDF via `pdflatex` without errors.
-- [ ] Abstract, bibliography, and acknowledgments finalized.
-- [ ] arXiv submission ID obtained.
+- [x] Abstract, bibliography, and acknowledgments finalized.
+- [x] arXiv submission ID obtained.
