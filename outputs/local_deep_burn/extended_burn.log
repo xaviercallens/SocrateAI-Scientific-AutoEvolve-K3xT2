@@ -1,0 +1,670 @@
+2026-07-30 20:54:57,889 - INFO - ============================================================
+2026-07-30 20:54:57,890 - INFO - 🔥 EXTENDED DEEP BURN — Gens 151→300 (pop=40)
+2026-07-30 20:54:57,890 - INFO - ============================================================
+2026-07-30 20:54:57,892 - INFO - Lean 4 Symbolic Oracle daemon initialized from ./test_lean_oracle/.lake/build/bin/rpc_server.
+2026-07-30 20:55:00,839 - INFO - ☁️  GCS checkpointing enabled via gcloud CLI token → gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints
+2026-07-30 20:55:02,476 - INFO - ☁️  Resuming from Cloud Checkpoint: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0150.json
+2026-07-30 20:55:02,616 - INFO - ✅ Resumed from GCS checkpoint gen=150. Starting at gen=151.
+2026-07-30 20:55:03,087 - INFO - Gen 151/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:03,091 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:03,094 - INFO -   ↳ Best χ²=2.33e-04 | w₀=-0.99953 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:03,784 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0151.json
+2026-07-30 20:55:04,208 - INFO - Gen 152/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:04,209 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:04,210 - INFO -   ↳ Best χ²=3.37e-04 | w₀=-0.99931 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:04,858 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0152.json
+2026-07-30 20:55:05,291 - INFO - Gen 153/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:05,292 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:05,293 - INFO -   ↳ Best χ²=3.21e-04 | w₀=-1.00083 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:05,944 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0153.json
+2026-07-30 20:55:06,367 - INFO - Gen 154/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:06,373 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:06,374 - INFO -   ↳ Best χ²=1.68e-05 | w₀=-1.00011 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:07,007 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0154.json
+2026-07-30 20:55:07,429 - INFO - Gen 155/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:07,430 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:07,430 - INFO -   ↳ Best χ²=1.22e-04 | w₀=-1.00063 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:08,062 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0155.json
+2026-07-30 20:55:08,481 - INFO - Gen 156/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:08,483 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:08,483 - INFO -   ↳ Best χ²=6.68e-05 | w₀=-0.99956 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:09,125 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0156.json
+2026-07-30 20:55:09,550 - INFO - Gen 157/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:09,550 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:09,551 - INFO -   ↳ Best χ²=2.14e-04 | w₀=-1.00040 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:10,188 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0157.json
+2026-07-30 20:55:10,611 - INFO - Gen 158/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:10,612 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:10,613 - INFO -   ↳ Best χ²=3.63e-04 | w₀=-1.00003 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:11,256 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0158.json
+2026-07-30 20:55:11,680 - INFO - Gen 159/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:11,682 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:11,683 - INFO -   ↳ Best χ²=3.93e-05 | w₀=-1.00021 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:12,334 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0159.json
+2026-07-30 20:55:12,759 - INFO - Gen 160/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:12,760 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:12,761 - INFO -   ↳ Best χ²=1.78e-05 | w₀=-1.00034 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:13,396 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0160.json
+2026-07-30 20:55:13,814 - INFO - Gen 161/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:13,816 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:13,817 - INFO -   ↳ Best χ²=3.07e-04 | w₀=-1.00136 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:14,447 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0161.json
+2026-07-30 20:55:14,869 - INFO - Gen 162/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:14,870 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:14,871 - INFO -   ↳ Best χ²=1.57e-04 | w₀=-0.99966 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:15,520 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0162.json
+2026-07-30 20:55:15,943 - INFO - Gen 163/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:15,944 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:15,944 - INFO -   ↳ Best χ²=1.52e-04 | w₀=-0.99958 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:16,581 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0163.json
+2026-07-30 20:55:17,004 - INFO - Gen 164/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:17,005 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:17,006 - INFO -   ↳ Best χ²=1.51e-04 | w₀=-0.99917 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:55:17,647 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0164.json
+2026-07-30 20:55:18,074 - INFO - Gen 165/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:18,075 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:18,075 - INFO -   ↳ Best χ²=2.13e-04 | w₀=-1.00038 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:18,755 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0165.json
+2026-07-30 20:55:19,179 - INFO - Gen 166/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:19,180 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:19,181 - INFO -   ↳ Best χ²=1.70e-04 | w₀=-1.00095 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:19,835 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0166.json
+2026-07-30 20:55:20,262 - INFO - Gen 167/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:20,263 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:20,264 - INFO -   ↳ Best χ²=1.27e-04 | w₀=-1.00064 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:20,919 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0167.json
+2026-07-30 20:55:21,338 - INFO - Gen 168/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:21,339 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:21,340 - INFO -   ↳ Best χ²=3.53e-04 | w₀=-1.00042 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:21,996 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0168.json
+2026-07-30 20:55:22,421 - INFO - Gen 169/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:22,423 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:22,424 - INFO -   ↳ Best χ²=1.41e-04 | w₀=-0.99948 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:23,057 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0169.json
+2026-07-30 20:55:23,486 - INFO - Gen 170/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:23,487 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:23,487 - INFO -   ↳ Best χ²=3.85e-05 | w₀=-0.99950 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:24,122 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0170.json
+2026-07-30 20:55:24,544 - INFO - Gen 171/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:24,545 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:24,546 - INFO -   ↳ Best χ²=3.60e-04 | w₀=-1.00138 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:25,183 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0171.json
+2026-07-30 20:55:25,619 - INFO - Gen 172/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:25,621 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:25,623 - INFO -   ↳ Best χ²=3.41e-04 | w₀=-1.00066 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:26,281 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0172.json
+2026-07-30 20:55:26,702 - INFO - Gen 173/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:26,704 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:26,705 - INFO -   ↳ Best χ²=1.91e-04 | w₀=-1.00083 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:27,348 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0173.json
+2026-07-30 20:55:27,774 - INFO - Gen 174/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:27,775 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:27,776 - INFO -   ↳ Best χ²=5.98e-04 | w₀=-1.00129 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:28,420 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0174.json
+2026-07-30 20:55:28,843 - INFO - Gen 175/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:28,844 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:28,845 - INFO -   ↳ Best χ²=1.47e-04 | w₀=-1.00091 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:29,528 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0175.json
+2026-07-30 20:55:29,963 - INFO - Gen 176/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:29,965 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:29,966 - INFO -   ↳ Best χ²=6.53e-05 | w₀=-0.99961 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:30,294 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0176.json
+2026-07-30 20:55:30,719 - INFO - Gen 177/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:30,721 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:30,722 - INFO -   ↳ Best χ²=6.85e-06 | w₀=-1.00021 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:31,054 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0177.json
+2026-07-30 20:55:31,508 - INFO - Gen 178/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:31,510 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:31,511 - INFO -   ↳ Best χ²=1.37e-04 | w₀=-1.00056 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:31,837 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0178.json
+2026-07-30 20:55:32,255 - INFO - Gen 179/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:32,256 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:32,257 - INFO -   ↳ Best χ²=2.93e-06 | w₀=-0.99995 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:32,580 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0179.json
+2026-07-30 20:55:33,023 - INFO - Gen 180/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:33,026 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:33,027 - INFO -   ↳ Best χ²=1.55e-05 | w₀=-0.99998 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:33,356 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0180.json
+2026-07-30 20:55:33,790 - INFO - Gen 181/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:33,793 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:33,794 - INFO -   ↳ Best χ²=4.03e-04 | w₀=-1.00153 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:34,158 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0181.json
+2026-07-30 20:55:34,594 - INFO - Gen 182/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:34,595 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:34,596 - INFO -   ↳ Best χ²=4.93e-04 | w₀=-1.00165 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:35,218 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0182.json
+2026-07-30 20:55:35,677 - INFO - Gen 183/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:35,680 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:35,682 - INFO -   ↳ Best χ²=9.40e-05 | w₀=-1.00077 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:36,316 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0183.json
+2026-07-30 20:55:36,765 - INFO - Gen 184/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:36,768 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:36,769 - INFO -   ↳ Best χ²=2.11e-04 | w₀=-1.00055 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:37,413 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0184.json
+2026-07-30 20:55:37,852 - INFO - Gen 185/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:37,858 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:37,859 - INFO -   ↳ Best χ²=5.08e-05 | w₀=-0.99995 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:38,497 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0185.json
+2026-07-30 20:55:38,945 - INFO - Gen 186/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:38,947 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:38,949 - INFO -   ↳ Best χ²=1.56e-04 | w₀=-1.00061 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:39,622 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0186.json
+2026-07-30 20:55:40,069 - INFO - Gen 187/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:40,072 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:40,074 - INFO -   ↳ Best χ²=6.82e-04 | w₀=-0.99945 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:40,718 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0187.json
+2026-07-30 20:55:41,171 - INFO - Gen 188/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:41,173 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:41,175 - INFO -   ↳ Best χ²=1.80e-04 | w₀=-1.00085 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:41,858 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0188.json
+2026-07-30 20:55:42,300 - INFO - Gen 189/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:42,301 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:42,302 - INFO -   ↳ Best χ²=6.10e-04 | w₀=-0.99814 | Ωm=0.300 | S₈=0.830 | f_PTA=9.996e-10 Hz | P=19
+2026-07-30 20:55:42,942 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0189.json
+2026-07-30 20:55:43,389 - INFO - Gen 190/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:43,391 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:43,392 - INFO -   ↳ Best χ²=1.48e-04 | w₀=-0.99944 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:44,035 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0190.json
+2026-07-30 20:55:44,455 - INFO - Gen 191/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:44,456 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:44,456 - INFO -   ↳ Best χ²=1.45e-04 | w₀=-1.00016 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:45,077 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0191.json
+2026-07-30 20:55:45,514 - INFO - Gen 192/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:45,516 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:45,517 - INFO -   ↳ Best χ²=3.63e-04 | w₀=-0.99998 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:46,195 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0192.json
+2026-07-30 20:55:46,645 - INFO - Gen 193/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:46,647 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:46,649 - INFO -   ↳ Best χ²=6.72e-05 | w₀=-1.00039 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:46,989 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0193.json
+2026-07-30 20:55:47,431 - INFO - Gen 194/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:47,433 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:47,434 - INFO -   ↳ Best χ²=1.50e-04 | w₀=-1.00079 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:47,761 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0194.json
+2026-07-30 20:55:48,212 - INFO - Gen 195/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:48,215 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:48,217 - INFO -   ↳ Best χ²=5.74e-06 | w₀=-1.00014 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:48,544 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0195.json
+2026-07-30 20:55:48,993 - INFO - Gen 196/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:48,995 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:48,997 - INFO -   ↳ Best χ²=2.00e-05 | w₀=-1.00025 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:49,339 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0196.json
+2026-07-30 20:55:49,788 - INFO - Gen 197/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:49,796 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:49,798 - INFO -   ↳ Best χ²=2.02e-04 | w₀=-0.99920 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:55:50,137 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0197.json
+2026-07-30 20:55:50,558 - INFO - Gen 198/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:50,560 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:50,561 - INFO -   ↳ Best χ²=7.12e-05 | w₀=-1.00067 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:50,891 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0198.json
+2026-07-30 20:55:51,311 - INFO - Gen 199/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:51,312 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:51,312 - INFO -   ↳ Best χ²=4.86e-04 | w₀=-1.00149 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:51,630 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0199.json
+2026-07-30 20:55:52,050 - INFO - Gen 200/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:52,051 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:52,052 - INFO -   ↳ Best χ²=8.65e-05 | w₀=-0.99969 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:52,384 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0200.json
+2026-07-30 20:55:52,806 - INFO - Gen 201/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:52,810 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:52,810 - INFO -   ↳ Best χ²=1.87e-04 | w₀=-1.00095 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:53,155 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0201.json
+2026-07-30 20:55:53,576 - INFO - Gen 202/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:53,577 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:53,577 - INFO -   ↳ Best χ²=7.45e-05 | w₀=-1.00026 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:53,903 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0202.json
+2026-07-30 20:55:54,326 - INFO - Gen 203/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:54,327 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:54,328 - INFO -   ↳ Best χ²=4.31e-04 | w₀=-0.99988 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:54,648 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0203.json
+2026-07-30 20:55:55,072 - INFO - Gen 204/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:55,073 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:55,074 - INFO -   ↳ Best χ²=3.02e-05 | w₀=-0.99995 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:55,396 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0204.json
+2026-07-30 20:55:55,815 - INFO - Gen 205/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:55,816 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:55,817 - INFO -   ↳ Best χ²=4.72e-05 | w₀=-0.99947 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:55:56,458 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0205.json
+2026-07-30 20:55:56,878 - INFO - Gen 206/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:56,879 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:56,880 - INFO -   ↳ Best χ²=1.05e-04 | w₀=-0.99983 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:57,504 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0206.json
+2026-07-30 20:55:57,923 - INFO - Gen 207/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:57,924 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:57,924 - INFO -   ↳ Best χ²=1.67e-04 | w₀=-1.00076 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:58,560 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0207.json
+2026-07-30 20:55:58,981 - INFO - Gen 208/300 | Lean4 survivors: 40/40
+2026-07-30 20:55:58,982 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:55:58,983 - INFO -   ↳ Best χ²=8.44e-06 | w₀=-1.00014 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:55:59,603 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0208.json
+2026-07-30 20:56:00,043 - INFO - Gen 209/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:00,045 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:00,046 - INFO -   ↳ Best χ²=1.01e-04 | w₀=-0.99988 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:00,387 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0209.json
+2026-07-30 20:56:00,807 - INFO - Gen 210/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:00,808 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:00,809 - INFO -   ↳ Best χ²=7.44e-06 | w₀=-0.99995 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:01,437 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0210.json
+2026-07-30 20:56:01,890 - INFO - Gen 211/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:01,892 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:01,893 - INFO -   ↳ Best χ²=3.59e-04 | w₀=-0.99938 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:02,527 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0211.json
+2026-07-30 20:56:02,970 - INFO - Gen 212/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:02,971 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:02,973 - INFO -   ↳ Best χ²=7.97e-05 | w₀=-1.00033 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:03,610 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0212.json
+2026-07-30 20:56:04,045 - INFO - Gen 213/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:04,047 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:04,048 - INFO -   ↳ Best χ²=1.11e-03 | w₀=-1.00047 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:04,376 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0213.json
+2026-07-30 20:56:04,825 - INFO - Gen 214/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:04,827 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:04,828 - INFO -   ↳ Best χ²=1.47e-04 | w₀=-1.00093 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:05,155 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0214.json
+2026-07-30 20:56:05,601 - INFO - Gen 215/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:05,602 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:05,604 - INFO -   ↳ Best χ²=4.83e-04 | w₀=-0.99844 | Ωm=0.300 | S₈=0.830 | f_PTA=9.997e-10 Hz | P=19
+2026-07-30 20:56:05,969 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0215.json
+2026-07-30 20:56:06,425 - INFO - Gen 216/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:06,427 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:06,429 - INFO -   ↳ Best χ²=3.72e-05 | w₀=-0.99977 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:07,070 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0216.json
+2026-07-30 20:56:07,512 - INFO - Gen 217/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:07,514 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:07,515 - INFO -   ↳ Best χ²=1.20e-04 | w₀=-1.00001 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:07,859 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0217.json
+2026-07-30 20:56:08,300 - INFO - Gen 218/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:08,302 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:08,303 - INFO -   ↳ Best χ²=1.72e-04 | w₀=-1.00013 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:08,942 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0218.json
+2026-07-30 20:56:09,361 - INFO - Gen 219/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:09,362 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:09,362 - INFO -   ↳ Best χ²=9.43e-06 | w₀=-1.00008 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:09,682 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0219.json
+2026-07-30 20:56:10,112 - INFO - Gen 220/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:10,113 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:10,114 - INFO -   ↳ Best χ²=1.47e-04 | w₀=-0.99917 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:10,737 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0220.json
+2026-07-30 20:56:11,160 - INFO - Gen 221/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:11,162 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:11,163 - INFO -   ↳ Best χ²=3.10e-04 | w₀=-1.00050 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:11,489 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0221.json
+2026-07-30 20:56:11,913 - INFO - Gen 222/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:11,915 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:11,916 - INFO -   ↳ Best χ²=4.07e-04 | w₀=-1.00088 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:12,245 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0222.json
+2026-07-30 20:56:12,673 - INFO - Gen 223/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:12,675 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:12,676 - INFO -   ↳ Best χ²=6.33e-06 | w₀=-1.00000 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:12,991 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0223.json
+2026-07-30 20:56:13,409 - INFO - Gen 224/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:13,410 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:13,411 - INFO -   ↳ Best χ²=7.45e-05 | w₀=-0.99955 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:13,751 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0224.json
+2026-07-30 20:56:14,176 - INFO - Gen 225/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:14,178 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:14,179 - INFO -   ↳ Best χ²=3.03e-04 | w₀=-1.00136 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:14,506 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0225.json
+2026-07-30 20:56:14,931 - INFO - Gen 226/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:14,933 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:14,934 - INFO -   ↳ Best χ²=9.86e-05 | w₀=-1.00046 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:15,272 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0226.json
+2026-07-30 20:56:15,692 - INFO - Gen 227/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:15,693 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:15,694 - INFO -   ↳ Best χ²=1.68e-04 | w₀=-0.99909 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:16,042 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0227.json
+2026-07-30 20:56:16,466 - INFO - Gen 228/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:16,467 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:16,468 - INFO -   ↳ Best χ²=6.78e-04 | w₀=-0.99825 | Ωm=0.300 | S₈=0.830 | f_PTA=9.996e-10 Hz | P=19
+2026-07-30 20:56:16,810 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0228.json
+2026-07-30 20:56:17,231 - INFO - Gen 229/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:17,233 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:17,234 - INFO -   ↳ Best χ²=7.28e-05 | w₀=-0.99995 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:17,584 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0229.json
+2026-07-30 20:56:18,043 - INFO - Gen 230/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:18,044 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:18,044 - INFO -   ↳ Best χ²=1.17e-04 | w₀=-1.00085 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:18,381 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0230.json
+2026-07-30 20:56:18,806 - INFO - Gen 231/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:18,807 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:18,808 - INFO -   ↳ Best χ²=2.77e-04 | w₀=-1.00115 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:19,134 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0231.json
+2026-07-30 20:56:19,556 - INFO - Gen 232/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:19,557 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:19,558 - INFO -   ↳ Best χ²=5.07e-04 | w₀=-0.99895 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:19,879 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0232.json
+2026-07-30 20:56:20,303 - INFO - Gen 233/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:20,304 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:20,305 - INFO -   ↳ Best χ²=5.33e-05 | w₀=-0.99942 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:20,634 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0233.json
+2026-07-30 20:56:21,055 - INFO - Gen 234/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:21,056 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:21,057 - INFO -   ↳ Best χ²=2.20e-04 | w₀=-0.99929 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:21,394 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0234.json
+2026-07-30 20:56:21,815 - INFO - Gen 235/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:21,817 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:21,818 - INFO -   ↳ Best χ²=5.75e-05 | w₀=-1.00057 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:22,151 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0235.json
+2026-07-30 20:56:22,572 - INFO - Gen 236/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:22,573 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:22,573 - INFO -   ↳ Best χ²=9.56e-05 | w₀=-0.99959 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:22,908 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0236.json
+2026-07-30 20:56:23,331 - INFO - Gen 237/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:23,332 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:23,332 - INFO -   ↳ Best χ²=2.85e-04 | w₀=-0.99904 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:23,656 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0237.json
+2026-07-30 20:56:24,085 - INFO - Gen 238/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:24,086 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:24,087 - INFO -   ↳ Best χ²=3.74e-04 | w₀=-0.99851 | Ωm=0.300 | S₈=0.830 | f_PTA=9.997e-10 Hz | P=19
+2026-07-30 20:56:24,423 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0238.json
+2026-07-30 20:56:24,871 - INFO - Gen 239/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:24,873 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:24,875 - INFO -   ↳ Best χ²=1.05e-04 | w₀=-1.00081 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:25,207 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0239.json
+2026-07-30 20:56:25,649 - INFO - Gen 240/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:25,650 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:25,652 - INFO -   ↳ Best χ²=7.91e-04 | w₀=-0.99808 | Ωm=0.300 | S₈=0.830 | f_PTA=9.996e-10 Hz | P=19
+2026-07-30 20:56:25,978 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0240.json
+2026-07-30 20:56:26,427 - INFO - Gen 241/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:26,429 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:26,430 - INFO -   ↳ Best χ²=6.24e-04 | w₀=-0.99949 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:26,763 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0241.json
+2026-07-30 20:56:27,205 - INFO - Gen 242/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:27,207 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:27,208 - INFO -   ↳ Best χ²=2.84e-04 | w₀=-0.99960 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:27,553 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0242.json
+2026-07-30 20:56:27,982 - INFO - Gen 243/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:27,984 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:27,985 - INFO -   ↳ Best χ²=3.99e-05 | w₀=-0.99987 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:28,333 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0243.json
+2026-07-30 20:56:28,780 - INFO - Gen 244/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:28,783 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:28,784 - INFO -   ↳ Best χ²=6.52e-06 | w₀=-0.99989 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:29,122 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0244.json
+2026-07-30 20:56:29,566 - INFO - Gen 245/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:29,568 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:29,570 - INFO -   ↳ Best χ²=3.27e-05 | w₀=-1.00042 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:29,902 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0245.json
+2026-07-30 20:56:30,343 - INFO - Gen 246/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:30,345 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:30,346 - INFO -   ↳ Best χ²=2.96e-04 | w₀=-1.00138 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:30,673 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0246.json
+2026-07-30 20:56:31,112 - INFO - Gen 247/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:31,113 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:31,115 - INFO -   ↳ Best χ²=1.17e-04 | w₀=-1.00079 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:31,455 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0247.json
+2026-07-30 20:56:31,886 - INFO - Gen 248/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:31,887 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:31,888 - INFO -   ↳ Best χ²=8.96e-05 | w₀=-0.99983 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:32,237 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0248.json
+2026-07-30 20:56:32,691 - INFO - Gen 249/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:32,699 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:32,701 - INFO -   ↳ Best χ²=3.44e-04 | w₀=-1.00089 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:33,044 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0249.json
+2026-07-30 20:56:33,497 - INFO - Gen 250/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:33,499 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:33,501 - INFO -   ↳ Best χ²=2.95e-04 | w₀=-0.99863 | Ωm=0.300 | S₈=0.830 | f_PTA=9.997e-10 Hz | P=19
+2026-07-30 20:56:33,833 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0250.json
+2026-07-30 20:56:34,281 - INFO - Gen 251/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:34,283 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:34,284 - INFO -   ↳ Best χ²=3.77e-04 | w₀=-1.00136 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:34,616 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0251.json
+2026-07-30 20:56:35,063 - INFO - Gen 252/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:35,066 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:35,068 - INFO -   ↳ Best χ²=1.27e-05 | w₀=-1.00011 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:35,405 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0252.json
+2026-07-30 20:56:35,839 - INFO - Gen 253/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:35,840 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:35,841 - INFO -   ↳ Best χ²=2.70e-04 | w₀=-0.99918 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:36,166 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0253.json
+2026-07-30 20:56:36,612 - INFO - Gen 254/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:36,615 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:36,616 - INFO -   ↳ Best χ²=3.17e-04 | w₀=-1.00140 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:36,957 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0254.json
+2026-07-30 20:56:37,406 - INFO - Gen 255/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:37,409 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:37,412 - INFO -   ↳ Best χ²=2.83e-04 | w₀=-1.00021 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:37,771 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0255.json
+2026-07-30 20:56:38,231 - INFO - Gen 256/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:38,234 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:38,236 - INFO -   ↳ Best χ²=1.73e-04 | w₀=-1.00035 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:38,584 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0256.json
+2026-07-30 20:56:39,023 - INFO - Gen 257/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:39,025 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:39,026 - INFO -   ↳ Best χ²=4.66e-06 | w₀=-1.00017 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:39,351 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0257.json
+2026-07-30 20:56:39,800 - INFO - Gen 258/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:39,803 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:39,805 - INFO -   ↳ Best χ²=2.89e-04 | w₀=-1.00088 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:40,142 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0258.json
+2026-07-30 20:56:40,593 - INFO - Gen 259/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:40,596 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:40,597 - INFO -   ↳ Best χ²=1.09e-04 | w₀=-0.99923 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:40,933 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0259.json
+2026-07-30 20:56:41,387 - INFO - Gen 260/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:41,389 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:41,391 - INFO -   ↳ Best χ²=5.50e-05 | w₀=-1.00053 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:41,730 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0260.json
+2026-07-30 20:56:42,173 - INFO - Gen 261/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:42,176 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:42,177 - INFO -   ↳ Best χ²=2.13e-04 | w₀=-1.00102 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:42,525 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0261.json
+2026-07-30 20:56:42,982 - INFO - Gen 262/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:42,990 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:42,992 - INFO -   ↳ Best χ²=8.35e-05 | w₀=-1.00065 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:43,318 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0262.json
+2026-07-30 20:56:43,779 - INFO - Gen 263/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:43,782 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:43,784 - INFO -   ↳ Best χ²=2.51e-05 | w₀=-1.00024 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:44,164 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0263.json
+2026-07-30 20:56:44,596 - INFO - Gen 264/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:44,598 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:44,599 - INFO -   ↳ Best χ²=2.58e-04 | w₀=-1.00126 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:44,922 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0264.json
+2026-07-30 20:56:45,354 - INFO - Gen 265/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:45,355 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:45,356 - INFO -   ↳ Best χ²=7.21e-05 | w₀=-0.99977 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:45,683 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0265.json
+2026-07-30 20:56:46,119 - INFO - Gen 266/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:46,121 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:46,122 - INFO -   ↳ Best χ²=5.55e-05 | w₀=-1.00025 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:46,456 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0266.json
+2026-07-30 20:56:46,906 - INFO - Gen 267/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:46,908 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:46,909 - INFO -   ↳ Best χ²=2.50e-04 | w₀=-1.00126 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:47,247 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0267.json
+2026-07-30 20:56:47,674 - INFO - Gen 268/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:47,675 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:47,676 - INFO -   ↳ Best χ²=3.68e-04 | w₀=-1.00152 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:48,020 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0268.json
+2026-07-30 20:56:48,451 - INFO - Gen 269/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:48,453 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:48,454 - INFO -   ↳ Best χ²=3.28e-04 | w₀=-0.99880 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:56:48,787 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0269.json
+2026-07-30 20:56:49,224 - INFO - Gen 270/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:49,225 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:49,226 - INFO -   ↳ Best χ²=7.01e-05 | w₀=-1.00005 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:49,582 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0270.json
+2026-07-30 20:56:50,027 - INFO - Gen 271/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:50,029 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:50,030 - INFO -   ↳ Best χ²=4.54e-05 | w₀=-1.00001 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:50,365 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0271.json
+2026-07-30 20:56:50,811 - INFO - Gen 272/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:50,813 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:50,815 - INFO -   ↳ Best χ²=3.38e-04 | w₀=-0.99993 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:51,146 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0272.json
+2026-07-30 20:56:51,573 - INFO - Gen 273/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:51,574 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:51,575 - INFO -   ↳ Best χ²=3.55e-04 | w₀=-1.00116 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:51,917 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0273.json
+2026-07-30 20:56:52,347 - INFO - Gen 274/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:52,348 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:52,349 - INFO -   ↳ Best χ²=4.83e-04 | w₀=-1.00091 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:52,680 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0274.json
+2026-07-30 20:56:53,144 - INFO - Gen 275/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:53,147 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:53,148 - INFO -   ↳ Best χ²=7.57e-05 | w₀=-0.99934 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:53,471 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0275.json
+2026-07-30 20:56:53,916 - INFO - Gen 276/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:53,919 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:53,921 - INFO -   ↳ Best χ²=8.04e-04 | w₀=-0.99808 | Ωm=0.300 | S₈=0.830 | f_PTA=9.996e-10 Hz | P=19
+2026-07-30 20:56:54,266 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0276.json
+2026-07-30 20:56:54,701 - INFO - Gen 277/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:54,703 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:54,704 - INFO -   ↳ Best χ²=5.85e-05 | w₀=-0.99992 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:55,021 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0277.json
+2026-07-30 20:56:55,468 - INFO - Gen 278/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:55,470 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:55,472 - INFO -   ↳ Best χ²=3.14e-04 | w₀=-1.00127 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:55,807 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0278.json
+2026-07-30 20:56:56,254 - INFO - Gen 279/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:56,259 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:56,261 - INFO -   ↳ Best χ²=4.93e-04 | w₀=-1.00032 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:56,593 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0279.json
+2026-07-30 20:56:57,028 - INFO - Gen 280/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:57,030 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:57,031 - INFO -   ↳ Best χ²=2.51e-05 | w₀=-0.99962 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:56:57,373 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0280.json
+2026-07-30 20:56:57,813 - INFO - Gen 281/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:57,815 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:57,816 - INFO -   ↳ Best χ²=1.29e-04 | w₀=-1.00027 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:58,162 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0281.json
+2026-07-30 20:56:58,608 - INFO - Gen 282/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:58,614 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:58,616 - INFO -   ↳ Best χ²=1.16e-05 | w₀=-1.00014 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:58,940 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0282.json
+2026-07-30 20:56:59,372 - INFO - Gen 283/300 | Lean4 survivors: 40/40
+2026-07-30 20:56:59,375 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:56:59,377 - INFO -   ↳ Best χ²=7.45e-05 | w₀=-1.00005 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:56:59,713 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0283.json
+2026-07-30 20:57:00,162 - INFO - Gen 284/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:00,164 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:00,166 - INFO -   ↳ Best χ²=1.61e-04 | w₀=-1.00062 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:00,491 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0284.json
+2026-07-30 20:57:00,939 - INFO - Gen 285/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:00,941 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:00,943 - INFO -   ↳ Best χ²=7.79e-04 | w₀=-1.00206 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:01,282 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0285.json
+2026-07-30 20:57:01,714 - INFO - Gen 286/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:01,716 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:01,718 - INFO -   ↳ Best χ²=9.75e-05 | w₀=-0.99936 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:57:02,053 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0286.json
+2026-07-30 20:57:02,503 - INFO - Gen 287/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:02,505 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:02,506 - INFO -   ↳ Best χ²=4.58e-04 | w₀=-1.00171 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:02,838 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0287.json
+2026-07-30 20:57:03,282 - INFO - Gen 288/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:03,285 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:03,287 - INFO -   ↳ Best χ²=8.61e-04 | w₀=-0.99885 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:57:03,615 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0288.json
+2026-07-30 20:57:04,049 - INFO - Gen 289/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:04,050 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:04,051 - INFO -   ↳ Best χ²=8.57e-04 | w₀=-1.00234 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:04,379 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0289.json
+2026-07-30 20:57:04,811 - INFO - Gen 290/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:04,812 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:04,814 - INFO -   ↳ Best χ²=3.72e-04 | w₀=-1.00139 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:05,142 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0290.json
+2026-07-30 20:57:05,596 - INFO - Gen 291/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:05,598 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:05,600 - INFO -   ↳ Best χ²=4.98e-05 | w₀=-0.99964 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:57:05,945 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0291.json
+2026-07-30 20:57:06,399 - INFO - Gen 292/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:06,401 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:06,402 - INFO -   ↳ Best χ²=1.21e-04 | w₀=-0.99938 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:57:06,772 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0292.json
+2026-07-30 20:57:07,221 - INFO - Gen 293/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:07,223 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:07,224 - INFO -   ↳ Best χ²=9.69e-05 | w₀=-0.99922 | Ωm=0.300 | S₈=0.830 | f_PTA=9.998e-10 Hz | P=19
+2026-07-30 20:57:07,561 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0293.json
+2026-07-30 20:57:08,016 - INFO - Gen 294/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:08,018 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:08,019 - INFO -   ↳ Best χ²=1.45e-05 | w₀=-1.00030 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:08,357 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0294.json
+2026-07-30 20:57:08,814 - INFO - Gen 295/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:08,822 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:08,825 - INFO -   ↳ Best χ²=1.72e-04 | w₀=-0.99929 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:57:09,182 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0295.json
+2026-07-30 20:57:09,630 - INFO - Gen 296/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:09,633 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:09,635 - INFO -   ↳ Best χ²=5.80e-04 | w₀=-1.00143 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:09,965 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0296.json
+2026-07-30 20:57:10,402 - INFO - Gen 297/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:10,404 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:10,405 - INFO -   ↳ Best χ²=2.86e-04 | w₀=-0.99971 | Ωm=0.300 | S₈=0.830 | f_PTA=9.999e-10 Hz | P=19
+2026-07-30 20:57:10,754 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0297.json
+2026-07-30 20:57:11,202 - INFO - Gen 298/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:11,204 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:11,206 - INFO -   ↳ Best χ²=5.80e-05 | w₀=-1.00013 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:11,532 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0298.json
+2026-07-30 20:57:11,985 - INFO - Gen 299/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:11,987 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:11,988 - INFO -   ↳ Best χ²=1.42e-04 | w₀=-1.00094 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:12,336 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0299.json
+2026-07-30 20:57:12,757 - INFO - Gen 300/300 | Lean4 survivors: 40/40
+2026-07-30 20:57:12,758 - INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
+2026-07-30 20:57:12,758 - INFO -   ↳ Best χ²=1.20e-06 | w₀=-0.99992 | Ωm=0.300 | S₈=0.830 | f_PTA=1.000e-09 Hz | P=19
+2026-07-30 20:57:13,103 - INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0300.json
+2026-07-30 20:57:13,110 - INFO - ============================================================
+2026-07-30 20:57:13,110 - INFO - 🏁 EXTENDED BURN COMPLETE
+2026-07-30 20:57:13,111 - INFO -    Runtime : 0.037 h
+2026-07-30 20:57:13,111 - INFO -    Best χ² : 1.202181e-06
+2026-07-30 20:57:13,111 - INFO -    Candidate: cooper_s10_g300_1
+2026-07-30 20:57:13,111 - INFO -    P(Picard): 19
+2026-07-30 20:57:13,111 - INFO - ============================================================
+2026-07-30 20:57:13,112 - INFO - {
+  "name": "Cooper_s10",
+  "picard_fuchs_coefficients": [
+    0.5,
+    -1.8,
+    1.2,
+    -0.3
+  ],
+  "hodge_numbers": {
+    "h11": 3,
+    "h21": 19,
+    "h22": 156
+  },
+  "kodaira_fiber_type": "II",
+  "complex_structure_tau": [
+    0.1,
+    1.5
+  ],
+  "kahler_modulus_rho": [
+    2.0,
+    0.8
+  ],
+  "candidate_id": "cooper_s10_g300_1",
+  "picard_number": 19,
+  "moduli_stabilization": 0.75,
+  "complex_structure": [
+    0.1453811545918901,
+    -1.4360395156412553,
+    0.9579981478503856
+  ],
+  "t2_modulus_tau": 0.49983216520980056,
+  "formal_reason": "Distance and dS conjectures satisfied.",
+  "phenotype": {
+    "w0": -0.9999160826049003,
+    "omega_m": 0.3,
+    "h0": 67.40063827228722,
+    "pta_f_monopole": 9.999832165209803e-10,
+    "s8_gradient": 0.83,
+    "pta_anisotropy": 0.04975489254702027,
+    "lya_spectral_tilt": 1.7648183957561657e-06,
+    "gw_polarisation": 0.8289450650268188,
+    "cs_magnitude": 1.7323699437124886,
+    "cs_theta_rad": 0.9848374005691878,
+    "cs_phi_rad": -1.4699025057223056
+  },
+  "likelihood": {
+    "chi2": 1.2021805657082974e-06,
+    "fitness": 0.9999987978208795,
+    "chi2_w0": 1.1003326875503825e-06,
+    "chi2_om": 0.0,
+    "chi2_h0": 1.0184787815791487e-07
+  },
+  "chi2_loss": 1.2021805657082974e-06,
+  "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json",
+  "_status": "COMPLETE"
+}

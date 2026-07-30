@@ -1,0 +1,10 @@
+{
+  "candidate_id": "cooper_s10_g63_32",
+  "best_log_likelihood": -5.709411554580523,
+  "picard_number": 19,
+  "phenotype": {
+    "w0": -0.9999157762814223,
+    "s8_gradient": 0.83,
+    "pta_f_monopole": 1.07e-09
+  }
+}

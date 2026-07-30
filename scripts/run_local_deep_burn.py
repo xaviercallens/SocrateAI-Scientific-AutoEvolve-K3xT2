@@ -31,7 +31,7 @@ if __name__ == "__main__":
     
     start_time = time.time()
     try:
-        execute_phase2(generations=75, pop_size=40)
+        execute_phase2(generations=150, pop_size=40)
     except KeyboardInterrupt:
         logging.warning("🛑 MANUAL OVERRIDE: Deep Burn Halted.")
     except Exception as e:

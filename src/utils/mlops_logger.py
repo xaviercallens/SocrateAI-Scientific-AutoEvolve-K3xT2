@@ -29,19 +29,26 @@ class EvolutionCheckpoint:
         gcs_bucket: str = GCS_BUCKET_DEFAULT,
         local_fallback_dir: str = "./outputs/checkpoints",
     ):
+        self.local_dir = local_fallback_dir
+        os.makedirs(self.local_dir, exist_ok=True)
+
         self.use_gcs = gcsfs is not None
         if self.use_gcs:
             self.gcs_dir = f"gs://{gcs_bucket}"
             try:
-                self.fs = gcsfs.GCSFileSystem()
-                logger.info(f"☁️  GCS checkpointing enabled → {self.gcs_dir}")
-            except Exception as e:
-                logger.warning(f"GCS auth failed ({e}), falling back to local disk.")
-                self.use_gcs = False
+                import subprocess
+                token = subprocess.check_output(["gcloud", "auth", "print-access-token"], text=True, stderr=subprocess.DEVNULL).strip()
+                self.fs = gcsfs.GCSFileSystem(token=token)
+                logger.info(f"☁️  GCS checkpointing enabled via gcloud CLI token → {self.gcs_dir}")
+            except Exception:
+                try:
+                    self.fs = gcsfs.GCSFileSystem()
+                    logger.info(f"☁️  GCS checkpointing enabled → {self.gcs_dir}")
+                except Exception as e2:
+                    logger.warning(f"GCS auth failed ({e2}), falling back to local disk.")
+                    self.use_gcs = False
 
         if not self.use_gcs:
-            self.local_dir = local_fallback_dir
-            os.makedirs(self.local_dir, exist_ok=True)
             logger.info(f"💾 Local checkpointing enabled → {self.local_dir}")
 
         self.run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -116,3 +123,24 @@ class EvolutionCheckpoint:
         except Exception as e:
             logger.warning(f"No checkpoint found (first run?): {e}")
             return None
+
+
+class MLOpsLogger:
+    """Backwards compatibility wrapper for MLOps logging."""
+    def __init__(self, backend: str = "none", experiment_name: str = "k3_t2_evolution"):
+        self.backend = backend
+        self.experiment_name = experiment_name
+        self.logged_metrics = []
+
+    def log_generation(self, generation: int, metrics: dict | list, candidates: list = None):
+        self.logged_metrics.append({"generation": generation, "metrics": metrics})
+
+    def log_hyperparameters(self, hparams: dict):
+        pass
+
+    def get_logged_metrics(self) -> list:
+        return self.logged_metrics
+
+    def finish(self):
+        pass
+

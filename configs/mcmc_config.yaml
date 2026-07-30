@@ -1,0 +1,21 @@
+# Phase 4: Multi-Node MCMC Configuration
+# =========================================
+# Adjust these values based on available compute and desired precision.
+
+mcmc:
+  n_chains: 4                    # Number of independent chains (≥ 4 for reliable R̂)
+  n_steps_per_chain: 5000        # Total MCMC steps per chain (including burn-in)
+  burn_in: 500                   # Steps to discard as burn-in
+  thin_factor: 5                 # Keep every Nth sample (reduces autocorrelation)
+  max_iterations: 5              # Maximum convergence re-run iterations
+  convergence_threshold: 1.05    # Gelman-Rubin R̂ threshold
+  n_workers: 1                   # Parallel workers (1 = sequential, safer for closures)
+
+data:
+  desi_data_dir: "data/desi_dr1"
+  checkpoint_source: "gcs"       # 'gcs' or 'local'
+  max_candidates: 3              # Top N Pareto candidates to run MCMC on
+
+output:
+  output_dir: "outputs/mcmc"
+  save_to_gcs: true
