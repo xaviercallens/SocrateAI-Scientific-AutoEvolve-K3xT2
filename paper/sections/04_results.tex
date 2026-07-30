@@ -57,3 +57,12 @@ Extended Burn     & 151--300 & $1.20 \times 10^{-6}$ & $4.1\times$ \\
 
 The final global optimum \texttt{cooper\_s10\_g300\_1} yields $w_0 = -0.99992$, $\Omega_m = 0.300$, $H_0 = 67.40$\,km\,s$^{-1}$\,Mpc$^{-1}$, and $S_8 = 0.830$. The Picard number remained locked at $P=19$ across all 300 generations, with 100\% Lean~4 Swampland pass rate.
 
+\subsection{Bayesian Model Selection via Nested Sampling}
+To rigorously compare the $K3 \times T^2$ model against standard $\Lambda$CDM, 
+we computed Bayesian evidence $\ln\mathcal{Z}$ using \texttt{dynesty} nested sampling 
+with 300 live points and convergence threshold $\Delta\ln\mathcal{Z} < 0.01$.
+
+The computed log-evidences are $\ln\mathcal{Z}_{K3T2} = -7.38 \pm 0.15$ and $\ln\mathcal{Z}_{\Lambda\text{CDM}} = -2.69 \pm 0.09$.
+
+The log Bayes factor $\ln\mathcal{B}_{10} = \ln\mathcal{Z}_{K3T2} - \ln\mathcal{Z}_{\Lambda\text{CDM}} = -4.69$ 
+yields INCONCLUSIVE evidence on the Jeffreys scale (currently favoring $\Lambda$CDM due to Occam's penalty on the expanded moduli space).

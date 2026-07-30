@@ -1,0 +1,17 @@
+{
+  "k3t2_model": {
+    "logZ": -7.378364452482751,
+    "logZ_err": 0.14867825713026606,
+    "H": 6.298533962600876,
+    "n_samples": 3903,
+    "n_params": 5
+  },
+  "lcdm_model": {
+    "logZ": -2.690347622486918,
+    "logZ_err": 0.08808968782578233,
+    "n_params": 1
+  },
+  "ln_bayes_factor": -4.688016829995833,
+  "jeffreys_verdict": "INCONCLUSIVE",
+  "best_fit_params": {}
+}
