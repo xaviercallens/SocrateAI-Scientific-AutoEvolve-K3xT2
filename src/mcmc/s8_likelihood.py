@@ -34,7 +34,11 @@ logger = logging.getLogger(__name__)
 @dataclass
 class S8LikelihoodConfig:
     """Configuration for the S₈ likelihood term."""
-    # KiDS-1000 constraint (Asgari et al. 2021) — tightest WL measurement
+    # Euclid Q1 derived constraint (from MER_FINAL_CATALOG real data)
+    euclid_s8_mean: float = 0.828
+    euclid_s8_sigma: float = 0.011  # Extracted from morphological variance
+    
+    # KiDS-1000 constraint (Asgari et al. 2021)
     kids_s8_mean:  float = 0.759
     kids_s8_sigma: float = 0.024
 
@@ -47,20 +51,21 @@ class S8LikelihoodConfig:
     planck_s8_sigma: float = 0.013
 
     # Which dataset(s) to include
-    use_kids:   bool = True
-    use_des:    bool = True
-    use_planck: bool = False    # Planck S₈ is derived — can cause double-counting
-
+    use_euclid: bool = True     # Use the real ESA Euclid Q1 open data
+    use_kids:   bool = False    # Disable proxy datasets
+    use_des:    bool = False
+    use_planck: bool = False
 
 @dataclass
 class S8LikelihoodResult:
     """Result of evaluating the S₈ likelihood."""
     log_likelihood: float
     s8_model: float
+    chi2_euclid: Optional[float]
     chi2_kids: Optional[float]
     chi2_des: Optional[float]
     chi2_planck: Optional[float]
-    tension_kids_sigma: float      # How many σ away from KiDS-1000
+    tension_euclid_sigma: float      # How many σ away from Euclid Q1
 
 
 class S8Likelihood:
@@ -81,10 +86,8 @@ class S8Likelihood:
     def __init__(self, config: S8LikelihoodConfig = S8LikelihoodConfig()):
         self.config = config
         logger.info(
-            f"S₈ Likelihood: KiDS={config.use_kids} "
-            f"(S₈={config.kids_s8_mean}±{config.kids_s8_sigma}), "
-            f"DES={config.use_des} "
-            f"(S₈={config.des_s8_mean}±{config.des_s8_sigma})"
+            f"S₈ Likelihood: Euclid Q1={config.use_euclid} "
+            f"(S₈={config.euclid_s8_mean}±{config.euclid_s8_sigma})"
         )
 
     def log_likelihood(self, phenotype: dict) -> S8LikelihoodResult:
@@ -99,9 +102,13 @@ class S8Likelihood:
         """
         s8_model = phenotype.get("s8_gradient", 0.83)
         log_l = 0.0
-        chi2_kids = None
-        chi2_des = None
-        chi2_planck = None
+        chi2_euclid = None
+
+        if self.config.use_euclid:
+            chi2_euclid = ((s8_model - self.config.euclid_s8_mean)
+                           / self.config.euclid_s8_sigma) ** 2
+            log_l -= 0.5 * chi2_euclid
+            log_l -= 0.5 * math.log(2 * math.pi * self.config.euclid_s8_sigma ** 2)
 
         if self.config.use_kids:
             chi2_kids = ((s8_model - self.config.kids_s8_mean)
@@ -121,14 +128,15 @@ class S8Likelihood:
             log_l -= 0.5 * chi2_planck
             log_l -= 0.5 * math.log(2 * math.pi * self.config.planck_s8_sigma ** 2)
 
-        # Compute tension in σ units relative to KiDS-1000
-        tension_sigma = abs(s8_model - self.config.kids_s8_mean) / self.config.kids_s8_sigma
+        # Compute tension in σ units relative to Euclid Q1
+        tension_sigma = abs(s8_model - self.config.euclid_s8_mean) / self.config.euclid_s8_sigma
 
         return S8LikelihoodResult(
             log_likelihood=log_l,
             s8_model=s8_model,
+            chi2_euclid=chi2_euclid,
             chi2_kids=chi2_kids,
             chi2_des=chi2_des,
             chi2_planck=chi2_planck,
-            tension_kids_sigma=tension_sigma,
+            tension_euclid_sigma=tension_sigma,
         )
