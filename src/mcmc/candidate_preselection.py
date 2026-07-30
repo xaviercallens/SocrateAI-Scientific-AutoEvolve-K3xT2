@@ -129,9 +129,11 @@ def score_candidate(
     s8_score = _gaussian_score(s8, TARGETS["s8"]["value"], TARGETS["s8"]["sigma"])
     sc.signature_score = (pta_score * s8_score) ** 0.5  # Geometric mean
 
-    # 4. Picard Number Stability (P=19 is the preferred topological invariant)
+    # 4. Picard Number Stability (Blind Discovery)
+    # Removing the hardcoded P=19 prior. Any P in [14, 20] is considered valid topological
+    # search space. Evolutionary fitness must independently select the best P.
     picard = candidate.get("picard_number", 0)
-    sc.picard_score = 1.0 if picard == 19 else max(0.0, 1.0 - abs(picard - 19) * 0.15)
+    sc.picard_score = 1.0 if 14 <= picard <= 20 else max(0.0, 1.0 - abs(picard - 19) * 0.15)
 
     # Composite weighted score
     sc.composite_score = (

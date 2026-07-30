@@ -76,30 +76,30 @@
 **Description**: The current pipeline pre-selects Cooper s₁₀ via the K₄ sieve. A rigorous scan should explore whether alternative hypergraph seeds (K₅, K₃₃, Petersen graph, etc.) yield competitive K3 surfaces.
 
 **DoD**:
-- [ ] Extend `DeterministicK3Generator` to accept arbitrary graph seeds.
-- [ ] Run the sieve for K₃, K₅, K₃₃, Petersen, and Cayley graphs.
-- [ ] Tabulate λ₁ and matched K3 surface for each.
-- [ ] Compare phenomenological fitness of each against DESI+Planck constraints.
-- [ ] Publish results as a comparative table in the paper.
+- [x] Extend `DeterministicK3Generator` to accept arbitrary graph seeds.
+- [x] Run the sieve for K₃, K₅, K₃₃, Petersen, and Cayley graphs.
+- [x] Tabulate λ₁ and matched K3 surface for each.
+- [x] Compare phenomenological fitness of each against DESI+Planck constraints.
+- [x] Publish results as a comparative table in the paper.
 
 ### Directive 5C-2: Independent MCMC Discovery of Picard Number
 **Priority**: HIGH  
 **Description**: Currently P=19 is pre-encoded in the candidate catalog. The MCMC search should be modified to treat P as a free parameter (continuous proxy via `picard_offset`) and verify that the evolutionary pressure independently drives P toward 19.
 
 **DoD**:
-- [ ] Modify `candidate_preselection.py` to allow P ∈ {14, 15, ..., 20} as discrete search space.
-- [ ] Run a blind evolutionary campaign where the initial population spans all Picard ranks.
-- [ ] Document whether P=19 emerges as the winner without prior bias.
-- [ ] If it does: this is a genuine predictive result. If not: document what P is preferred and why.
+- [x] Modify `candidate_preselection.py` to allow P ∈ {14, 15, ..., 20} as discrete search space.
+- [x] Run a blind evolutionary campaign where the initial population spans all Picard ranks.
+- [x] Document whether P=19 emerges as the winner without prior bias.
+- [x] If it does: this is a genuine predictive result. If not: document what P is preferred and why.
 
 ### Directive 5C-3: NanoGrav PTA Cross-Correlation
 **Priority**: LOW  
 **Description**: The current PTA constraint is a single monopole frequency target. The 15-year NanoGrav dataset provides a full spectral characterization of the gravitational wave background that should be integrated.
 
 **DoD**:
-- [ ] Integrate NanoGrav 15yr free spectrum likelihood into `desi_likelihood.py`.
-- [ ] Run MCMC with the full PTA spectral shape as an additional constraint.
-- [ ] Determine whether Cooper s₁₀ remains the preferred geometry.
+- [x] Integrate NanoGrav 15yr free spectrum likelihood into `desi_likelihood.py`.
+- [x] Run MCMC with the full PTA spectral shape as an additional constraint.
+- [x] Determine whether Cooper s₁₀ remains the preferred geometry.
 
 ---
 
