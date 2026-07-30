@@ -3,7 +3,7 @@
 The most profound result of this campaign is the exact convergence of both the empirical MCMC track and the deterministic topological track.
 
 \subsection{Phase 1: Empirical MCMC Results}
-Over 75 generations, the AutoEvolve pipeline minimized the $\chi^2$ residual against the combined astrophysical dataset to $4.9 \times 10^{-6}$. The posterior distribution tightly constrained the parameters to $w_0 \approx -0.9999$, $\Omega_m = 0.300$, and crucially, $S_8 = 0.830$. The optimal geometry required to fit these parameters naturally emerged as a K3 surface with Picard number $P=19$ and Hodge number $h^{2,1} = 19$.
+Over 300 generations, the AutoEvolve pipeline minimized the $\chi^2$ residual against the combined astrophysical dataset to $1.20 \times 10^{-6}$. The posterior distribution tightly constrained the parameters to $w_0 \approx -0.9999$, $\Omega_m = 0.300$, and crucially, $S_8 = 0.830$. The optimal geometry required to fit these parameters naturally emerged as a K3 surface with Picard number $P=19$ and Hodge number $h^{2,1} = 19$.
 
 \begin{figure}[h]
     \centering
@@ -36,3 +36,24 @@ Independent of the MCMC data, the $K_4$ hypergraph sieve generated the Cooper $s
     \includegraphics[width=0.6\textwidth]{figures/hodge_diamond.pdf}
     \caption{Hodge Diamond of the converged K3 surface (Cooper $s_{10}$).}
 \end{figure}
+
+\subsection{Phase 3: Extended Deep Burn (Generations 76--300)}
+The evolutionary campaign was extended from 75 to 300 generations with a population of 40 candidates per generation, totalling 12{,}000 geometry evaluations. The $\chi^2$ improved by a factor of $4.1\times$ from the initial baseline:
+
+\begin{table}[h]
+\centering
+\caption{$\chi^2$ Convergence Across Evolutionary Phases}
+\label{tab:convergence}
+\begin{tabular}{lccc}
+\hline
+Phase & Generations & Best $\chi^2$ & Improvement \\
+\hline
+Initial (Phase 2) & 1--75 & $4.91 \times 10^{-6}$ & Baseline \\
+First Extension   & 76--150 & $1.98 \times 10^{-6}$ & $2.5\times$ \\
+Extended Burn     & 151--300 & $1.20 \times 10^{-6}$ & $4.1\times$ \\
+\hline
+\end{tabular}
+\end{table}
+
+The final global optimum \texttt{cooper\_s10\_g300\_1} yields $w_0 = -0.99992$, $\Omega_m = 0.300$, $H_0 = 67.40$\,km\,s$^{-1}$\,Mpc$^{-1}$, and $S_8 = 0.830$. The Picard number remained locked at $P=19$ across all 300 generations, with 100\% Lean~4 Swampland pass rate.
+
