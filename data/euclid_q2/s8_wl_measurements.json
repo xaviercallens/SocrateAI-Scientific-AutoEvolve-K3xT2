@@ -1,0 +1,85 @@
+{
+  "KiDS-1000": {
+    "survey": "KiDS-1000",
+    "reference": "Asgari et al. 2021, A&A 645, A104",
+    "arxiv": "2007.15633",
+    "observable": "S8",
+    "s8_mean": 0.759,
+    "s8_sigma_lo": 0.024,
+    "s8_sigma_hi": 0.021,
+    "area_deg2": 1006.0,
+    "n_tomo_bins": 5,
+    "z_range": [
+      0.1,
+      1.2
+    ],
+    "method": "BandPowers",
+    "n_ell_bins": 8,
+    "ell_min": 100,
+    "ell_max": 1500
+  },
+  "DES-Y3": {
+    "survey": "DES-Y3",
+    "reference": "Amon et al. 2022, PRD 105, 023514",
+    "arxiv": "2105.13543",
+    "observable": "S8",
+    "s8_mean": 0.776,
+    "s8_sigma_lo": 0.017,
+    "s8_sigma_hi": 0.017,
+    "area_deg2": 4143.0,
+    "n_tomo_bins": 4,
+    "z_range": [
+      0.0,
+      1.5
+    ],
+    "method": "cosmic_shear_ximinus_xiplus",
+    "n_theta_bins": 20
+  },
+  "KiDS-Legacy": {
+    "survey": "KiDS-Legacy",
+    "reference": "Li et al. 2023, A&A 679, A133",
+    "arxiv": "2304.00702",
+    "observable": "S8",
+    "s8_mean": 0.776,
+    "s8_sigma_lo": 0.016,
+    "s8_sigma_hi": 0.016,
+    "area_deg2": 1347.0,
+    "n_tomo_bins": 5,
+    "z_range": [
+      0.1,
+      1.2
+    ],
+    "method": "COSEBIs",
+    "notes": "Combined with BOSS galaxy clustering (3x2pt)"
+  },
+  "Euclid-DR1-forecast": {
+    "survey": "Euclid-DR1-forecast",
+    "reference": "Euclid Collaboration 2024, arXiv:2405.13491",
+    "arxiv": "2405.13491",
+    "observable": "S8",
+    "s8_mean": 0.78,
+    "s8_sigma_lo": 0.003,
+    "s8_sigma_hi": 0.003,
+    "area_deg2": 14000.0,
+    "n_tomo_bins": 10,
+    "z_range": [
+      0.2,
+      2.5
+    ],
+    "method": "cosmic_shear_forecast",
+    "notes": "Fisher forecast for Euclid DR1 (Oct 2026). Not yet observed.",
+    "status": "forecast"
+  },
+  "Planck-2018-derived": {
+    "survey": "Planck-2018",
+    "reference": "Planck Collaboration 2020, A&A 641, A6",
+    "arxiv": "1807.06209",
+    "observable": "S8",
+    "s8_mean": 0.832,
+    "s8_sigma_lo": 0.013,
+    "s8_sigma_hi": 0.013,
+    "area_deg2": "full_sky",
+    "method": "CMB_primary_derived",
+    "notes": "Derived from sigma8 and Omega_m posteriors, not direct WL"
+  }
+}
