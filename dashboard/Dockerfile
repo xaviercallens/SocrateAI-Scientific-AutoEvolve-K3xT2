@@ -6,6 +6,7 @@ COPY dashboard/backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy only tracked source files
+COPY src/ ./src/
 COPY data/desi_dr1/ ./data/desi_dr1/
 COPY data/nanograv/input.json ./data/nanograv/input.json
 COPY data/euclid_q1/s8_joint_means.txt ./data/euclid_q1/
