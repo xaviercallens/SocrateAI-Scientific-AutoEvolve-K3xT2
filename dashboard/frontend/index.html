@@ -1037,6 +1037,129 @@ pre.code-block {
     </div>
   </div>
 
+  <!-- ================= PAGE: WOLFRAM HYPERGRAPH & PREGEOMETRY ================= -->
+  <div id="page-hypergraph" class="page">
+    <div class="page-title-row">
+      <div>
+        <h1>🕸️ Wolfram Hypergraph & Pregeometry Rewriting Engine</h1>
+        <div class="page-desc">Causal Graph Evolution of K₄ Oligons: Topological Rewriting Rules, Spectral Gap, & Continuum K3×T² Convergence</div>
+      </div>
+      <div id="hypergraph-status-badge" class="status-pill pill-pass">MATCHED_COOPER_S10 (Picard ρ=19)</div>
+    </div>
+
+    <!-- Top KPI Grid -->
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #a78bfa, #00f0ff);"></div>
+        <div class="kpi-title">Dominant Eigenvalue λ₁</div>
+        <div class="kpi-val kpi-cyan" id="kpi-lambda1">3.0000</div>
+        <div class="kpi-sub">K₄ Core Spectral Radius</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #a78bfa, #00f0ff);"></div>
+        <div class="kpi-title">Secondary Eigenvalue λ₂</div>
+        <div class="kpi-val kpi-violet" id="kpi-lambda2">-1.0000</div>
+        <div class="kpi-sub" id="kpi-gap">Spectral Gap Δλ = 4.000</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #a78bfa, #00f0ff);"></div>
+        <div class="kpi-title">GW Spectral Index γ</div>
+        <div class="kpi-val kpi-green" id="kpi-gamma">4.8470</div>
+        <div class="kpi-sub">NANOGrav Obs: 4.847 ± 0.12</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #a78bfa, #00f0ff);"></div>
+        <div class="kpi-title">K3 Sieve Alignment</div>
+        <div class="kpi-val kpi-gold" id="kpi-sieve">Cooper s₁₀</div>
+        <div class="kpi-sub">Apéry Walk Sequence W(n)</div>
+      </div>
+    </div>
+
+    <!-- Main 2D Interactive Visualizer + Control Panel Grid -->
+    <div class="grid-3-1" style="margin-top:1.5rem;">
+      <div>
+        <div class="plot-card" style="margin-bottom:1.5rem; position:relative; overflow:hidden;">
+          <div class="plot-title" style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span>Interactive Hypergraph Topology Visualizer</span>
+              <span style="font-size:0.75rem; font-weight:normal; color:var(--text-muted); margin-left:0.5rem;">
+                Cyan: K₄ Oligon Core (complete seed) | Gold: Vacuum Lattice Ring
+              </span>
+            </div>
+            <div style="font-size:0.8rem; font-family:var(--font-mono); color:var(--accent-cyan);" id="visualizer-nodes-count">
+              Nodes: 15 (4 Core + 11 Ring)
+            </div>
+          </div>
+          <!-- Canvas for 2D Graph Interactive Simulation -->
+          <div style="width:100%; height:420px; background:#040711; border-radius:10px; border:1px solid var(--border); position:relative;">
+            <canvas id="hypergraph-canvas" width="800" height="420" style="width:100%; height:100%; display:block; cursor:grab;"></canvas>
+            <!-- Overlay legend -->
+            <div style="position:absolute; bottom:12px; left:12px; font-size:0.75rem; color:var(--text-muted); background:rgba(7,10,18,0.85); padding:6px 12px; border-radius:6px; border:1px solid var(--border);">
+              <span style="color:#00f0ff;">● K₄ Seed Node</span> &nbsp;&nbsp;
+              <span style="color:#ffd700;">● Vacuum Ring Node</span> &nbsp;&nbsp;
+              <span style="color:rgba(0,240,255,0.6);">━ Oligon Link</span> &nbsp;&nbsp;
+              <span style="color:rgba(255,215,0,0.4);">┄ Ring Link</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="plot-card">
+            <div class="plot-title">Closed Causal Loops W(n) = Tr(Mⁿ) vs n</div>
+            <div id="plot-hypergraph-wn" style="height: 260px;"></div>
+          </div>
+          <div class="plot-card">
+            <div class="plot-title">Eigenvalue Spectrum {|λᵢ|}</div>
+            <div id="plot-hypergraph-spectrum" style="height: 260px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Panel -->
+      <div>
+        <div class="control-panel">
+          <div class="section-title">Rewriting Rule & Parameters</div>
+
+          <div class="slider-group">
+            <div class="slider-header"><label>Rewriting Rule</label></div>
+            <select id="select-rule" class="btn-sm" style="width:100%; background:var(--bg-dark); color:var(--text-main); border:1px solid var(--border-accent); padding:0.5rem; border-radius:6px;" onchange="updateHypergraph()">
+              <option value="k4_hadamard">Rule 1: Hadamard Mask (M' = (M²+M) ⊙ mask)</option>
+              <option value="k4_inflation">Rule 2: K₄ Oligon Triangulated Inflation</option>
+              <option value="soliton_phase">Rule 3: Phase Defect Soliton Injection</option>
+            </select>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header"><label>Evolution Steps t</label><val id="val-steps">5</val></div>
+            <input type="range" id="slide-steps" min="0" max="15" step="1" value="5" oninput="updateHypergraph()">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header"><label>Vacuum Ring Nodes N<sub>vac</sub></label><val id="val-vacnodes">11</val></div>
+            <input type="range" id="slide-vacnodes" min="4" max="30" step="1" value="11" oninput="updateHypergraph()">
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-sm" onclick="stepHypergraphAnimation()" style="border-color:var(--accent-cyan); color:var(--accent-cyan); font-weight:700;">▶ Step Evolution</button>
+            <button class="btn-sm" onclick="resetHypergraphParams()">↺ Reset Seed</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Pregeometry Theoretical Translation Key</div>
+          <table style="font-size:0.8rem;">
+            <tr><td>Graph Operator</td><td>Continuous Metric Limit M</td></tr>
+            <tr><td style="font-family:var(--font-mono); color:var(--accent-cyan);">K₄ Seed Core</td><td>4D Causal Spacetime Slices</td></tr>
+            <tr><td style="font-family:var(--font-mono); color:#a78bfa;">Vacuum Ring N<sub>vac</sub></td><td>T² Torus Compactification</td></tr>
+            <tr><td style="font-family:var(--font-mono);">Tr(Mⁿ) Loops</td><td>Apéry-like K3 Periods Π<sub>i</sub></td></tr>
+            <tr><td style="font-family:var(--font-mono); color:var(--accent-green);">λ₁ = 3.000</td><td>Spectral Index γ = 4.847</td></tr>
+            <tr><td style="font-family:var(--font-mono); color:var(--accent-gold);">Hadamard Mask</td><td>Holographic Horizon Bound</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <script>
