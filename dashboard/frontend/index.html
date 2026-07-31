@@ -1090,11 +1090,10 @@ pre.code-block {
               Nodes: 15 (4 Core + 11 Ring)
             </div>
           </div>
-          <!-- Canvas for 2D Graph Interactive Simulation -->
-          <div style="width:100%; height:420px; background:#040711; border-radius:10px; border:1px solid var(--border); position:relative;">
-            <canvas id="hypergraph-canvas" width="800" height="420" style="width:100%; height:100%; display:block; cursor:grab;"></canvas>
+          <!-- Container for 3D Graph Interactive Simulation -->
+          <div id="hypergraph-3d-container" style="width:100%; height:420px; background:#040711; border-radius:10px; border:1px solid var(--border); position:relative; overflow:hidden;">
             <!-- Overlay legend -->
-            <div style="position:absolute; bottom:12px; left:12px; font-size:0.75rem; color:var(--text-muted); background:rgba(7,10,18,0.85); padding:6px 12px; border-radius:6px; border:1px solid var(--border);">
+            <div style="position:absolute; bottom:12px; left:12px; font-size:0.75rem; color:var(--text-muted); background:rgba(7,10,18,0.85); padding:6px 12px; border-radius:6px; border:1px solid var(--border); z-index:10;">
               <span style="color:#00f0ff;">● K₄ Seed Node</span> &nbsp;&nbsp;
               <span style="color:#ffd700;">● Vacuum Ring Node</span> &nbsp;&nbsp;
               <span style="color:rgba(0,240,255,0.6);">━ Oligon Link</span> &nbsp;&nbsp;
@@ -1769,8 +1768,8 @@ async function updateHypergraph() {
   document.getElementById('kpi-sieve').innerText = res.apery_s10 ? 'Cooper s₁₀' : 'Matched';
   document.getElementById('visualizer-nodes-count').innerText = `Nodes: ${res.total_nodes} (4 Core + ${res.vacuum_nodes} Ring)`;
 
-  // Draw 2D Graph Canvas
-  drawHypergraphCanvas(res);
+  // Draw 3D Graph Canvas
+  drawHypergraph3D(res);
 
   // Plot W(n) Causal Walk Sequence
   const n_indices = Array.from({length: res.causal_w_n.length}, (_, i) => i + 1);
@@ -1804,72 +1803,129 @@ async function updateHypergraph() {
   }, plotConfig);
 }
 
-function drawHypergraphCanvas(data) {
-  const canvas = document.getElementById('hypergraph-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const width = canvas.width = canvas.clientWidth;
-  const height = canvas.height = canvas.clientHeight;
+let hgScene, hgCamera, hgRenderer, hgControls, hgGroup;
+let hgAnimationId;
 
-  ctx.clearRect(0, 0, width, height);
+function drawHypergraph3D(data) {
+  const container = document.getElementById('hypergraph-3d-container');
+  if (!container || !window.THREE) return;
 
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const scale = Math.min(width, height) / 12;
+  if (hgAnimationId) cancelAnimationFrame(hgAnimationId);
+  
+  if (!hgScene) {
+    hgScene = new THREE.Scene();
+    hgScene.fog = new THREE.FogExp2(0x040711, 0.05);
+    
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    hgCamera = new THREE.PerspectiveCamera(50, w / h, 0.1, 100);
+    hgCamera.position.set(0, 5, 12);
+    
+    hgRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    hgRenderer.setSize(w, h);
+    hgRenderer.setPixelRatio(window.devicePixelRatio);
+    container.insertBefore(hgRenderer.domElement, container.firstChild);
+    
+    if (window.THREE.OrbitControls) {
+      hgControls = new THREE.OrbitControls(hgCamera, hgRenderer.domElement);
+      hgControls.enableDamping = true;
+      hgControls.dampingFactor = 0.05;
+      hgControls.autoRotate = true;
+      hgControls.autoRotateSpeed = 2.0;
+    }
+
+    // Handle resize
+    window.addEventListener('resize', () => {
+      const nw = container.clientWidth;
+      const nh = container.clientHeight;
+      if(hgCamera && hgRenderer) {
+        hgCamera.aspect = nw / nh;
+        hgCamera.updateProjectionMatrix();
+        hgRenderer.setSize(nw, nh);
+      }
+    });
+  }
+
+  // Clear existing group
+  if (hgGroup) {
+    hgScene.remove(hgGroup);
+  }
+  
+  hgGroup = new THREE.Group();
+  hgScene.add(hgGroup);
 
   const nodes = data.graph.nodes;
   const edges = data.graph.edges;
 
-  // Draw Edges
+  // Materials
+  const coreMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+  const coreEdgeMat = new THREE.LineBasicMaterial({ color: 0x00f0ff, transparent: true, opacity: 0.75, linewidth: 2 });
+  const ringEdgeMat = new THREE.LineDashedMaterial({ color: 0xffd700, transparent: true, opacity: 0.35, dashSize: 0.2, gapSize: 0.2 });
+
+  // Add Nodes (Stars/Clusters)
+  const sphereGeo = new THREE.SphereGeometry(1, 16, 16);
+  nodes.forEach(n => {
+    const isCore = n.type === 'k4_core';
+    const mesh = new THREE.Mesh(sphereGeo, isCore ? coreMat : ringMat);
+    const scale = isCore ? 0.3 : 0.2;
+    mesh.scale.set(scale, scale, scale);
+    mesh.position.set(n.x, n.y, n.z);
+    
+    // Add a glow sprite
+    const spriteMat = new THREE.SpriteMaterial({
+      map: createGlowTexture(isCore ? '#00f0ff' : '#ffd700'),
+      color: isCore ? 0x00f0ff : 0xffd700,
+      transparent: true,
+      blending: THREE.AdditiveBlending
+    });
+    const sprite = new THREE.Sprite(spriteMat);
+    const sScale = isCore ? 4.0 : 2.5;
+    sprite.scale.set(sScale, sScale, sScale);
+    mesh.add(sprite);
+    
+    hgGroup.add(mesh);
+  });
+
+  // Add Edges
   edges.forEach(e => {
     const src = nodes.find(n => n.id === e.source);
     const tgt = nodes.find(n => n.id === e.target);
     if (!src || !tgt) return;
 
-    const x1 = centerX + src.x * scale;
-    const y1 = centerY + src.y * scale;
-    const x2 = centerX + tgt.x * scale;
-    const y2 = centerY + tgt.y * scale;
-
     const isCore = src.type === 'k4_core' && tgt.type === 'k4_core';
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.lineWidth = isCore ? 2.5 : 1.2;
-    ctx.strokeStyle = isCore ? 'rgba(0, 240, 255, 0.75)' : 'rgba(255, 215, 0, 0.35)';
-    if (!isCore) ctx.setLineDash([4, 4]);
-    else ctx.setLineDash([]);
-    ctx.stroke();
+    
+    const points = [];
+    points.push(new THREE.Vector3(src.x, src.y, src.z));
+    points.push(new THREE.Vector3(tgt.x, tgt.y, tgt.z));
+    
+    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(geometry, isCore ? coreEdgeMat : ringEdgeMat);
+    if (!isCore) line.computeLineDistances(); // Required for LineDashedMaterial
+    
+    hgGroup.add(line);
   });
 
-  // Draw Nodes
-  nodes.forEach(n => {
-    const x = centerX + n.x * scale;
-    const y = centerY + n.y * scale;
-    const isCore = n.type === 'k4_core';
+  function animate() {
+    hgAnimationId = requestAnimationFrame(animate);
+    if (hgControls) hgControls.update();
+    hgRenderer.render(hgScene, hgCamera);
+  }
+  animate();
+}
 
-    ctx.beginPath();
-    ctx.arc(x, y, isCore ? 10 : 7, 0, 2 * Math.PI);
-    ctx.fillStyle = isCore ? '#00f0ff' : '#ffd700';
-    ctx.shadowBlur = isCore ? 15 : 8;
-    ctx.shadowColor = isCore ? '#00f0ff' : '#ffd700';
-    ctx.fill();
-
-    // Node Border
-    ctx.beginPath();
-    ctx.arc(x, y, isCore ? 10 : 7, 0, 2 * Math.PI);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = '#ffffff';
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    // Node Label
-    ctx.font = '10px JetBrains Mono';
-    ctx.fillStyle = '#ffffff';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(`v${n.id}`, x, y + (isCore ? 18 : 14));
-  });
+function createGlowTexture(colorHex) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 64;
+  canvas.height = 64;
+  const context = canvas.getContext('2d');
+  const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gradient.addColorStop(0, 'rgba(255,255,255,1)');
+  gradient.addColorStop(0.2, colorHex);
+  gradient.addColorStop(1, 'rgba(0,0,0,0)');
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 64, 64);
+  return new THREE.CanvasTexture(canvas);
 }
 
 function stepHypergraphAnimation() {

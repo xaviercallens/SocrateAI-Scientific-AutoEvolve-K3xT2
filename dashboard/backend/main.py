@@ -584,15 +584,24 @@ def hypergraph_simulate(vacuum_nodes: int = 11, steps: int = 5, rule: str = "k4_
     # Cooper s10 Apéry-like benchmark sequence
     apery_s10 = [1, 4, 28, 256, 2716, 31504, 387136, 4975104]
 
-    # Node coordinates layout for graph visualizer (K4 inner core, vacuum outer ring)
+    # Node coordinates layout for 3D graph visualizer (K4 inner core, vacuum outer ring / torus)
     nodes = []
+    # K4 core as a 3D Tetrahedron
+    tetra_coords = [
+        (1.5, 1.5, 1.5), (-1.5, -1.5, 1.5), (-1.5, 1.5, -1.5), (1.5, -1.5, -1.5)
+    ]
     for i in range(4):
-        angle = i * (2 * math.pi / 4)
-        nodes.append({"id": i, "x": 1.8 * math.cos(angle), "y": 1.8 * math.sin(angle), "type": "k4_core"})
+        x, y, z = tetra_coords[i % 4]
+        nodes.append({"id": i, "x": x, "y": y, "z": z, "type": "k4_core"})
+    
     v_cnt = total_nodes - 4
     for i in range(v_cnt):
-        angle = i * (2 * math.pi / v_cnt)
-        nodes.append({"id": 4 + i, "x": 4.5 * math.cos(angle), "y": 4.5 * math.sin(angle), "type": "vacuum_ring"})
+        u = i * (2 * math.pi / v_cnt)
+        # 3D wavy ring structure to represent the topological vacuum
+        x = 4.5 * math.cos(u)
+        y = 4.5 * math.sin(u)
+        z = 1.5 * math.sin(3 * u)
+        nodes.append({"id": 4 + i, "x": x, "y": y, "z": z, "type": "vacuum_ring"})
 
     edges = []
     for i in range(total_nodes):
