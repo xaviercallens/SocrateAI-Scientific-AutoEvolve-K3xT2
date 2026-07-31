@@ -374,6 +374,7 @@ pre.code-block {
   <nav>
     <button class="nav-btn active" onclick="switchPage('mission')">🌐 Mission Control</button>
     <button class="nav-btn" onclick="switchPage('universe')" style="border-color:rgba(0,240,255,0.4); color:var(--accent-cyan); font-weight:700;">🌌 Universe View</button>
+    <button class="nav-btn" onclick="switchPage('hypergraph')" style="border-color:rgba(167,139,250,0.5); color:#a78bfa; font-weight:700;">🕸️ Wolfram Hypergraph</button>
     <button class="nav-btn" onclick="switchPage('bao')">📏 BAO Distance Ladder</button>
     <button class="nav-btn" onclick="switchPage('eft')">🧮 EFT Explorer</button>
     <button class="nav-btn" onclick="switchPage('cooper')">🔢 Cooper s₁₀</button>
@@ -1061,6 +1062,7 @@ function switchPage(pageId) {
   if (activeBtn) activeBtn.classList.add('active');
 
   if (pageId === 'universe') loadUniverse();
+  if (pageId === 'hypergraph') updateHypergraph();
   if (pageId === 'bao') updateBAO();
   if (pageId === 'eft') updateEFT();
   if (pageId === 'cooper') loadCooper();
@@ -1618,6 +1620,149 @@ function setUniversePreset(rot, de, pulse) {
   document.getElementById('slide-u-de').value = de;
   document.getElementById('slide-u-pulse').value = pulse;
   updateUniverseSettings();
+}
+
+// ---------------- Page Wolfram Hypergraph Visualizer ----------------
+let currentHypergraphData = null;
+
+async function updateHypergraph() {
+  const steps = parseInt(document.getElementById('slide-steps').value);
+  const vacNodes = parseInt(document.getElementById('slide-vacnodes').value);
+  const rule = document.getElementById('select-rule').value;
+
+  document.getElementById('val-steps').innerText = steps;
+  document.getElementById('val-vacnodes').innerText = vacNodes;
+
+  const res = await fetch(`${API_BASE}/api/hypergraph/simulate?vacuum_nodes=${vacNodes}&steps=${steps}&rule=${rule}`).then(r => r.json()).catch(() => null);
+  if (!res) return;
+
+  currentHypergraphData = res;
+
+  // Update KPIs
+  document.getElementById('kpi-lambda1').innerText = res.lambda_1.toFixed(4);
+  document.getElementById('kpi-lambda2').innerText = res.lambda_2.toFixed(4);
+  document.getElementById('kpi-gap').innerText = `Spectral Gap Δλ = ${res.spectral_gap.toFixed(4)}`;
+  document.getElementById('kpi-gamma').innerText = res.gamma_predicted.toFixed(4);
+  document.getElementById('kpi-sieve').innerText = res.apery_s10 ? 'Cooper s₁₀' : 'Matched';
+  document.getElementById('visualizer-nodes-count').innerText = `Nodes: ${res.total_nodes} (4 Core + ${res.vacuum_nodes} Ring)`;
+
+  // Draw 2D Graph Canvas
+  drawHypergraphCanvas(res);
+
+  // Plot W(n) Causal Walk Sequence
+  const n_indices = Array.from({length: res.causal_w_n.length}, (_, i) => i + 1);
+  Plotly.newPlot('plot-hypergraph-wn', [
+    {
+      x: n_indices, y: res.causal_w_n, mode: 'lines+markers', name: 'Tr(Mⁿ) Causal Loops',
+      line: { color: '#00f0ff', width: 2.5 }, marker: { size: 6 }
+    },
+    {
+      x: Array.from({length: res.apery_s10.length}, (_, i) => i + 1),
+      y: res.apery_s10, mode: 'markers', name: 'Cooper s₁₀ Apéry Sequence',
+      marker: { color: '#ffd700', size: 8, symbol: 'diamond' }
+    }
+  ], {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Loop Length n' },
+    yaxis: { ...darkPlotLayout.yaxis, title: 'Tr(Mⁿ)', type: 'log' }
+  }, plotConfig);
+
+  // Plot Eigenvalue Spectrum
+  const spec_indices = Array.from({length: res.spectrum.length}, (_, i) => i + 1);
+  Plotly.newPlot('plot-hypergraph-spectrum', [
+    {
+      x: spec_indices, y: res.spectrum, type: 'bar', name: '|λᵢ| Spectrum',
+      marker: { color: res.spectrum.map((v, i) => i === 0 ? '#00f0ff' : (i === 1 ? '#7c3aed' : '#3b82f6')) }
+    }
+  ], {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Eigenvalue Rank i' },
+    yaxis: { ...darkPlotLayout.yaxis, title: '|λᵢ| Magnitude' }
+  }, plotConfig);
+}
+
+function drawHypergraphCanvas(data) {
+  const canvas = document.getElementById('hypergraph-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width = canvas.clientWidth;
+  const height = canvas.height = canvas.clientHeight;
+
+  ctx.clearRect(0, 0, width, height);
+
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const scale = Math.min(width, height) / 12;
+
+  const nodes = data.graph.nodes;
+  const edges = data.graph.edges;
+
+  // Draw Edges
+  edges.forEach(e => {
+    const src = nodes.find(n => n.id === e.source);
+    const tgt = nodes.find(n => n.id === e.target);
+    if (!src || !tgt) return;
+
+    const x1 = centerX + src.x * scale;
+    const y1 = centerY + src.y * scale;
+    const x2 = centerX + tgt.x * scale;
+    const y2 = centerY + tgt.y * scale;
+
+    const isCore = src.type === 'k4_core' && tgt.type === 'k4_core';
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.lineWidth = isCore ? 2.5 : 1.2;
+    ctx.strokeStyle = isCore ? 'rgba(0, 240, 255, 0.75)' : 'rgba(255, 215, 0, 0.35)';
+    if (!isCore) ctx.setLineDash([4, 4]);
+    else ctx.setLineDash([]);
+    ctx.stroke();
+  });
+
+  // Draw Nodes
+  nodes.forEach(n => {
+    const x = centerX + n.x * scale;
+    const y = centerY + n.y * scale;
+    const isCore = n.type === 'k4_core';
+
+    ctx.beginPath();
+    ctx.arc(x, y, isCore ? 10 : 7, 0, 2 * Math.PI);
+    ctx.fillStyle = isCore ? '#00f0ff' : '#ffd700';
+    ctx.shadowBlur = isCore ? 15 : 8;
+    ctx.shadowColor = isCore ? '#00f0ff' : '#ffd700';
+    ctx.fill();
+
+    // Node Border
+    ctx.beginPath();
+    ctx.arc(x, y, isCore ? 10 : 7, 0, 2 * Math.PI);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#ffffff';
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Node Label
+    ctx.font = '10px JetBrains Mono';
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`v${n.id}`, x, y + (isCore ? 18 : 14));
+  });
+}
+
+function stepHypergraphAnimation() {
+  const slider = document.getElementById('slide-steps');
+  let current = parseInt(slider.value);
+  if (current >= 15) current = 0;
+  else current += 1;
+  slider.value = current;
+  updateHypergraph();
+}
+
+function resetHypergraphParams() {
+  document.getElementById('slide-steps').value = 5;
+  document.getElementById('slide-vacnodes').value = 11;
+  document.getElementById('select-rule').value = 'k4_hadamard';
+  updateHypergraph();
 }
 
 // Initial Load
