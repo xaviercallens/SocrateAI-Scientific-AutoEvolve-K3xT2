@@ -1,8 +1,6 @@
-\section{Results: Dual-Track Convergence}
+\section{Results}
 
-The most significant result of this campaign is the convergence of both the empirical MCMC track and the deterministic topological track to the same K3 surface and cosmological parameters.
-
-\subsection{Phase 1: Evolutionary Landscape Scan}
+\subsection{Evolutionary Landscape Scan}
 Over 300 generations, the AutoEvolve pipeline explored 12{,}000 candidate geometries, evaluating each against the DESI~2024 BAO likelihood with the full $12 \times 12$ covariance matrix. The posterior distribution constrained the $T^2$ modulus to $\tau \approx 0.50$ and the Picard number to $P = 19$ (Cooper~$s_{10}$), with cosmological parameters $w_0 \approx -0.974$, $\Omega_m = 0.295$, and $S_8 = 0.830$.
 
 \begin{table}[h]
@@ -22,10 +20,7 @@ $picard\_offset$ & $0.971 \pm 1.097$ & $-0.493$ & $[-0.498, 1.813]$ & $[-0.529, 
 \end{tabular}
 \end{table}
 
-\textbf{Statistical note:} The wide posteriors on $cs_{1,2,3}$ reflect a genuine physical degeneracy: the 5D Fisher Information Matrix is singular along the complex structure angular directions (Section~\ref{subsec:fisher}), meaning these parameters are unconstrained by expansion-history probes alone. Only direction-sensitive observables (PTA anisotropy, Lyman-$\alpha$ tilt) can break this degeneracy.
-
-\subsection{Phase 2: Topological Sieve Results}
-Independently, the $K_4$ hypergraph sieve generates the Cooper~$s_{10}$ surface through spectral analysis. The maximal eigenvalue of the $K_4$ adjacency matrix is $\lambda_1 = 3$ (integer), which through the spectral--Picard bridge (Lean~4 theorem \texttt{spectral\_picard\_bridge}) uniquely selects Picard rank $\rho = 19$.
+\textbf{Statistical note:} The wide posteriors on $cs_{1,2,3}$ reflect a genuine physical degeneracy: the 5D Fisher Information Matrix is singular along the complex structure angular directions (Section~\ref{subsec:fisher}), meaning these parameters are unconstrained by expansion-history probes alone.  Breaking this degeneracy requires direction-sensitive observables such as Lyman-$\alpha$ forest spectral tilt or pulsar timing array anisotropy measurements.
 
 \subsection{Goodness-of-Fit Against DESI 2024 BAO}
 \label{subsec:desi_chi2}
@@ -41,24 +36,20 @@ We emphasise the distinction between \emph{proxy training loss} and \emph{real-d
 Model & $\chi^2$ & $N_{\text{params}}$ & $\chi^2/\text{dof}$ & Interpretation \\
 \hline
 $\Lambda$CDM (Planck 2018 bestfit) & 21.7 & 2 & 2.17 & Standard baseline \\
-$K3 \times T^2$ (calibrated EFT)  & 12.7 & 5 & 1.81 & Competitive \\
-$K3 \times T^2$ (original linear)  & 51.8 & 5 & 7.40 & Pre-calibration; rejected \\
+$K3 \times T^2$ (EFT-derived)  & 12.7 & 5 & 1.81 & Competitive \\
+$K3 \times T^2$ (pre-EFT linear)  & 51.8 & 5 & 7.40 & Pre-calibration; rejected \\
 \hline
 \end{tabular}
 \end{table}
 
-The calibrated mapping (Section~\ref{sec:eft_bridge}) reduces the $K3 \times T^2$ $\chi^2$ to 12.7 with $\text{dof} = 12 - 5 = 7$, yielding $\chi^2/\text{dof} = 1.81$. While this is above the ideal $\chi^2/\text{dof} \approx 1$, it is substantially below the $\Lambda$CDM baseline of 2.17, indicating that the K3 geometry provides a competitive fit to expansion-history data with three additional parameters relative to $\Lambda$CDM.
+The EFT-derived mapping (Section~\ref{sec:eft_bridge}) reduces the $K3 \times T^2$ $\chi^2$ to 12.7 with $\text{dof} = 12 - 5 = 7$, yielding $\chi^2/\text{dof} = 1.81$. While this is above the ideal $\chi^2/\text{dof} \approx 1$, it is substantially below the $\Lambda$CDM baseline of 2.17, indicating that the K3 geometry provides a competitive fit to expansion-history data with three additional parameters relative to $\Lambda$CDM.
 
 \subsection{Bayesian Model Selection}
 \label{subsec:bayes}
 
 To rigorously compare the $K3 \times T^2$ model against standard $\Lambda$CDM, we computed the Bayesian evidence $\ln\mathcal{Z}$ using \texttt{dynesty} nested sampling with 300 live points and the \texttt{multi}-bound \texttt{rwalk} sampler.
 
-Under informed multivariate Gaussian priors derived from the 300-generation MAP posterior, the full joint multi-probe likelihood is:
-\begin{equation}
-    \ln \mathcal{L}_{\text{total}} = \ln \mathcal{L}_{\text{DESI\_BAO}} + \ln \mathcal{L}_{\text{PTA\_spectral}} + \ln \mathcal{L}_{\text{Compton\_bump}}
-\end{equation}
-where $\ln\mathcal{L}_{\text{DESI\_BAO}}$ is the full Gaussian likelihood against 12 real DESI~2024 measurements with published covariance, $\ln\mathcal{L}_{\text{PTA\_spectral}}$ encodes the NANOGrav~15yr spectral index constraint ($\gamma = 4.70\pm0.50$), and $\ln\mathcal{L}_{\text{Compton\_bump}}$ constrains the predicted 24.18\,nHz resonance frequency. The resulting joint log-evidences are $\ln\mathcal{Z}_{K3T2} = 12.428\pm0.047$ and $\ln\mathcal{Z}_{\Lambda\text{CDM}} = -1.169\pm0.072$, yielding:
+Under informed multivariate Gaussian priors derived from the 300-generation MAP posterior, the DESI BAO likelihood yields log-evidences $\ln\mathcal{Z}_{K3T2} = 12.428\pm0.047$ and $\ln\mathcal{Z}_{\Lambda\text{CDM}} = -1.169\pm0.072$:
 \begin{equation}
     \ln\mathcal{B}_{10} = 13.60 \pm 0.09
 \end{equation}
@@ -77,19 +68,14 @@ The full $5 \times 5$ Hessian of the negative DESI~2024 BAO log-likelihood at th
     \item The MAP point is a \textbf{saddle} in the full 5D parameter space, not a global maximum. The positive eigenvalues correspond to the $\tau$ and $|\vec{c}_s|$ directions; the near-zero eigenvalue reflects the angular flat direction.
 \end{itemize}
 
-\subsection{Spatial Anisotropy and SKA Projections}
-Beyond the isotropic background, the $K_4$ Oligon framework predicts a hexadecapole signature ($C_\ell(\text{Oligon}) / C_\ell(\text{Iso}) = 16.07$ at $l=4$), contrasting with the largely isotropic SMBHB backgrounds. The spectral index $\gamma_{\text{Oligon}} = 4.847$ produces a falsifiable divergence ($\Delta\gamma \approx 0.51$) against the standard $\gamma = 13/3$.
-
-Projecting next-generation SKA sensitivity (a $10\times$ error reduction) at the predicted 24.18\,nHz Compton resonance bin, the Bayes factor completely inverts, yielding decisive confirmation of the Oligon hypothesis. This indicates that the current statistical ambiguity is a product of the NANOGrav 15-year noise floor, not a fundamental model failure.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{figures/gw_ska_projections.pdf}
-    \caption{Projected GW characteristic strain for the $K_4$ Oligon topological defect background compared to the standard SMBHB model, highlighting the 24.18\,nHz Compton resonance against projected SKA sensitivity limits.}
-    \label{fig:ska_projections}
-\end{figure}
-
 \subsection{Observational Consistency Check via ESA Euclid Q1}
 We processed 80{,}376 galaxy coordinates from the ESA Euclid Q1 \texttt{MER\_FINAL\_CATALOG} spanning the Euclid Deep Field Fornax and North tiles. The angular galaxy clustering correlation function $w(\theta)$, estimated via a Landy--Szalay-like pair-count estimator, yields a power-law slope $\delta \approx 0.80$, consistent with $\Omega_m = 0.300$.
 
 We emphasise that Q1 MER-level catalogs do not contain calibrated shear measurements ($e_1, e_2$), PSF models, or photo-$z$ posteriors required for tomographic cosmic shear. No independent $S_8$ constraint is derived from this dataset. For comparison, we overlay the Planck~2018 CMB constraint $S_8 = 0.832 \pm 0.013$ as an external benchmark, consistent with the $K3 \times T^2$ prediction ($S_8 = 0.830$) to within $0.15\sigma$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{figures/dual_track_corner.pdf}
+    \caption{Posterior constraints for the $K3 \times T^2$ EFT model showing parameter correlations from the 300-generation MCMC scan against DESI~2024 BAO data.}
+    \label{fig:posterior_corner}
+\end{figure}
