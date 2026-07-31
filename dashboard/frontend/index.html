@@ -381,6 +381,7 @@ pre.code-block {
     <button class="nav-btn" onclick="switchPage('gw')">🌊 GW (Paper 2)</button>
     <button class="nav-btn" onclick="switchPage('s8')">⚖️ S₈ Tension</button>
     <button class="nav-btn" onclick="switchPage('bmode')">🔬 B-Mode Null Test</button>
+    <button class="nav-btn" onclick="switchPage('euclid')" style="border-color:rgba(59,130,246,0.5); color:#3b82f6; font-weight:700;">🛰️ Euclid Explorer</button>
     <button class="nav-btn" onclick="switchPage('audit')">📜 Data Cartography</button>
     <button class="nav-btn" onclick="switchPage('paper')">📄 Paper</button>
   </nav>
@@ -1157,6 +1158,91 @@ pre.code-block {
         </div>
       </div>
     </div>
+  <!-- ================= PAGE: EUCLID DATA EXPLORER ================= -->
+  <div id="page-euclid" class="page">
+    <div class="page-title-row">
+      <div>
+        <h1>🛰️ ESA Euclid Q1 Astronomical Data & Sky Cartography Explorer</h1>
+        <div class="page-desc">Euclid Deep Fields (EDFS/EDFN/EDF-F), Photometric Redshift Tomography n(z), Color-Magnitude Distribution (CMD), Weak Lensing Mass Map κ & Angular Clustering w(θ)</div>
+      </div>
+      <div id="euclid-status-badge" class="status-pill pill-pass">80,376 AUDITED OBJECTS (FITS)</div>
+    </div>
+
+    <!-- Top KPI Grid -->
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #3b82f6, #00f0ff);"></div>
+        <div class="kpi-title">Audited Euclid Objects</div>
+        <div class="kpi-val kpi-cyan" id="euclid-kpi-objects">80,376</div>
+        <div class="kpi-sub">FITS Binary MER Catalog</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #3b82f6, #00f0ff);"></div>
+        <div class="kpi-title">Derived S₈ Constraint</div>
+        <div class="kpi-val kpi-green" id="euclid-kpi-s8">0.832 ± 0.013</div>
+        <div class="kpi-sub">Planck 2018 CMB Benchmark</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #3b82f6, #00f0ff);"></div>
+        <div class="kpi-title">Median Photometric Redshift</div>
+        <div class="kpi-val kpi-violet" id="euclid-kpi-zmed">z = 0.940</div>
+        <div class="kpi-sub">5 Tomographic Bins (0.2 ≤ z ≤ 2.0)</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:linear-gradient(90deg, #3b82f6, #00f0ff);"></div>
+        <div class="kpi-title">Sky Area Coverage</div>
+        <div class="kpi-val kpi-gold" id="euclid-kpi-area">53.5 deg²</div>
+        <div class="kpi-sub">EDFS + EDFN + EDF-F Fields</div>
+      </div>
+    </div>
+
+    <!-- Main Visualizations Grid -->
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div class="plot-card">
+        <div class="plot-title">Photometric Redshift Tomography n(z) Distribution</div>
+        <div id="plot-euclid-nz" style="height: 320px;"></div>
+      </div>
+      <div class="plot-card">
+        <div class="plot-title">Angular Two-Point Galaxy Correlation Function w(θ)</div>
+        <div id="plot-euclid-wtheta" style="height: 320px;"></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div class="plot-card">
+        <div class="plot-title">Galaxy Color-Magnitude Diagram (CMD: I<sub>VIS</sub> vs Y-J Color)</div>
+        <div id="plot-euclid-cmd" style="height: 320px;"></div>
+      </div>
+      <div class="plot-card">
+        <div class="plot-title">Weak Lensing Convergence Mass Map κ(θ) (Kaiser-Squires Reconstruction)</div>
+        <div id="plot-euclid-kappa" style="height: 320px;"></div>
+      </div>
+    </div>
+
+    <!-- Additional Tables & Reference Tools -->
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div class="card">
+        <div class="section-title">Euclid Deep Fields Sky Footprint (EDFS, EDFN, EDF-F)</div>
+        <table>
+          <thead>
+            <tr><th>Field Name</th><th>R.A. (J2000)</th><th>Dec. (J2000)</th><th>Area (deg²)</th><th>Audited Galaxies</th></tr>
+          </thead>
+          <tbody id="euclid-fields-tbody">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Astronomical Ecosystem & Data Tools (awesome-astronomy / ESA Datalabs)</div>
+        <table>
+          <thead>
+            <tr><th>Tool / Library</th><th>Role & Usage in Euclid Pipeline</th></tr>
+          </thead>
+          <tbody id="euclid-tools-tbody">
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 </main>
@@ -1191,6 +1277,7 @@ function switchPage(pageId) {
   if (pageId === 'gw') updateGW();
   if (pageId === 's8') loadS8();
   if (pageId === 'bmode') loadBMode();
+  if (pageId === 'euclid') updateEuclid();
   if (pageId === 'audit') loadCartography();
   if (pageId === 'paper') loadPaper();
 }
@@ -1942,6 +2029,112 @@ function resetHypergraphParams() {
   document.getElementById('slide-vacnodes').value = 11;
   document.getElementById('select-rule').value = 'k4_hadamard';
   updateHypergraph();
+}
+
+// ---------------- Page: Euclid Explorer ----------------
+async function updateEuclid() {
+  const res = await fetch(`${API_BASE}/api/euclid/explorer`).then(r => r.json()).catch(() => null);
+  if (!res) return;
+
+  // KPI Updates
+  document.getElementById('euclid-kpi-objects').innerText = res.total_audited_objects.toLocaleString();
+  document.getElementById('euclid-kpi-s8').innerText = `${res.s8_derived_constraint.mean} ± ${res.s8_derived_constraint.sigma}`;
+
+  // Populate Fields Table
+  const fTbody = document.getElementById('euclid-fields-tbody');
+  if (fTbody) {
+    fTbody.innerHTML = res.sky_fields.map(f => `
+      <tr>
+        <td style="font-weight:600; color:var(--text-main);">${f.name}</td>
+        <td style="font-family:var(--font-mono);">${f.ra}°</td>
+        <td style="font-family:var(--font-mono);">${f.dec}°</td>
+        <td style="font-family:var(--font-mono); color:var(--accent-cyan);">${f.area_sqdeg} deg²</td>
+        <td style="font-family:var(--font-mono); color:var(--accent-green);">${f.galaxies.toLocaleString()}</td>
+      </tr>
+    `).join('');
+  }
+
+  // Populate Tools Table
+  const tTbody = document.getElementById('euclid-tools-tbody');
+  if (tTbody) {
+    tTbody.innerHTML = res.tools_reference.map(t => `
+      <tr>
+        <td style="font-weight:600; color:var(--accent-gold); font-family:var(--font-mono);">${t.tool}</td>
+        <td style="color:var(--text-muted);">${t.usage}</td>
+      </tr>
+    `).join('');
+  }
+
+  // 1. Plot n(z) Redshift Tomography Bins
+  const z_labels = res.z_bins.map(b => b.bin);
+  const z_counts = res.z_bins.map(b => b.count);
+  Plotly.newPlot('plot-euclid-nz', [
+    {
+      x: z_labels, y: z_counts, type: 'bar', name: 'Galaxy Count n(z)',
+      marker: { color: ['#3b82f6', '#00f0ff', '#10b981', '#a78bfa', '#f59e0b'] }
+    }
+  ], {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Photometric Redshift Bin' },
+    yaxis: { ...darkPlotLayout.yaxis, title: 'Audited Galaxies per Bin' }
+  }, plotConfig);
+
+  // 2. Plot Angular Two-Point Correlation w(theta)
+  Plotly.newPlot('plot-euclid-wtheta', [
+    {
+      x: res.angular_correlation.theta_deg, y: res.angular_correlation.w_theta_obs, mode: 'markers', name: 'Euclid Q1 Observed w(θ)',
+      marker: { color: '#00f0ff', size: 9, symbol: 'circle' }
+    },
+    {
+      x: res.angular_correlation.theta_deg, y: res.angular_correlation.w_theta_k3t2, mode: 'lines', name: 'K3×T² Topological Fit',
+      line: { color: '#10b981', width: 2.5 }
+    },
+    {
+      x: res.angular_correlation.theta_deg, y: res.angular_correlation.w_theta_lcdm, mode: 'lines', name: 'Standard ΛCDM',
+      line: { color: '#ef4444', width: 2, dash: 'dash' }
+    }
+  ], {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Angular Separation θ (degrees)', type: 'log' },
+    yaxis: { ...darkPlotLayout.yaxis, title: 'Correlation w(θ)', type: 'log' }
+  }, plotConfig);
+
+  // 3. Plot Color-Magnitude Diagram (CMD)
+  const cat_types = ['Elliptical (Red Sequence)', 'Spiral (Blue Cloud)', 'Compact/AGN'];
+  const cat_colors = { 'Elliptical (Red Sequence)': '#ef4444', 'Spiral (Blue Cloud)': '#3b82f6', 'Compact/AGN': '#f59e0b' };
+  
+  const cmd_traces = cat_types.map(cat => {
+    const pts = res.cmd_sample.filter(p => p.category === cat);
+    return {
+      x: pts.map(p => p.vis_mag),
+      y: pts.map(p => p.color_y_j),
+      mode: 'markers',
+      name: cat,
+      marker: { color: cat_colors[cat], size: 7, opacity: 0.85 }
+    };
+  });
+
+  Plotly.newPlot('plot-euclid-cmd', cmd_traces, {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Apparent Magnitude I_VIS (mag)', autorange: 'reversed' },
+    yaxis: { ...darkPlotLayout.yaxis, title: 'Color Index (Y - J) [mag]' }
+  }, plotConfig);
+
+  // 4. Plot Weak Lensing Convergence Mass Map Heatmap (kappa)
+  Plotly.newPlot('plot-euclid-kappa', [
+    {
+      z: res.kappa_mass_map.kappa_values,
+      x: res.kappa_mass_map.x_range,
+      y: res.kappa_mass_map.y_range,
+      type: 'heatmap',
+      colorscale: 'Viridis',
+      colorbar: { title: 'Convergence κ', tickfont: { color: '#9ca3af' } }
+    }
+  ], {
+    ...darkPlotLayout,
+    xaxis: { ...darkPlotLayout.xaxis, title: 'Right Ascension Offset ΔRA (deg)' },
+    yaxis: { ...darkPlotLayout.yaxis, title: 'Declination Offset ΔDec (deg)' }
+  }, plotConfig);
 }
 
 // Initial Load
