@@ -1,0 +1,16 @@
+{
+  "chi2": 4559393.594109757,
+  "ndof": 30,
+  "chi2_per_dof": 151979.78647032523,
+  "pass": false,
+  "criterion": "chi2_per_dof < 2.0",
+  "n_valid_photoz": 70126,
+  "n_total_objects": 80376,
+  "s8_audit": {
+    "s8_euclid_q1": 0.828,
+    "s8_k3t2": 0.83,
+    "sigma_euclid": 0.07532595834106594,
+    "tension_sigma": 0.0265512718861706,
+    "pass": true
+  }
+}

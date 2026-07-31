@@ -1,0 +1,89 @@
+{
+  "residuals": [
+    {
+      "z": 0.295,
+      "quantity": "DV_over_rs",
+      "astropy_prediction": 8.0878291661867,
+      "k3t2_prediction": 8.087829058594075,
+      "fractional_residual": 1.330302883217438e-08
+    },
+    {
+      "z": 0.51,
+      "quantity": "DM_over_rs",
+      "astropy_prediction": 13.56542153561258,
+      "k3t2_prediction": 13.565421540796521,
+      "fractional_residual": 3.821437007656407e-10
+    },
+    {
+      "z": 0.51,
+      "quantity": "DH_over_rs",
+      "astropy_prediction": 22.97110592954483,
+      "k3t2_prediction": 22.97110592954483,
+      "fractional_residual": 0.0
+    },
+    {
+      "z": 0.706,
+      "quantity": "DM_over_rs",
+      "astropy_prediction": 17.81485122642718,
+      "k3t2_prediction": 17.81485266715569,
+      "fractional_residual": 8.087232906992728e-08
+    },
+    {
+      "z": 0.706,
+      "quantity": "DH_over_rs",
+      "astropy_prediction": 20.43562828668356,
+      "k3t2_prediction": 20.43562828668356,
+      "fractional_residual": 0.0
+    },
+    {
+      "z": 0.93,
+      "quantity": "DM_over_rs",
+      "astropy_prediction": 22.100192073533673,
+      "k3t2_prediction": 22.10019768375373,
+      "fractional_residual": 2.5385390492259786e-07
+    },
+    {
+      "z": 0.93,
+      "quantity": "DH_over_rs",
+      "astropy_prediction": 17.89095587632904,
+      "k3t2_prediction": 17.89095587632904,
+      "fractional_residual": 0.0
+    },
+    {
+      "z": 1.317,
+      "quantity": "DM_over_rs",
+      "astropy_prediction": 28.30824655285965,
+      "k3t2_prediction": 28.308267441825738,
+      "fractional_residual": 7.379109846501537e-07
+    },
+    {
+      "z": 1.317,
+      "quantity": "DH_over_rs",
+      "astropy_prediction": 14.364381664268612,
+      "k3t2_prediction": 14.364381664268612,
+      "fractional_residual": 0.0
+    },
+    {
+      "z": 1.491,
+      "quantity": "DV_over_rs",
+      "astropy_prediction": 26.393896097644035,
+      "k3t2_prediction": 26.393914053660804,
+      "fractional_residual": 6.80309443631671e-07
+    },
+    {
+      "z": 2.33,
+      "quantity": "DM_over_rs",
+      "astropy_prediction": 39.70049624998441,
+      "k3t2_prediction": 39.70060797264244,
+      "fractional_residual": 2.8141375695354126e-06
+    },
+    {
+      "z": 2.33,
+      "quantity": "DH_over_rs",
+      "astropy_prediction": 8.811314602536429,
+      "k3t2_prediction": 8.811314602536429,
+      "fractional_residual": 0.0
+    }
+  ],
+  "max_residual": 2.8141375695354126e-06
+}
