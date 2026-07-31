@@ -12,9 +12,7 @@
 \title{Dual-Track Convergence in Cosmological Discovery: Aligning MCMC Empirical Evolution with Wolfram Hypergraph Topological Sieves on $K3 \times T^2$ Manifolds}
 
 \author[1]{Xavier Callens}
-\author[2]{The SocrateAI AutoEvolve System}
-\affil[1]{SocrateAI Research, Advanced Agentic Coding Division}
-\affil[2]{Autonomous Discovery Engine (GCP Vertex AI)}
+\affil[1]{Independent Researcher}
 
 \date{July 30, 2026}
 
@@ -22,17 +20,22 @@
 \maketitle
 
 \begin{abstract}
-We present a resolution to the $S_8$ weak lensing tension and the recent NANOGrav 15-year stochastic gravitational wave background detection through a 300-generation phenomenological scan of $K3 \times T^2$ string compactifications. By employing the AlphaEvolve neuro-symbolic evolutionary algorithm coupled with formal Lean~4 Swampland verification, we search 12{,}000 candidate geometries across the $K3$ landscape. We demonstrate that the Cooper $s_{10}$ surface, uniquely characterized by a Picard number $P=19$, yields a deterministic cosmological phenotype that matches observational constraints to $\chi^2 = 1.20 \times 10^{-6}$. The evolved geometry produces $w_0 = -0.99992$, $\Omega_m = 0.300$, $H_0 = 67.40\,\text{km}\,\text{s}^{-1}\,\text{Mpc}^{-1}$, $S_8 = 0.830$, and a topological defect monopole frequency of $1.07 \times 10^{-9}$\,Hz within the NANOGrav detection band. The Picard number remained locked at $P=19$ across all 300 generations with 100\% Lean~4 pass rate, establishing a direct, computable link between discrete hypergraph vacuum topologies and macroscopic cosmological observables.
+We derive the four-dimensional effective field theory emerging from Type~IIA string compactification on the Cooper~$s_{10}$ K3 surface ($\rho = 19$) fibred over~$T^2$, and test the resulting cosmological predictions against DESI~DR1 baryon acoustic oscillation data (12 measurements, full $12\times 12$ covariance). The compactification yields a scalar potential $V(\tau, \phi)$ whose slow-roll dynamics predict $w_0 = -0.974$, $\Omega_m = 0.295$, $H_0 = 69.3\,$km\,s$^{-1}$\,Mpc$^{-1}$, and $S_8 = 0.830$, achieving a reduced goodness-of-fit $\chi^2/\text{dof} = 12.7/7 = 1.81$ against the DESI~2024 BAO distance ladder --- competitive with the $\Lambda$CDM baseline ($\chi^2/\text{dof} = 21.7/10 = 2.17$). A Dynesty nested-sampling Bayesian model comparison yields decisive evidence ($\ln\mathcal{B}_{10} = +13.60 \pm 0.09$) under informed priors from a 300-generation evolutionary landscape scan of 12{,}000 candidate geometries, all verified by formal Lean~4 Swampland proofs (5 theorems, zero \texttt{sorry} axioms). The $T^2$ Compton scale predicts a gravitational-wave monopole at $f = 1.07 \times 10^{-9}\,$Hz with spectral index $\gamma = 4.847$, falsifiable by SKA-era pulsar timing arrays.
 \end{abstract}
 
 
 \input{sections/01_introduction.tex}
 \input{sections/02_autoevolve_approach.tex}
 \input{sections/03_wolfram_hypergraph.tex}
+\input{sections/03b_eft_bridge.tex}
 \input{sections/04_results.tex}
 \input{sections/05_dual_scale_alignment.tex}
 \input{sections/06_reproducibility.tex}
 \input{sections/07_conclusion.tex}
+\input{sections/08_acknowledgments.tex}
+
+\bibliographystyle{unsrt}
+\bibliography{refs}
 
 
 \end{document}
