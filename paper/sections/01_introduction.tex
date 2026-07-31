@@ -2,11 +2,8 @@
 
 The quest to unite quantum mechanics with general relativity typically culminates in string theory, which posits that our 4D universe is a low-energy effective field theory (EFT) resulting from the compactification of 10D or 11D spacetimes. However, the sheer volume of the string landscape---often estimated at $10^{500}$ possible vacua---has historically precluded deterministic predictions of cosmological parameters. 
 
-Concurrently, empirical observations have revealed persistent tensions in the standard $\Lambda$CDM model, most notably the $S_8$ weak lensing tension observed by KiDS-1000 and DES-Y3, and the Hubble $H_0$ tension. 
+Concurrently, empirical observations have revealed persistent tensions in the standard $\Lambda$CDM model, most notably the $S_8$ weak lensing tension observed by KiDS-1000 and DES-Y3, and the Hubble $H_0$ tension.  The DESI~2024 baryon acoustic oscillation data release~\cite{DESI2024} further suggests dynamical dark energy ($w_0 \neq -1$), sharpening the question: can any specific string compactification geometry simultaneously accommodate expansion-history, matter-clustering, and CMB constraints?
 
-In this paper, we propose a radical departure from traditional string landscape statistics. Rather than treating the internal compactification space (modeled here as $K3 \times T^2$) as a random variable, we introduce a dual-track methodology:
-\begin{enumerate}
-    \item \textbf{Empirical Evolution (AutoEvolve):} A cloud-scale MCMC search optimizing K3 Picard-Fuchs parameters against astrophysical data.
-    \item \textbf{Topological Determinism (Wolfram Hypergraphs):} A pure graph-theoretic sieve generating exact algebraic geometries from discrete causal graphs.
-\end{enumerate}
-Remarkably, both independent tracks converge on identical topological invariants, suggesting a deep, deterministic link between macro-cosmology and micro-topology.
+In this paper, we answer affirmatively for a specific corner of the landscape.  We deploy an AI-driven evolutionary search (AutoEvolve) to scan the continuous moduli space of $K3 \times T^2$ Type~IIA compactifications, guided by a joint likelihood constructed from DESI~DR1 BAO, NANOGrav~15-year PTA, and Planck~2018 CMB constraints.  Crucially, every candidate geometry is filtered through a Lean~4 formal verification oracle enforcing the Swampland Distance, de Sitter, and UV-completeness conjectures.
+
+The paper is organised as follows.  Section~2 describes the AutoEvolve evolutionary pipeline and the astrophysical constraints used.  Section~3 derives the four-dimensional effective field theory from the $K3 \times T^2$ compactification: the K\"ahler potential $\mathcal{K}$, the flux superpotential $W$, the F-term scalar potential $V = e^{\mathcal{K}}(\mathcal{K}^{i\bar{j}} D_i W \overline{D_{\bar{j}} W} - 3|W|^2)$, and the cosmological observables ($w_0$, $\Omega_m$, $H_0$, $S_8$) evaluated at the Cooper~$s_{10}$ fixed point.  Section~4 presents the statistical results, including the reduced $\chi^2/\text{dof} = 1.81$ against DESI~2024 and the Bayesian model comparison.  Sections~5--7 discuss reproducibility, conclusions, and acknowledgments.
