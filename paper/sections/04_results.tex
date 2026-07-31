@@ -67,9 +67,9 @@ To correctly capture the physical constraints of the model, we transitioned to i
 By directly incorporating the predictive topological resonance bump at $24.18$\,nHz and the DESI BAO sound horizon constraints, the $\Lambda$CDM likelihood plummets (as standard SMBHBs cannot produce the resonance peak). This mathematically lifts the theoretical ambiguity, swinging the Bayes factor strongly in favor of the Oligon framework under unified observational constraints.
 
 \subsection{Fisher Information and Topological Stability}
-Throughout the deep burn evolutionary track, the $T^2$ modulus $\tau$ converged precisely to a fixed point at $\tau \approx 0.50$. To verify that this is a physical vacuum state and not a numerical optimization artifact, we computed the Hessian matrix of the negative log-likelihood at the MAP coordinate. 
+Throughout the deep burn evolutionary track, the $T^2$ modulus $\tau$ converged precisely to a fixed point at $\tau \approx 0.50$. To verify that this is a physical vacuum state and not a numerical optimization artifact, we computed the full $5 \times 5$ Hessian matrix of the negative DESI~2024 BAO log-likelihood at the MAP coordinate via finite-difference numerical differentiation (\texttt{numdifftools}).
 
-The Fisher Information Matrix (FIM)---the negative expected value of the Hessian---evaluates to a strictly positive scalar ($F = 100.00$) along the $\tau$ slice. The strictly positive curvature confirms that $\tau = 0.50$ is a mathematically stable, attractive topological vacuum state within the $K_3 \times T^2$ moduli space.
+The Fisher Information Matrix (FIM)---the negative expected value of the Hessian---was evaluated using the real DESI BAO comoving distance residuals (12 measurements, 7 redshift bins, $0.295 \leq z \leq 2.33$). All five eigenvalues of the Hessian are strictly positive, confirming that the MAP point is a local maximum of the empirical likelihood surface. The diagonal entry $F_\tau = \partial^2(-\ln\mathcal{L}_{\text{BAO}})/\partial\tau^2$ evaluated at $\tau=0.50$ yields a Cramér-Rao lower bound $\sigma(\tau) \geq 1/\sqrt{F_\tau}$, consistent with the posterior width observed in the 300-generation MCMC chains.
 
 \subsection{Spatial Anisotropy and Next-Generation SKA Projections}
 Beyond the isotropic background, the $K_4$ Oligon framework intrinsically predicts a structured, web-like clustering of topological tangles. Our analysis reveals a distinct hexadecapole signature ($C_\ell(\text{Oligon}) / C_\ell(\text{Iso}) = 16.07$ at $l=4$), contrasting sharply with the largely isotropic expectations of standard SMBHB backgrounds. Furthermore, the model yields a steepened spectral index of $\gamma_{\text{Oligon}} = 4.847$, producing a falsifiable divergence ($\Delta\gamma \approx 0.51$) against the standard $\gamma = 13/3$. 
@@ -83,15 +83,15 @@ To demonstrate testability, we performed a frequency-resolved split test project
     \label{fig:ska_projections}
 \end{figure}
 
-\subsection{Observational Validation via Real ESA Euclid Q1 Open Data}
-To validate our weak lensing $S_8$ predictions against real space-based observations, we processed raw Level-2 multi-band detection catalogs (\texttt{MER\_FINAL\_CATALOG}) and morphology catalogs (\texttt{MER\_FINAL-MORPH-CAT}) from the official ESA Euclid Quick Release 1 (Q1) via the NASA-IPAC Open Data Registry.
+\subsection{Observational Consistency Check via ESA Euclid Q1 Open Data}
+To assess observational consistency, we processed 80{,}376 galaxy coordinates from the ESA Euclid Quick Release~1 (Q1) \texttt{MER\_FINAL\_CATALOG} spanning the Euclid Deep Field Fornax and Euclid Deep Field North tiles~\cite{EuclidQ12024}. The angular galaxy clustering correlation function $w(\theta)$, estimated via a Landy-Szalay-like pair-count estimator across angular separations $0.1\text{--}30$ arcmin, yields a power-law slope $\delta \approx 0.80$, consistent with matter clustering at $\Omega_m = 0.300$.
 
-Parsing 80{,}376 real galaxy observations across the Euclid Deep Field Fornax and Euclid Deep Field North tiles yields a measured $S_8$ constraint of $S_8 = 0.828 \pm 0.011$. This empirical observation aligns with the $K_3 \times T^2$ theoretical prediction ($S_8 = 0.830$ at Picard number $P=19$) to within $0.18\sigma$. The cryptographic audit certificate (\texttt{AUDIT-EUCLID-Q1-1785441737}) registers the SHA-256 hashes of all analyzed FITS extensions.
+We emphasise that the Q1 MER-level catalogs do not contain calibrated weak lensing shear measurements ($e_1, e_2$), PSF correction models, or photo-$z$ posteriors required for a tomographic cosmic shear analysis. Accordingly, no independent $S_8$ constraint is derived from this dataset. For the $S_8$ comparison in Panel~B of Figure~\ref{fig:euclid_q1_analysis}, we overlay the Planck~2018 CMB primary-anisotropy constraint $S_8 = 0.832 \pm 0.013$~\cite{Planck2020} as an external benchmark. This is consistent with the $K_3 \times T^2$ MAP prediction ($S_8 = 0.830$ at Picard number $P=19$) to within $0.15\sigma$. The cryptographic audit certificate (\texttt{AUDIT-EUCLID-Q1-1785441737}) registers the SHA-256 hashes of all analyzed FITS extensions.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{figures/euclid_q1_analysis.pdf}
-    \caption{Observational validation using real ESA Euclid Q1 open data. Panel A: Measured galaxy angular 2-point correlation function $w(\theta)$ across $80{,}376$ objects. Panel B: $S_8$ posterior probability density showing exact alignment between the Euclid Q1 real dataset ($S_8 = 0.828 \pm 0.011$) and the $K_3 \times T^2$ prediction ($S_8 = 0.830$).}
+    \caption{Observational consistency check using real ESA Euclid Q1 open data. Panel~A: Measured galaxy angular 2-point correlation function $w(\theta)$ across $80{,}376$ objects in the Euclid Deep Fields. Panel~B: $S_8$ comparison between the Planck~2018 CMB benchmark ($S_8 = 0.832 \pm 0.013$, external reference) and the $K_3 \times T^2$ MAP prediction ($S_8 = 0.830$). No independent shear $S_8$ measurement is derived from the Q1 MER catalog.}
     \label{fig:euclid_q1_analysis}
 \end{figure}
 

@@ -55,7 +55,7 @@ def compute_distances(z, Omega_m, H0, w0, wa=0.0):
     n_steps = 2000
     z_arr = np.linspace(0, z, n_steps + 1)
     E_arr = friedmann_Ez(z_arr, Omega_m, w0, wa)
-    D_M = (c / H0) * np.trapz(1.0 / E_arr, z_arr)
+    D_M = (c / H0) * np.trapezoid(1.0 / E_arr, z_arr)
 
     # Hubble distance
     E_at_z = friedmann_Ez(z, Omega_m, w0, wa)

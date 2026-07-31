@@ -106,7 +106,7 @@ def run_euclid_analysis():
 
     # Panel B: S8 Posterior Comparison
     s8_grid = np.linspace(0.70, 0.92, 200)
-    p_euclid = np.exp(-0.5 * ((s8_grid - 0.828) / 0.011)**2)
+    p_euclid = np.exp(-0.5 * ((s8_grid - 0.832) / 0.013)**2)
     p_euclid /= trapz_fn(p_euclid, s8_grid)
 
     p_k3t2 = np.exp(-0.5 * ((s8_grid - 0.830) / 0.005)**2)
@@ -115,7 +115,7 @@ def run_euclid_analysis():
     p_kids = np.exp(-0.5 * ((s8_grid - 0.759) / 0.024)**2)
     p_kids /= trapz_fn(p_kids, s8_grid)
 
-    ax2.plot(s8_grid, p_euclid, 'g-', linewidth=2.5, label='Euclid Q1 Real Data ($0.828 \\pm 0.011$)')
+    ax2.plot(s8_grid, p_euclid, 'g-', linewidth=2.5, label='Planck 2018 CMB Benchmark ($0.832 \\pm 0.013$)')
     ax2.plot(s8_grid, p_k3t2, 'b--', linewidth=2.0, label='K$_3 \\times T^2$ Prediction ($P=19$)')
     ax2.plot(s8_grid, p_kids, 'k:', linewidth=1.5, label='Legacy Proxy (KiDS-1000)')
     ax2.fill_between(s8_grid, p_euclid, alpha=0.25, color='g')
@@ -131,7 +131,7 @@ def run_euclid_analysis():
     out_pdf = FIG_DIR / "euclid_q1_analysis.pdf"
     plt.savefig(out_pdf, dpi=300)
     plt.close()
-    logger.info(f"Generated publication figure at {out_pdf}")
+    logger.info(f"Panel B: S8 overlay with Planck 2018 CMB benchmark (0.832 +/- 0.013). NOTE: No independent S8 from Euclid Q1 MER catalogs.")
 
 if __name__ == "__main__":
     run_euclid_analysis()
