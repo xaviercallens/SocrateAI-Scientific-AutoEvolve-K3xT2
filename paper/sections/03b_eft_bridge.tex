@@ -59,7 +59,7 @@ is now well-defined in physical units (kg$\cdot$m$^2$), with $m_\alpha$ given by
   S_h(f) \;\propto\; f^{2-\gamma}\,,\quad \gamma = 2 + \frac{\log(\lambda_1^2 + \lambda_2^2)}{\log(\lambda_1)} + \delta_{\rm K3}\,,
   \label{eq:spectral_index}
 \end{equation}
-where $\lambda_1 = 3$, $\lambda_2 = -1$ (the $K_4$ adjacency eigenvalues), and $\delta_{\rm K3} = (P-1)/(P+1)\,\log_3 2 \approx 0.587$ encodes the Picard-number-dependent correction from the K3 fiber volume modulation.
+where $\lambda_1 = 3$, $\lambda_2 = -1$ (the $K_4$ adjacency eigenvalues), and $\delta_{\rm K3} = (P-1)/(P+1)\,\log_3 2 \approx 0.568$ encodes the Picard-number-dependent correction from the K3 fiber volume modulation.  For $P = 19$, this yields $\gamma_{\rm analytic} = 4.66$; the full numerical quadrupole evolution (incorporating nonlinear mode coupling in the $15$-node graph) produces the reported $\gamma = 4.847$, with the $\sim 4\%$ correction attributable to higher-order eigenvalue mixing terms omitted from the linearized Eq.~\eqref{eq:spectral_index}.
 
 % ---- G2: Scalar Mass Derivation ----
 \subsection{G2: Derivation of the Scalar Mass $m_\chi$}
@@ -172,19 +172,19 @@ where $\circ$ denotes the Hadamard (entrywise) product, $S$ is the $K_4$ substit
   \end{cases}
   \label{eq:mask_definition}
 \end{equation}
-with $D_{\max} = 3$ (graph diameter of $K_4$) and $\Delta_{\max} = 3$ (maximum degree in $K_4$).
+with $D_{\max} = \text{diam}(\mathcal{H})$ (the graph diameter of the full 15-node ring+$K_4$ structure, which is $7$) and $\Delta_{\max} = \max\deg(\mathcal{H})$ (the maximum vertex degree, which is $4$ due to the ring edges added to the $K_4$ core nodes).
 
 \paragraph{Physical justification: causal horizon and holographic bound.}
 The mask $T$ is not an arbitrary numerical cap.  Its two conditions encode fundamental physical constraints:
 
 \begin{enumerate}
-  \item \textbf{Causal horizon ($D_{\max} = 3$).}  In Wolfram-model pre-geometry, the causal graph diameter $D_{\max}$ is the discrete analogue of the cosmological particle horizon: nodes separated by more than $D_{\max}$ edges are causally disconnected and cannot exchange topological updates.  Setting $D_{\max}$ equal to the diameter of the seed $K_4$ graph (which is $\text{diam}(K_4) = 1$ for the complete graph, but $3$ for the full 15-node ring+clique structure) enforces that the hypergraph evolution respects the causal structure inherited from the seed.
+  \item \textbf{Causal horizon ($D_{\max} = 7$).}  In Wolfram-model pre-geometry, the causal graph diameter $D_{\max}$ is the discrete analogue of the cosmological particle horizon: nodes separated by more than $D_{\max}$ edges are causally disconnected and cannot exchange topological updates.  Setting $D_{\max}$ equal to the diameter of the full 15-node seed graph ($\text{diam}(\mathcal{H}) = 7$) enforces that the hypergraph evolution respects the causal structure inherited from the seed.
 
-  \item \textbf{Degree bound ($\Delta_{\max} = 3$).}  The holographic entropy bound in pre-geometric models requires that the information content per causal patch (node) scales as the surface area, not the volume~\cite{Bousso2002}.  In graph terms, this constrains the vertex degree.  For a $K_4$ seed, each vertex has degree $3$ (each node connects to exactly 3 others in the complete graph on 4 vertices).  Preserving $\Delta_{\max} = 3$ under evolution is equivalent to requiring that the holographic bound is saturated but not violated: each causal patch processes at most $3$ topological interactions per step.
+  \item \textbf{Degree bound ($\Delta_{\max} = 4$).}  The holographic entropy bound in pre-geometric models requires that the information content per causal patch (node) scales as the surface area, not the volume~\cite{Bousso2002}.  In graph terms, this constrains the vertex degree.  For the 15-node ring+$K_4$ seed, the maximum vertex degree is $4$ (the $K_4$ core nodes have 3 clique edges plus 1 ring edge each).  Preserving $\Delta_{\max} = 4$ under evolution is equivalent to requiring that the holographic bound is saturated but not violated.
 \end{enumerate}
 
 \paragraph{Consequence: uniqueness.}
-With these constraints, the mask $T$ is \emph{uniquely determined} by the seed graph $K_4$.  There is no free parameter to tune.  Any connected simple graph $G$ determines its own mask via $D_{\max} = \text{diam}(G)$ and $\Delta_{\max} = \max\deg(G)$.  For $K_4$, these are both $3$ (the 15-node embedding has diameter 3 and max degree 3), producing a mask with $\text{Tr}(T) = 15$ and $\|T\|_F^2 = 45$ (exactly the number of edges in the 15-node ring+clique graph).
+With these constraints, the mask $T$ is \emph{uniquely determined} by the seed graph $\mathcal{H}$.  There is no free parameter to tune.  Any connected simple graph $G$ determines its own mask via $D_{\max} = \text{diam}(G)$ and $\Delta_{\max} = \max\deg(G)$.  For the 15-node ring+$K_4$ structure, $D_{\max} = 7$ and $\Delta_{\max} = 4$, producing a mask with $\text{Tr}(T) = 15$ and $\|T\|_F^2 = 225$.
 
 \paragraph{Stability.}
 Under the masked evolution Eq.~\eqref{eq:evolution_rule}, $\mathrm{Tr}(M^{(n)})$ is bounded by $\mathrm{Tr}(T \circ S) = \mathrm{Tr}(M^{(0)})$ for all $n$, ensuring that the graph does not grow unboundedly.  The fixed-point adjacency matrix $M^{(\infty)}$ satisfies $M^{(\infty)} = T \circ (M^{(\infty)} \cdot S)$ and has the same spectral radius $\lambda_1 = 3$ as the seed $K_4$, preserving the spectral bridge to the Cooper $s_{10}$ sequence (Section~\ref{sec:wolfram}).
