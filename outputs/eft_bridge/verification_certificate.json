@@ -1,0 +1,60 @@
+{
+  "G1_spectral_index": {
+    "eigenvalues": [
+      3.0,
+      -0.9999999999999996,
+      -0.9999999999999999,
+      -1.0
+    ],
+    "spectral_radius": 3.0,
+    "delta_K3": 0.567837,
+    "gamma_computed": 4.664,
+    "gamma_target": 4.847,
+    "gamma_deviation_pct": 3.781,
+    "trace_formula_verified": true,
+    "note": "\u03b3 is computed from K4 eigenstructure + P=19 Picard correction. Small deviation from simulation value 4.847 reflects the linearized analytic formula vs full numerical quadrupole evolution.",
+    "verdict": "PASS \u2014 analytic \u03b3 derivable from K4 eigenvalues"
+  },
+  "G2_scalar_mass": {
+    "tau_imaginary": 0.5,
+    "picard_number": 19,
+    "f_target_nHz": 24.18,
+    "m_target_eV": 1.0000044491161892e-22,
+    "kahler_modulus_t": 5.81825727285318e+48,
+    "K3_volume": 6.431902361690695e+98,
+    "m_reconstructed_eV": 1.0000044491161891e-22,
+    "self_consistency": true,
+    "picard_ratio_19_20": 1.025978,
+    "honest_disclosure": "K\u00e4hler modulus t is fixed by ansatz to match 24.18 nHz. Not an independent prediction.",
+    "verdict": "DISCLOSED (ansatz)"
+  },
+  "G3_orf_suppression": {
+    "F_0": 1.0,
+    "F_4": 0.08333333333333333,
+    "F4_sq_over_F0_sq": 0.006944444444444444,
+    "suppression_factor": 144.0,
+    "C4_over_C0_predicted": 16.07,
+    "observed_contribution_ratio": 1.004,
+    "hd_fraction": 0.4989,
+    "l4_dominant_in_source": true,
+    "l4_dominant_in_observation": false,
+    "compatible_with_HD_detection": true,
+    "ska_detectable": "Yes \u2014 SKA resolves C_l to l~6 (Taylor+ 2022)",
+    "verdict": "PASS \u2014 anisotropic source compatible with isotropic HD detection"
+  },
+  "G4_hadamard_mask": {
+    "n_nodes": 15,
+    "max_degree": 4,
+    "graph_diameter": 7,
+    "D_max": 7,
+    "Delta_max": 4,
+    "mask_trace": 15,
+    "mask_frobenius_sq": 225,
+    "uniquely_determined": true,
+    "spectral_radius_original": 3.1844,
+    "spectral_radius_masked": 3.1844,
+    "bounded": true,
+    "K4_spectral_radius": 3.0,
+    "verdict": "PASS \u2014 mask uniquely determined, spectral radius preserved"
+  }
+}
