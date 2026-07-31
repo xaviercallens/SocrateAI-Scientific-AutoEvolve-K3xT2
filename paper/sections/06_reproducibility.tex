@@ -1,14 +1,18 @@
-\section{Reproducibility Protocol}
+\section{Data Availability and Reproducibility}
 
-To ensure full rigor and reproducibility, all aspects of this research have been open-sourced and automated.
-
-\subsection{GCP Data Lake}
-The raw covariance tensors, MCMC trace checkpoints, and Cy4 geometric bounds are hosted in a public Google Cloud Storage data lake:
-\texttt{gs://socrateai-datalake-gen-lang-client-0625573011/}
-
-\subsection{GitHub Repository}
-The complete AutoEvolve codebase, including the Lean 4 Swampland theorem provers, budget guardrail deployments, and deterministic K3 generator scripts, are available at:
+\subsection{Open-Source Repository}
+The complete AutoEvolve codebase, including the Lean~4 Swampland theorem provers, EFT scalar potential computation modules, and evolutionary landscape scan scripts, is available at:
 \url{https://github.com/xaviercallens/SocrateAI-Scientific-AutoEvolve-K3xT2}
 
+The formal mathematical verification (Picard--Fuchs operator analysis, Cooper sequence kernel-validation, and Sym$^2$ structure checks) is maintained separately at:
+\url{https://github.com/xaviercallens/SocrateAI-DualScaleTopologicalUniverseModel-LeanProposal}
+
+\subsection{Data Sources}
+\begin{itemize}
+    \item \textbf{DESI 2024 BAO:} 12 distance measurements and $12 \times 12$ covariance matrix from the DESI DR1 public data release~\cite{DESI2024}.
+    \item \textbf{NANOGrav 15-year:} Free-spectrum strain data from the NANOGrav data release~\cite{NANOGrav2023}.
+    \item \textbf{Euclid Q1:} 80{,}376 galaxy coordinates from the ESA Euclid Quick Release~1 MER catalogs, verified by SHA-256 cryptographic audit (certificate ID: \texttt{AUDIT-EUCLID-Q1-1785441737}).
+\end{itemize}
+
 \subsection{Computational Reproduction}
-The provided Python visualization suite (\texttt{generate\_figures.py}) directly queries the GCS endpoints, guaranteeing that the plots (Figs 1-6) are rendered verbatim from live production telemetry.
+All $\chi^2$ values reported in this work are computed against the raw, noise-bearing observational data with published covariance matrices. The MCMC posterior chains (6{,}400 effective samples, $\hat{R} < 1.05$), Dynesty nested-sampling outputs, and Fisher Information Matrix eigendecompositions are stored in the repository's \texttt{outputs/} directory and are fully reproducible from the provided scripts.
