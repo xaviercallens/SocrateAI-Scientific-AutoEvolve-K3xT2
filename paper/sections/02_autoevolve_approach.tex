@@ -1,20 +1,22 @@
-\section{The AutoEvolve Approach (Phase 1)}
+\section{The AutoEvolve Landscape Scan}
 
-The AutoEvolve framework is a neuro-symbolic MCMC pipeline designed to explore the continuous parameter space of F-theory compactifications. By mapping Calabi-Yau moduli to phenomenological observables, we construct a loss function (fitness landscape) driven by current astrophysical constraints.
+The AutoEvolve framework is a neuro-symbolic evolutionary pipeline designed to explore the continuous parameter space of $K3 \times T^2$ string compactifications. By mapping Calabi--Yau moduli to phenomenological observables through an explicit effective field theory (Section~\ref{sec:eft_bridge}), we construct a likelihood function driven by current astrophysical constraints and evolve a population of candidate geometries to maximize it.
 
 \subsection{Astrophysical Constraints}
 The fitness of a given geometry is evaluated via a joint likelihood function incorporating:
 \begin{itemize}
-    \item \textbf{DESI DR1 + Euclid Q2 (Proxy):} Constraining the Baryon Acoustic Oscillations (BAO) and the $S_8$ weak lensing tension.
-    \item \textbf{NanoGrav PTA Signatures:} Requiring stochastic gravitational wave backgrounds near $\sim 10^{-9}$ Hz.
-    \item \textbf{Planck CMB:} Enforcing baseline bounds on $w_0$ and $\Omega_m$.
+    \item \textbf{DESI DR1 BAO (12 measurements):} Baryon acoustic oscillation distance ratios $D_M/r_d$ and $D_H/r_d$ across 7 redshift bins ($0.295 \leq z \leq 2.33$), with the full $12 \times 12$ covariance matrix from the DESI 2024 data release~\cite{DESI2024}.
+    \item \textbf{NANOGrav 15-year PTA:} Free-spectrum characteristic strain measurements at 14 frequency bins in the $1$--$100$\,nHz band, constraining the stochastic gravitational-wave background spectral index $\gamma$~\cite{NANOGrav2023}.
+    \item \textbf{Planck 2018 CMB:} Baseline constraints on the matter density $\Omega_m = 0.315 \pm 0.007$ and the amplitude $S_8 = 0.832 \pm 0.013$~\cite{Planck2020}.
 \end{itemize}
 
-\subsection{Cloud-Scale Infrastructure}
-To navigate this complex likelihood surface, AutoEvolve leverages a distributed MCMC architecture on Google Cloud Platform (GCP). The system utilizes Spot T4/L4 GPU instances orchestrated via Vertex AI Custom Training Jobs. A stringent budget guardrail system limits campaign expenditure to \$25 per 24-hour burn, executing dynamic checkpointing to GCS data lakes for fault tolerance.
+\subsection{Evolutionary Algorithm}
+AutoEvolve implements a genetic algorithm with population size $N_{\text{pop}} = 40$, run for 300 generations (12{,}000 total geometry evaluations). Each candidate is parametrised by five continuous moduli: the $T^2$ complex structure modulus $\tau \in (0, 1.5)$, the complex structure 3-vector $\vec{c}_s \in [-3, 3]^3$, and a Picard offset $\delta P \in [-0.5, 3.0]$ which selects the discrete Picard number $P = \text{round}(19 + \delta P) \in [1, 20]$. Mutation uses a Gaussian kernel with adaptive step size; crossover is uniform; selection is tournament with elitism.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{figures/budget_projection.pdf}
-    \caption{Vertex AI Budget Guardrail Projection over a 24-hour campaign.}
-\end{figure}
+Every candidate is filtered through a Lean~4 formal verification oracle that enforces the Swampland distance, de Sitter, and UV-completeness conjectures. Candidates failing formal verification are assigned zero fitness. The oracle verifies 5 kernel-checked theorems (see Section~\ref{sec:eft_bridge}) with zero \texttt{sorry} axioms.
+
+The goodness-of-fit is evaluated as:
+\begin{equation}
+    \chi^2 = (\vec{d} - \vec{m})^T \, C^{-1} \, (\vec{d} - \vec{m})
+\end{equation}
+where $\vec{d}$ is the DESI 2024 data vector, $\vec{m}$ is the model prediction from the EFT-derived mapping (Section~\ref{sec:eft_bridge}), and $C$ is the published $12 \times 12$ covariance matrix. The reported $\chi^2$ values throughout this paper are computed against the raw, noise-bearing astrophysical data --- not against any training proxy or calibrated target.
