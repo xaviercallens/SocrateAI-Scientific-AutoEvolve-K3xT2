@@ -1,0 +1,65 @@
+\section{Derivation of the Scalar Mass $m_\chi$}
+\label{sec:mass_derivation}
+
+\subsection{The Claim Under Scrutiny}
+
+We predict a dark-matter-like scalar field with Compton frequency $f_\chi = m_\chi c^2 / h = 24.18\,$nHz, corresponding to $m_\chi \approx 10^{-22}\,$eV.  This mass scale must be \emph{derived} from the compactification geometry, not inserted by hand.
+
+\subsection{Kaluza--Klein Reduction on $T^2$}
+
+In a Type~IIA compactification on $K3 \times T^2$ with $T^2$ area $\mathcal{A}_{T^2}$, the lowest Kaluza--Klein (KK) mass associated with the $T^2$ factor is
+\begin{equation}
+    m_{\rm KK}^{(T^2)} \;=\; \frac{2\pi}{\sqrt{\mathcal{A}_{T^2}}} \;=\; \frac{2\pi}{R_{T^2}}\,,
+    \label{eq:KK_mass}
+\end{equation}
+where $R_{T^2}$ is the $T^2$ radius in string units ($\alpha' = 1$).  In the dual-scale framework, the $T^2$ volume is hierarchically large compared to the K3 volume, with
+\begin{equation}
+    R_{T^2} \;=\; R_{\rm Pl} \cdot e^{\pi\,\mathrm{Im}(\tau)}\,,
+    \label{eq:T2_radius}
+\end{equation}
+where $R_{\rm Pl} = \ell_{\rm Pl} = 1.616 \times 10^{-35}\,$m and $\tau = 0.50$ is the $T^2$ complex structure modulus at the MAP fixed point.  The exponential hierarchy arises from the K\"ahler potential $\mathcal{K} = -\log(\mathrm{Im}\,\tau)$ and the flux-stabilised volume of the internal space.
+
+\subsection{Physical Mass in 4D Planck Units}
+
+The physical KK mass in 4D Planck units is
+\begin{equation}
+    m_\chi \;=\; \frac{m_{\rm Pl}}{e^{\pi\,\mathrm{Im}(\tau)} \cdot \mathcal{V}_{K3}^{1/2}} \;=\; \frac{m_{\rm Pl}}{e^{\pi/2} \cdot \mathcal{V}_{K3}^{1/2}}\,,
+    \label{eq:physical_mass}
+\end{equation}
+where $\mathcal{V}_{K3}$ is the dimensionless K3 volume in string units.  For $P = 19$, the K3 volume is fixed by the intersection form:
+\begin{equation}
+    \mathcal{V}_{K3} \;=\; \frac{1}{2}\,\sum_{a,b=1}^{h^{1,1}} d_{ab}\, t^a\, t^b\,,
+    \label{eq:K3_volume}
+\end{equation}
+where $d_{ab}$ is the intersection matrix of the Picard lattice and $t^a$ are the K\"ahler moduli.  At the self-dual point ($t^a = t$ for all $a$, by the $\mathbb{Z}_{19}$ automorphism of Cooper $s_{10}$), this reduces to $\mathcal{V}_{K3} = \frac{1}{2}\,(\sum_{ab} d_{ab})\, t^2$.  The intersection sum for the $P = 19$ lattice (the rank-19 sublattice of the K3 lattice $U^3 \oplus E_8(-1)^2$ with self-intersection $2$) gives $\sum d_{ab} = 2 \cdot 19 = 38$, hence $\mathcal{V}_{K3} = 19\, t^2$.
+
+For the Compton resonance at $f_\chi = 24.18\,$nHz, we require
+\begin{equation}
+    m_\chi = h\, f_\chi / c^2 = 1.0 \times 10^{-22}\,\mathrm{eV}\,,
+\end{equation}
+which fixes the K\"ahler modulus at
+\begin{equation}
+    t \;=\; \frac{1}{\sqrt{19}} \cdot \frac{m_{\rm Pl}\, e^{-\pi/2}}{m_\chi} \;\approx\; 1.4 \times 10^{28}\quad(\mathrm{string\ units})\,.
+    \label{eq:kahler_value}
+\end{equation}
+
+\subsection{Honest Status: The Mass Ansatz}
+
+We state the epistemic status of this result with full transparency:
+
+\medskip
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{%
+\emph{The mass $m_\chi = 10^{-22}\,$eV is an ansatz, fixed by requiring the $T^2$ Kaluza--Klein scale to produce a Compton resonance at the NANOGrav 15-year $24.18\,$nHz frequency bin.  A genuine prediction requires an independent stabilisation mechanism for $t$ (e.g., a flux superpotential or non-perturbative effects) that fixes $\mathcal{V}_{K3}$ without reference to PTA data.  This is deferred to future work.}%
+}}
+\medskip
+
+\noindent The derivation is nonetheless valuable for two reasons:
+\begin{enumerate}
+    \item \textbf{Framework demonstration}: it shows that the $T^2$ KK scale \emph{can} produce a mass in the ultralight scalar range $m \sim 10^{-22}\,$eV, which is independently motivated by fuzzy dark matter phenomenology.
+    \item \textbf{Falsifiable geometric ratio}: the Picard number $P$ enters the intersection sum as $\sum d_{ab} = 2P$, so at fixed K\"ahler modulus $t$, the mass scales as $m_\chi \propto 1/\sqrt{P}$.  The ratio
+    \begin{equation}
+        \frac{m_\chi(P=19)}{m_\chi(P=20)} = \sqrt{\frac{20}{19}} = 1.0260
+        \label{eq:picard_ratio}
+    \end{equation}
+    is a falsifiable geometric prediction: if a different K3 surface (with $P = 20$) were the correct compactification, the Compton resonance would shift by $2.6\%$, a displacement detectable by next-generation PTAs.
+\end{enumerate}

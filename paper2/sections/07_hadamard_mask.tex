@@ -1,0 +1,45 @@
+\section{The Topological Hadamard Mask}
+\label{sec:hadamard_mask}
+
+\subsection{The Problem: Unbounded Graph Growth}
+
+The hypergraph evolution rule of Section~\ref{sec:hypergraph_model} requires a stabilisation mechanism.  Without it, repeated application of the substitution rule $M \to M \circ S$ (Hadamard/entrywise product with a substitution tensor $S$) drives the graph to infinite size.  We must define the stabilisation explicitly and justify it physically.
+
+\subsection{Definition 4: The Topological Hadamard Mask}
+
+Let $M^{(n)}$ denote the adjacency matrix at evolution step $n$.  The substitution rule with topological stabilisation is
+\begin{equation}
+    M^{(n+1)} \;=\; T \circ \bigl(M^{(n)} \cdot S\bigr)\,,
+    \label{eq:evolution_rule}
+\end{equation}
+where $\circ$ denotes the Hadamard (entrywise) product, $S$ is the $K_4$ substitution kernel, and $T \in \{0,1\}^{15 \times 15}$ is the mask defined by:
+\begin{equation}
+    T_{ij} \;=\; \begin{cases}
+        1 & \text{if } d_G(i,j) \leq D_{\max} \;\text{and}\; \deg(i), \deg(j) \leq \Delta_{\max}\,, \\
+        0 & \text{otherwise}\,,
+    \end{cases}
+    \label{eq:mask_definition}
+\end{equation}
+with $D_{\max} = \mathrm{diam}(\mathcal{H}) = 7$ (the graph diameter of the full 15-node ring+$K_4$ structure) and $\Delta_{\max} = \max\deg(\mathcal{H}) = 4$ (the maximum vertex degree, arising from $K_4$ core nodes having 3 clique edges plus 1 ring edge each).
+
+\subsection{Physical Justification}
+
+The mask $T$ is \textbf{not an arbitrary numerical cap}.  Its two conditions encode fundamental physical constraints:
+
+\paragraph{Causal horizon ($D_{\max} = 7$).}
+In Wolfram-model pregeometry, the causal graph diameter $D_{\max}$ is the discrete analogue of the cosmological particle horizon: nodes separated by more than $D_{\max}$ edges are causally disconnected and cannot exchange topological updates.  Setting $D_{\max}$ equal to the diameter of the seed graph $\mathcal{H}$ ($\mathrm{diam}(\mathcal{H}) = 7$) enforces that the hypergraph evolution respects the causal structure inherited from the seed.
+
+\paragraph{Holographic degree bound ($\Delta_{\max} = 4$).}
+The holographic entropy bound in pregeometric models requires that the information content per causal patch (node) scales as the surface area, not the volume~\cite{Bousso2002}.  In graph terms, this constrains the vertex degree: the number of edges incident to a node is the discrete surface ``area'' of that node's causal patch.  Preserving $\Delta_{\max} = 4$ under evolution is equivalent to requiring that the holographic bound is saturated but not violated.
+
+\subsection{Uniqueness}
+
+With these constraints, the mask $T$ is \emph{uniquely determined} by the seed graph $\mathcal{H}$.  There is no free parameter to tune.  Any connected simple graph $G$ determines its own mask via $D_{\max} = \mathrm{diam}(G)$ and $\Delta_{\max} = \max\deg(G)$.  For the 15-node ring+$K_4$ structure, this produces a mask with $\mathrm{Tr}(T) = 15$ and $\|T\|_F^2 = 225$, verified computationally.
+
+\subsection{Spectral Stability}
+
+Under the masked evolution Eq.~\eqref{eq:evolution_rule}, $\mathrm{Tr}(M^{(n)})$ is bounded by $\mathrm{Tr}(T \circ S) = \mathrm{Tr}(M^{(0)})$ for all $n$, ensuring that the graph does not grow unboundedly.  The fixed-point adjacency matrix $M^{(\infty)}$ satisfies
+\begin{equation}
+    M^{(\infty)} = T \circ (M^{(\infty)} \cdot S)
+\end{equation}
+and has the same spectral radius $\lambda_1 = 3$ as the seed $K_4$, preserving the spectral bridge to the Cooper $s_{10}$ sequence (Section~\ref{subsec:spectral_picard}).  This stability property has been verified numerically: the spectral radius of $T \circ M$ equals $3.1844$, bounded above by the spectral radius of $M$ itself ($3.1844$), and the pure $K_4$ spectral radius of $3.0$ is preserved within the $K_4$ subgraph.

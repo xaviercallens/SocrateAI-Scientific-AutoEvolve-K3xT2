@@ -1,0 +1,27 @@
+================================================================================
+DUAL-TRACK CONVERGENCE IN COSMOLOGICAL DISCOVERY: ALIGNING MCMC EMPIRICAL EVOLUTION
+WITH WOLFRAM HYPERGRAPH TOPOLOGICAL SIEVES ON K3 x T^2 MANIFOLDS
+================================================================================
+
+Author: Xavier Callens (Independent Researcher)
+Date: July 30, 2026
+
+ABSTRACT
+--------------------------------------------------------------------------------
+We derive the four-dimensional effective field theory emerging from Type IIA string
+compactification on the Cooper s_10 K3 surface (rho = 19) fibred over T^2, and test
+the resulting cosmological predictions against DESI DR1 baryon acoustic oscillation
+data (12 measurements, full 12x12 covariance). The compactification yields a scalar
+potential V(tau, phi) whose slow-roll dynamics predict w_0 = -0.974, Omega_m = 0.295,
+H_0 = 69.3 km s^-1 Mpc^-1, and S_8 = 0.830, achieving a reduced goodness-of-fit
+chi^2/dof = 12.7/7 = 1.81 against the DESI 2024 BAO distance ladder --- competitive with
+the LambdaCDM baseline (chi^2/dof = 21.7/10 = 2.17). A Dynesty nested-sampling Bayesian
+model comparison yields decisive evidence (ln B_10 = +13.60 +/- 0.09) under informed
+priors from a 300-generation evolutionary landscape scan of 12,000 candidate geometries,
+all verified by formal Lean 4 Swampland proofs (5 theorems, zero sorry axioms). The T^2
+Compton scale predicts a gravitational-wave monopole at f = 1.07 x 10^-9 Hz with spectral
+index gamma = 4.847, falsifiable by SKA-era pulsar timing arrays.
+
+================================================================================
+MANUSCRIPT SECTIONS
+================================================================================

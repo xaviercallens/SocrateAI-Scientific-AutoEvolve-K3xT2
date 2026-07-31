@@ -1,0 +1,69 @@
+\section{Results: Comparison with NANOGrav and SKA Projections}
+\label{sec:results}
+
+\subsection{Summary of Predictions}
+
+The $K_4$ Oligon hypergraph model, via the continuum limit of Section~\ref{sec:continuum_limit}, generates three quantitative predictions for the nanohertz SGWB:
+
+\begin{table}[h]
+\centering
+\caption{$K_4$ Oligon predictions versus NANOGrav 15-year observations and SMBHB baseline.}
+\label{tab:predictions}
+\begin{tabular}{lccc}
+\hline
+Observable & Oligon prediction & NANOGrav 15yr & SMBHB baseline \\
+\hline
+Spectral index $\gamma$ & $4.847$ & $4.70 \pm 0.50$ & $13/3 \approx 4.33$ \\
+Compton resonance $f_\chi$ & $24.18\,$nHz & --- & (none) \\
+Anisotropy ratio $C_4/C_0$ & $16.07$ & $< 40$ (upper limit) & $\sim 0$ \\
+HD fraction $f_{\rm HD}$ & $49.9\%$ & $\sim 50\%$ (implied by $3$--$4\sigma$) & $100\%$ \\
+\hline
+\end{tabular}
+\end{table}
+
+All four predictions are consistent with the current NANOGrav 15-year data within $1\sigma$ (for $\gamma$) or below current sensitivity (for $f_\chi$, $C_4/C_0$, $f_{\rm HD}$).
+
+\subsection{Bayesian Information Criterion}
+
+For the spectral index alone, the Bayesian Information Criterion (BIC) comparison between the Oligon model ($\gamma = 4.847$, 0 free spectral parameters since $\gamma$ is derived from $K_4$) and the SMBHB model ($\gamma = 13/3$, 0 free spectral parameters) is
+\begin{equation}
+    \Delta\mathrm{BIC} = \chi^2_{\rm SMBHB} - \chi^2_{\rm Oligon} = \frac{(4.70 - 4.33)^2}{0.50^2} - \frac{(4.70 - 4.847)^2}{0.50^2} = 0.548 - 0.086 = 0.46\,,
+\end{equation}
+which is inconclusive ($|\Delta\mathrm{BIC}| < 2$).  The current data do not distinguish between the two models.
+
+\subsection{SKA Projections}
+
+The Square Kilometre Array (SKA) will provide transformative improvements in PTA sensitivity~\cite{Taylor2022}:
+\begin{itemize}
+    \item \textbf{$10\times$ more pulsars}: $\sim$200 millisecond pulsars (vs.~$\sim$20 in NANOGrav 15yr), enabling resolution of angular power spectrum modes to $l \sim 6$.
+    \item \textbf{$3\times$ longer baselines}: $\sim$30-year datasets, reducing the frequency resolution to $\Delta f \approx 1\,$nHz and improving spectral index precision to $\sigma(\gamma) \approx 0.05$.
+    \item \textbf{$\sim\!30\times$ SNR improvement}: via both increased pulsar count and longer integration.
+\end{itemize}
+
+At SKA sensitivity, the three Oligon signatures become decisively testable:
+
+\paragraph{1.~Spectral index.}
+With $\sigma(\gamma) \approx 0.05$, the $\Delta\gamma = 0.51$ displacement between Oligon ($\gamma = 4.847$) and SMBHB ($\gamma = 4.33$) becomes a $>10\sigma$ discrimination.
+
+\paragraph{2.~Compton resonance.}
+The $f_\chi = 24.18\,$nHz resonance spans $\sim$2 frequency bins at current resolution but will be resolved into $\sim$25 bins with 30-year baselines.  A Lorentzian feature at the predicted frequency either appears or is excluded at $>5\sigma$.
+
+\paragraph{3.~$l=4$ anisotropy.}
+The anisotropic residual $A_4 \approx 0.32\, C_0/(4\pi)$ (Eq.~\ref{eq:residual_amplitude}) is below NANOGrav 15-year sensitivity but above SKA projections.  Detection of a $P_4(\cos\zeta)$ angular pattern at the predicted amplitude would confirm the Oligon hypothesis; its absence would falsify it.
+
+\subsection{Discrimination Table}
+
+\begin{table}[h]
+\centering
+\caption{Projected model discrimination at SKA sensitivity.}
+\label{tab:ska_discrimination}
+\begin{tabular}{lccc}
+\hline
+Test & Oligon prediction & SMBHB prediction & SKA sensitivity \\
+\hline
+$\gamma$ & $4.847$ & $4.33$ & $\sigma \approx 0.05$ \\
+$f_\chi$ resonance & Yes (24.18 nHz) & No & Resolvable at $\Delta f \approx 1\,$nHz \\
+$l=4$ anisotropy & $C_4/C_0 = 16.07$ & $\sim 0$ & Detectable to $l \sim 6$ \\
+\hline
+\end{tabular}
+\end{table}

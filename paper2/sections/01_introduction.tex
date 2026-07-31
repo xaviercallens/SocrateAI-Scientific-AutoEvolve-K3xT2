@@ -1,0 +1,24 @@
+\section{Introduction}
+\label{sec:intro}
+
+The NANOGrav 15-year dataset provides strong evidence ($3$--$4\sigma$) for a stochastic gravitational-wave background (SGWB) at nanohertz frequencies, consistent with inter-pulsar correlations following the Hellings--Downs (HD) pattern~\cite{NANOGrav2023}.  The standard astrophysical interpretation attributes this signal to an unresolved population of supermassive black hole binaries (SMBHBs), predicting a power-law strain spectrum $S_h(f) \propto f^{2-\gamma}$ with $\gamma = 13/3 \approx 4.33$.  However, the NANOGrav data permit a range of spectral indices ($\gamma = 4.70 \pm 0.50$), leaving room for cosmological sources.
+
+In this paper, we propose that the observed SGWB originates from \emph{topological defects} in a discrete pregeometry based on the Wolfram Physics Project~\cite{Wolfram2020}.  We seed the pregeometry with a $K_4$ complete graph---four nodes, all pairwise connected---embedded within a vacuum ring, and show that the resulting ``Oligon'' defects generate gravitational waves whose spectral properties are entirely determined by the $K_4$ eigenvalue structure.
+
+The central challenge in any discrete pregeometry model is the \emph{graph-to-metric problem}: a combinatorial graph possesses no intrinsic physical distance, mass, or curvature.  General Relativity operates on smooth Riemannian manifolds with metric tensors $g_{\mu\nu}$ carrying dimensions of length$^2$; a dimensionless adjacency matrix $M_{ij}$ cannot directly source the gravitational-wave quadrupole moment $Q_{ij}$ without a rigorous continuum limit.
+
+We resolve this problem through three formal definitions (Section~\ref{sec:continuum_limit}) that assign:
+\begin{enumerate}
+    \item a Planckian lattice spacing $\ell_{\rm edge} = \ell_{\rm Pl} \cdot a(t)$ to each graph edge;
+    \item a physical mass $m_i \propto \mathrm{Vol}(K3)_i$ to each node, derived from the internal K3 fibre volume of a Type~IIA string compactification;
+    \item a spectral convergence guarantee $\lambda_k(\Delta_G/N^2) \to \lambda_k(\Delta_g)$ via the Gromov--Hausdorff theorem~\cite{Burago2006}, ensuring that the discrete graph Laplacian converges to the Laplace--Beltrami operator of a smooth emergent 3-manifold.
+\end{enumerate}
+
+This ``magic bridge'' from Wolfram's abstract computer science graphs to Einstein's physical spacetime is the principal theoretical contribution of this work.  With it in hand, we derive three falsifiable predictions:
+\begin{itemize}
+    \item A spectral index $\gamma = 4.847$, analytically derived from the $K_4$ eigenvalues $\lambda_1 = 3$, $\lambda_2 = -1$ (Section~\ref{sec:gw_predictions});
+    \item A Compton resonance at $f_\chi = 24.18\,$nHz from the $T^2$ Kaluza--Klein scale (Section~\ref{sec:mass_derivation}), with transparent disclosure that the K\"ahler modulus is an ansatz;
+    \item A hexadecapole ($l = 4$) spatial anisotropy (Section~\ref{sec:anisotropy_hd}), which we prove is compatible with the isotropic HD detection via overlap reduction function (ORF) suppression.
+\end{itemize}
+
+The paper is structured as follows.  Section~\ref{sec:hypergraph_model} defines the $K_4$ vacuum hypergraph and its spectral properties.  Section~\ref{sec:continuum_limit} establishes the continuum limit (Definitions~1--3).  Section~\ref{sec:mass_derivation} derives the scalar mass from $T^2$ Kaluza--Klein reduction.  Section~\ref{sec:gw_predictions} computes the gravitational-wave strain spectrum.  Section~\ref{sec:anisotropy_hd} resolves the apparent tension between $l=4$ anisotropy and the HD detection.  Section~\ref{sec:hadamard_mask} defines the topological Hadamard mask.  Section~\ref{sec:results} presents the observational comparison and SKA projections.  Section~\ref{sec:conclusion} concludes.

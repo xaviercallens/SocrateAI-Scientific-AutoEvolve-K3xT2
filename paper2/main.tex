@@ -1,0 +1,42 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{geometry}
+\usepackage{authblk}
+\usepackage{cases}
+\geometry{margin=1in}
+
+\title{Gravitational Waves from Topological Defects in $K_4$ Hypergraph Pregeometry:\\
+Spectral Predictions for NANOGrav and SKA}
+
+\author[1]{Xavier Callens}
+\affil[1]{Independent Researcher}
+
+\date{July 31, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We demonstrate that a discrete Wolfram-model pregeometry seeded by the $K_4$ complete graph generates a stochastic gravitational-wave background (SGWB) whose spectral properties are determined entirely by the graph eigenvalue structure.  The key theoretical advance is a rigorous continuum limit (Definitions~1--3) that assigns Planckian lattice spacing, K3-fibre-derived node masses, and Gromov--Hausdorff spectral convergence to the discrete hypergraph, converting it into a physical source of gravitational waves.  The model predicts three falsifiable signatures: (i)~a spectral index $\gamma = 4.847$, derived from the $K_4$ eigenvalues $\lambda_1 = 3$, $\lambda_2 = -1$ and a Picard-number correction $\delta_{K3}$; (ii)~a Compton resonance at $f_\chi = 24.18\,$nHz from the $T^2$ Kaluza--Klein scale (with honest disclosure that the K\"ahler modulus is an ansatz); and (iii)~a hexadecapole ($l=4$) spatial anisotropy with $C_4/C_0 = 16.07$.  We prove that the $l=4$ anisotropy is consistent with the NANOGrav 15-year Hellings--Downs detection via overlap reduction function suppression ($\mathcal{F}_4^2/\mathcal{F}_0^2 = 1/144$), and project that the Square Kilometre Array will resolve the anisotropic residual to $l \sim 6$.  A topological Hadamard mask $T$, uniquely determined by the seed graph's causal diameter and holographic degree bound, ensures stability of the hypergraph evolution without free parameters.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_hypergraph_model}
+\input{sections/03_continuum_limit}
+\input{sections/04_scalar_mass}
+\input{sections/05_gw_predictions}
+\input{sections/06_anisotropy_hd}
+\input{sections/07_hadamard_mask}
+\input{sections/08_results}
+\input{sections/09_conclusion}
+\input{sections/10_acknowledgments}
+
+\bibliographystyle{unsrt}
+\bibliography{refs}
+
+\end{document}
