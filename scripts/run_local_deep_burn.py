@@ -31,7 +31,8 @@ if __name__ == "__main__":
     
     start_time = time.time()
     try:
-        execute_phase2(generations=150, pop_size=40)
+        # 15,000 generations corresponds to roughly 24-48 hours on an NVIDIA L4 or TPU v3
+        execute_phase2(generations=15000, pop_size=40)
     except KeyboardInterrupt:
         logging.warning("🛑 MANUAL OVERRIDE: Deep Burn Halted.")
     except Exception as e:
