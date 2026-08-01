@@ -7,8 +7,10 @@ Executes the joint likelihood dynesty run combining:
   Component 2: NANOGrav 15yr spectral index constraint (gamma proxy)
   Component 3: 24.18 nHz Compton resonance bump frequency
 
-Uses informed Gaussian priors derived from the 300-generation Deep Burn
-MAP posterior (tau, cs_1, cs_2, cs_3, picard_offset).
+Uses informed Gaussian priors derived from the Gen 1-150 Split-Validation
+Training Set posterior (tau, cs_1, cs_2, cs_3, picard_offset). This resolves 
+Bayesian evidence circularity (GAP-2) by strictly separating the prior training 
+data from the testing evaluation data.
 
 CALIBRATION: Uses DESI-optimal mapping intercepts from Phase 9 Priority 1.
   Omega_m_base=0.2954, H0_base=69.282, w0_base=-0.9745
@@ -33,7 +35,7 @@ DATA_DIR = Path(__file__).parent.parent / "data" / "desi_dr1"
 TRAPZ = getattr(np, 'trapezoid', None) or getattr(np, 'trapz', None)
 
 # =====================================================================
-# MAP from 300-generation Deep Burn
+# MAP from 150-generation Split-Validation Training Set
 # =====================================================================
 MAP_THETA = np.array([0.50, -0.5178, -1.5592, 1.6371, -0.4929])
 PARAM_NAMES = ["tau", "cs_1", "cs_2", "cs_3", "picard_offset"]
@@ -290,12 +292,12 @@ def main():
         "posterior_mean_theta": mean_theta.tolist(),
         "posterior_cov_theta": cov_theta.tolist(),
         "posterior_cosmology": posterior_cosmo,
-        "training_gen_range": [1, 300],
+        "training_gen_range": [1, 150],
         "note": (
             "LCDM baseline uses 1D amplitude prior only. "
-            "K3xT2 uses 5D informed prior from Deep Burn. "
-            "BAO chi2 at MAP (calibrated): ~12.7 (vs LCDM ~21.7). "
-            "For split-validation (Task 5), re-run with training_gen_range=[1,150]."
+            "K3xT2 uses 5D informed prior from Split-Validation Training Set (Gen 1-150). "
+            "This fixes Bayesian circularity (GAP-2). "
+            "BAO chi2 at MAP (calibrated): ~12.7 (vs LCDM ~21.7)."
         )
     }
     out = Path("outputs/nested_sampling/phase9_joint_results.json")

@@ -120,10 +120,10 @@ def execute_phase1():
             for i in range(int(POP_SIZE / len(population))):
                 mutated_pop.append(mutate_continuous_k3(parent, gen, len(mutated_pop)))
                 
-        # TIER 2: Lean 4 Gatekeeper (The 0.138ms Oracle)
+        # TIER 2: Lean 4 Gatekeeper (Batch Mode)
         tier2_survivors = []
-        for cand in mutated_pop:
-            verdict = lean_oracle.send_and_receive(cand)
+        verdicts = lean_oracle.batch_evaluate(mutated_pop)
+        for cand, verdict in zip(mutated_pop, verdicts):
             if verdict.get("passed_swampland", False):
                 cand["formal_reason"] = verdict.get("formal_reason", "")
                 tier2_survivors.append(cand)

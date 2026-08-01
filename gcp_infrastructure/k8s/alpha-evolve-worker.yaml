@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpha-evolve-worker
+  namespace: alpha-evolve
+  labels:
+    app: alpha-evolve
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: alpha-evolve
+  template:
+    metadata:
+      labels:
+        app: alpha-evolve
+    spec:
+      containers:
+      - name: evolve-worker
+        image: gcr.io/socrateai-1003063861791/alpha-evolve-worker:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: "2"
+            memory: "4Gi"
+          limits:
+            cpu: "8"
+            memory: "16Gi"
+            nvidia.com/gpu: "1" # Requires Vertex AI GKE Nodes with T4/L4 GPUs
+        env:
+        - name: GCP_PROJECT_ID
+          valueFrom:
+            configMapKeyRef:
+              name: alpha-evolve-config
+              key: project_id
+        - name: GCP_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: alpha-evolve-config
+              key: region
+        - name: REDIS_HOST
+          value: "redis-ledger-svc.alpha-evolve.svc.cluster.local"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: GCS_CHECKPOINT_DIR
+          value: "gs://socrateai-datalake-gen-lang-client-0625573011/alpha-evolve-checkpoints"
+        command: ["python", "scripts/run_extended_burn.py"]
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: alpha-evolve-hpa
+  namespace: alpha-evolve
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: alpha-evolve-worker
+  minReplicas: 2
+  maxReplicas: 100
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 75
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alpha-evolve-config
+  namespace: alpha-evolve
+data:
+  project_id: "socrateai-1003063861791"
+  region: "us-east4"

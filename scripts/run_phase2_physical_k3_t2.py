@@ -145,8 +145,8 @@ def execute_phase2(generations: int = 75, pop_size: int = 40):
                 
         # TIER 2: Lean 4 Gatekeeper (Symbolic Filter)
         tier2_survivors = []
-        for cand in mutated_pop:
-            verdict = lean_oracle.send_and_receive(cand)
+        verdicts = lean_oracle.batch_evaluate(mutated_pop)
+        for cand, verdict in zip(mutated_pop, verdicts):
             if verdict.get("passed_swampland", False):
                 cand["formal_reason"] = verdict.get("formal_reason", "")
                 tier2_survivors.append(cand)

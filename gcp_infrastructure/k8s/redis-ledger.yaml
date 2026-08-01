@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-ledger
+  namespace: alpha-evolve
+  labels:
+    app: redis-ledger
+spec:
+  serviceName: redis-ledger-svc
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-ledger
+  template:
+    metadata:
+      labels:
+        app: redis-ledger
+    spec:
+      containers:
+      - name: redis
+        image: redis:7.2.4-alpine
+        ports:
+        - containerPort: 6379
+          name: redis
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "2Gi"
+        volumeMounts:
+        - name: redis-data
+          mountPath: /data
+        command: ["redis-server"]
+        args: ["--appendonly", "yes"]
+  volumeClaimTemplates:
+  - metadata:
+      name: redis-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-ledger-svc
+  namespace: alpha-evolve
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379
+  selector:
+    app: redis-ledger

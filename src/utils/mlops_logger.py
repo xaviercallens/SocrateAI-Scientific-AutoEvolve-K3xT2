@@ -18,6 +18,7 @@ try:
 except ImportError:
     gcsfs = None
 
+from src.utils.redis_ledger import DistributedRedisLedger
 logger = logging.getLogger(__name__)
 
 GCS_BUCKET_DEFAULT = "socrateai-datalake-gen-lang-client-0625573011/checkpoints"
@@ -31,6 +32,7 @@ class EvolutionCheckpoint:
     ):
         self.local_dir = local_fallback_dir
         os.makedirs(self.local_dir, exist_ok=True)
+        self.ledger = DistributedRedisLedger()
 
         self.use_gcs = gcsfs is not None
         if self.use_gcs:
@@ -69,13 +71,20 @@ class EvolutionCheckpoint:
 
         if self.use_gcs:
             path = f"{self.gcs_dir}/{filename}"
-            try:
-                with self.fs.open(path, "w") as f:
-                    json.dump(state, f, indent=2)
-                logger.info(f"☁️  Cloud Checkpoint saved: {path}")
+            if self.ledger.acquire_checkpoint_lock(generation, timeout_secs=120):
+                try:
+                    with self.fs.open(path, "w") as f:
+                        json.dump(state, f, indent=2)
+                    logger.info(f"☁️  Cloud Checkpoint saved: {path}")
+                    self.ledger.set_best_candidate(generation, best_candidate)
+                    return
+                except Exception as e:
+                    logger.error(f"GCS write failed ({e}), attempting local fallback.")
+                finally:
+                    self.ledger.release_checkpoint_lock(generation)
+            else:
+                logger.info(f"Skipped saving {filename} (another pod holds the lock).")
                 return
-            except Exception as e:
-                logger.error(f"GCS write failed ({e}), attempting local fallback.")
 
         # Local fallback
         local_path = os.path.join(self.local_dir, filename)

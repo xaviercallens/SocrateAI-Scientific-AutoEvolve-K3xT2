@@ -109,8 +109,8 @@ if __name__ == "__main__":
 
         # TIER 2: Lean 4 Swampland Gate
         survivors = []
-        for cand in mutated:
-            verdict = lean_oracle.send_and_receive(cand)
+        verdicts = lean_oracle.batch_evaluate(mutated)
+        for cand, verdict in zip(mutated, verdicts):
             if verdict.get("passed_swampland", False):
                 cand["formal_reason"] = verdict.get("formal_reason", "")
                 survivors.append(cand)
