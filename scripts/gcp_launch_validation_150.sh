@@ -47,15 +47,24 @@ apt-get update && apt-get install -y python3-venv
 python3 -m venv .venv
 .venv/bin/pip install gcsfs cobaya jax jaxlib scipy pandas psutil
 
-# 4. Run the 150-gen validation
+# 4. Start Cost-Control Watchdog Timer (Max 30 Minutes)
+# Kills the VM strictly at the 30-minute mark if it hangs or runs long.
+(
+    sleep 1800
+    echo '⏰ WATCHDOG TRIGGERED: 30-minute limit reached. Syncing partial logs and terminating VM.'
+    gsutil cp -r /home/jupyter/repo/outputs/gcp_validation gs://${BUCKET_NAME}/validation_logs/
+    gcloud compute instances delete $INSTANCE_NAME --zone=$ZONE --quiet
+) &
+
+# 5. Run the 150-gen validation
 echo '🚀 Starting 150-generation run...'
 .venv/bin/python scripts/run_gcp_validation.py
 
-# 5. Backup logs to GCS
+# 6. Backup logs to GCS
 echo '☁️ Syncing logs to GCS...'
 gsutil cp -r outputs/gcp_validation gs://${BUCKET_NAME}/validation_logs/
 
-# 6. Self-Destruct to save money
+# 7. Self-Destruct to save money
 echo '💥 Validation complete. Deleting instance...'
 gcloud compute instances delete $INSTANCE_NAME --zone=$ZONE --quiet
 "
