@@ -3,10 +3,12 @@ import dynesty
 import copy
 from typing import Dict, Any, Callable
 from src.alpha_evolve.phenotype_mapper import map_k3_to_cosmology
+from src.mcmc.desi_likelihood import DESILikelihoodEngine
 
 class NestedSamplingEngine:
     def __init__(self, base_candidate: dict):
         self.base_candidate = base_candidate
+        self.engine = DESILikelihoodEngine()
         # Parameters: t2_modulus_tau, cs_1, cs_2, cs_3, picard_offset
         self.bounds = [
             (0.01, 1.50),  # tau
@@ -34,14 +36,8 @@ class NestedSamplingEngine:
         candidate = self._theta_to_candidate(theta)
         phenotype = map_k3_to_cosmology(candidate)
         
-        # Target constraint standard deviations matching DESI + S8
-        chi2 = (
-            ((phenotype['w0'] - (-1.0)) / 0.01) ** 2 +
-            ((phenotype['omega_m'] - 0.300) / 0.005) ** 2 +
-            ((phenotype['h0'] - 67.4) / 0.5) ** 2 +
-            ((phenotype['s8_gradient'] - 0.830) / 0.015) ** 2
-        )
-        return -0.5 * chi2
+        result = self.engine.log_likelihood(phenotype)
+        return result.log_likelihood
 
     def run(self, nlive=200, dlogz=0.01):
         sampler = dynesty.NestedSampler(

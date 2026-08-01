@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import os
 import logging
 from scipy.optimize import curve_fit
+from scipy.integrate import quad
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -35,43 +36,47 @@ def nfw_velocity(r, v200, c):
 
 def soliton_velocity(r, r_c, rho_c):
     """
-    K3xT2 ULA Soliton Core velocity profile (m ~ 10^-22 eV).
+    K3xT2 ULA Soliton Core velocity profile (Schive et al. 2014).
+    r: array of radii (kpc)
     r_c: core radius (kpc)
-    rho_c: central density
+    rho_c: central density parameter (absorbs 4*pi*G and unit conversions)
     """
-    # Soliton density profile approximation: rho(r) = rho_c / (1 + 0.091*(r/r_c)^2)^8
-    # V(r) = sqrt(G M(<r) / r)
-    # Using an analytical approximation for the mass integral:
-    x = r / r_c
-    # Approximate empirical fit to the Soliton rotation curve contribution:
-    v = np.sqrt(np.abs(rho_c) * (np.abs(r_c)**3) * (x**2 / (1 + 0.1 * x**2)**7)) * 20.0 
-    return v
+    # Schive+2014 density profile: rho(r) = rho_c / [1 + 0.091(r/r_c)^2]^8
+    def integrand(r_prime):
+        x = r_prime / r_c
+        return (rho_c / (1.0 + 0.091 * x**2)**8) * r_prime**2
+    
+    is_scalar = np.isscalar(r)
+    r_arr = np.atleast_1d(r)
+    v_arr = np.zeros_like(r_arr, dtype=float)
+    
+    for i, rad in enumerate(r_arr):
+        if rad > 0:
+            mass_enclosed, _ = quad(integrand, 0, rad)
+            v_arr[i] = np.sqrt(mass_enclosed / rad)
+            
+    return v_arr[0] if is_scalar else v_arr
 
-def generate_mock_sparc_data(r_c_true=1.5, rho_c_true=5.0):
-    """Generates mock dwarf galaxy rotation curve data exhibiting a core."""
-    np.random.seed(42)
-    r = np.linspace(0.1, 10.0, 30)
-    v_true = soliton_velocity(r, r_c_true, rho_c_true)
+def load_sparc_galaxy(name="DDO154"):
+    """Loads actual SPARC rotation curve data for a dwarf galaxy."""
+    filepath = f"data/sparc/{name}_rotmod.dat"
+    if not os.path.exists(filepath):
+        raise FileNotFoundError(f"SPARC data file not found: {filepath}. Please download it.")
     
-    # Add some NFW-like halo in the outskirts (Halo-Soliton relation)
-    v_halo = nfw_velocity(r, v200=50.0, c=15.0)
+    data = np.loadtxt(filepath, comments='#')
+    # Column 0: Radius (kpc), Column 1: V_obs (km/s), Column 2: err_V (km/s)
+    r_obs = data[:, 0]
+    v_obs = data[:, 1]
+    err_obs = data[:, 2]
     
-    # Total velocity (smooth transition from core to halo)
-    # In FDM, inner is soliton, outer is NFW.
-    v_total = np.maximum(v_true, v_halo) 
-    
-    # Add observation noise (e.g. SPARC dataset error bars)
-    err = np.random.normal(2.0, 0.5, size=len(r))
-    v_obs = v_total + np.random.normal(0, err)
-    
-    return r, v_obs, err
+    return r_obs, v_obs, err_obs
 
 def run_soliton_validation():
     logger.info("Initializing K3xT2 Soliton Core validation against Dwarf Galaxy rotation curves...")
     
-    # 1. Load mock SPARC dwarf galaxy data (e.g., IC 2574 or similar)
-    r_obs, v_obs, err_obs = generate_mock_sparc_data()
-    logger.info(f"Loaded {len(r_obs)} radial bins of kinematic data.")
+    # 1. Load actual SPARC dwarf galaxy data
+    r_obs, v_obs, err_obs = load_sparc_galaxy(name="DDO154")
+    logger.info(f"Loaded {len(r_obs)} radial bins of real SPARC kinematic data for DDO154.")
     
     # 2. Fit NFW (Standard CDM)
     popt_nfw, pcov_nfw = curve_fit(nfw_velocity, r_obs, v_obs, sigma=err_obs, p0=[50.0, 10.0])
@@ -96,7 +101,7 @@ def run_soliton_validation():
     # 4. Plot
     os.makedirs("paper/figures", exist_ok=True)
     plt.figure(figsize=(8, 6))
-    plt.errorbar(r_obs, v_obs, yerr=err_obs, fmt='ko', label='SPARC Dwarf Galaxy Data (Mock)')
+    plt.errorbar(r_obs, v_obs, yerr=err_obs, fmt='ko', label='SPARC Dwarf Galaxy Data (Real)')
     
     r_fine = np.linspace(0.1, 10.0, 200)
     plt.plot(r_fine, nfw_velocity(r_fine, *popt_nfw), 'r--', lw=2, label=f'Standard CDM (NFW) [χ²_ν={chi2_nfw/dof_nfw:.1f}]')
