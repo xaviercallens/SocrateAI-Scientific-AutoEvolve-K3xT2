@@ -1,0 +1,31 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: alpha-evolve-monitor
+  namespace: alpha-evolve
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: alpha-evolve
+  endpoints:
+  - port: metrics
+    interval: 15s
+    path: /metrics
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis-ledger-monitor
+  namespace: alpha-evolve
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: redis-ledger
+  endpoints:
+  - port: redis
+    interval: 15s
+    path: /metrics

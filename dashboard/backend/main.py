@@ -755,6 +755,23 @@ def hypergraph_simulate(vacuum_nodes: int = 11, steps: int = 5, rule: str = "k4_
         "seq_name": s_info["name"],
         "bayesian_evidence": s_info["evidence"]
     }
+@app.get("/api/ml_suite")
+def get_ml_suite_summary():
+    """Returns the latest Parallel ML Suite execution summary."""
+    summary_path = BASE_DIR / "outputs" / "ml_suite" / "parallel_ml_summary.json"
+    if summary_path.exists():
+        import json
+        with open(summary_path, "r") as f:
+            return json.load(f)
+    return {
+        "status": "not_found",
+        "message": "Parallel ML Suite has not been run yet.",
+        "tasks": {
+            "GNN": {"k4_predictions": {"spectral_radius_lambda1": 0.0, "picard_number": 0.0}, "runtime_sec": 0},
+            "SymbolicRegression": {"discovered_formulas": {"w0_formula": "N/A"}, "runtime_sec": 0},
+            "NeuralODE": {"integrated_period_integral": 0.0, "runtime_sec": 0}
+        }
+    }
 
 # ---------------------------------------------------------------------------
 # Mount Frontend Static SPA

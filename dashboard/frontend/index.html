@@ -382,6 +382,7 @@ pre.code-block {
     <button class="nav-btn" onclick="switchPage('s8')">⚖️ S₈ Tension</button>
     <button class="nav-btn" onclick="switchPage('bmode')">🔬 B-Mode Null Test</button>
     <button class="nav-btn" onclick="switchPage('euclid')" style="border-color:rgba(59,130,246,0.5); color:#3b82f6; font-weight:700;">🛰️ Euclid Explorer</button>
+    <button class="nav-btn" onclick="switchPage('ml')" style="border-color:rgba(255,107,107,0.5); color:#ff6b6b; font-weight:700;">🧠 Parallel ML Suite</button>
     <button class="nav-btn" onclick="switchPage('audit')">📜 Data Cartography</button>
     <button class="nav-btn" onclick="switchPage('paper')">📄 Paper</button>
   </nav>
@@ -1256,6 +1257,43 @@ pre.code-block {
     </div>
   </div>
 
+  <!-- ================= PAGE ML: PARALLEL ML SUITE ================= -->
+  <div id="page-ml" class="page">
+    <div class="page-title-row">
+      <div>
+        <h1>🧠 Parallel ML Suite Diagnostics</h1>
+        <div class="page-desc">Equivariant GNNs, Symbolic Regression (PySR), and Neural ODE Picard-Fuchs Integration</div>
+      </div>
+      <div id="ml-status-badge" class="status-pill pill-warn">AWAITING RUN</div>
+    </div>
+
+    <div class="grid-3" style="margin-top:1.5rem;">
+      <div class="card">
+        <div class="card-top-accent" style="background:var(--accent-coral);"></div>
+        <div class="kpi-title">GNN Hypergraph Limit</div>
+        <div class="kpi-val" id="ml-gnn-lambda" style="color:var(--accent-coral)">--</div>
+        <div class="kpi-sub" id="ml-gnn-picard">Picard P: --</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:var(--accent-violet);"></div>
+        <div class="kpi-title">Symbolic Regression</div>
+        <div class="kpi-val" id="ml-sym-w0" style="color:var(--accent-violet); font-size:1.5rem;">--</div>
+        <div class="kpi-sub">Equation of State (w₀)</div>
+      </div>
+      <div class="card">
+        <div class="card-top-accent" style="background:var(--accent-cyan);"></div>
+        <div class="kpi-title">Neural ODE Integration</div>
+        <div class="kpi-val kpi-cyan" id="ml-node-period">--</div>
+        <div class="kpi-sub">Picard-Fuchs Period (y)</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem;">
+      <div class="section-title">Raw Diagnostics (JSON)</div>
+      <pre id="ml-raw-json" style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:8px; color:var(--accent-green); overflow-x:auto;">Loading...</pre>
+    </div>
+  </div>
+
 </main>
 
 <script>
@@ -1289,6 +1327,7 @@ function switchPage(pageId) {
   if (pageId === 's8') loadS8();
   if (pageId === 'bmode') loadBMode();
   if (pageId === 'euclid') updateEuclid();
+  if (pageId === 'ml') updateMLSuite();
   if (pageId === 'audit') loadCartography();
   if (pageId === 'paper') loadPaper();
 }
@@ -2151,6 +2190,43 @@ async function updateEuclid() {
     xaxis: { ...darkPlotLayout.xaxis, title: 'Right Ascension Offset ΔRA (deg)' },
     yaxis: { ...darkPlotLayout.yaxis, title: 'Declination Offset ΔDec (deg)' }
   }, plotConfig);
+}
+
+// ---------------- Page: Parallel ML Suite ----------------
+async function updateMLSuite() {
+  const res = await fetch(`${API_BASE}/api/ml_suite`).then(r => r.json()).catch(() => null);
+  if (!res) return;
+
+  if (res.status === "not_found") {
+    document.getElementById('ml-status-badge').className = "status-pill pill-warn";
+    document.getElementById('ml-status-badge').innerText = "AWAITING RUN";
+    document.getElementById('ml-raw-json').innerText = "Run the Parallel ML Suite script to generate results.";
+    return;
+  }
+
+  document.getElementById('ml-status-badge').className = "status-pill pill-pass";
+  document.getElementById('ml-status-badge').innerText = `COMPLETED (${res.total_runtime_seconds.toFixed(1)}s)`;
+
+  // Update GNN
+  const gnn = res.tasks.GNN?.k4_predictions;
+  if (gnn) {
+    document.getElementById('ml-gnn-lambda').innerText = `λ₁ = ${gnn.spectral_radius_lambda1.toFixed(4)}`;
+    document.getElementById('ml-gnn-picard').innerText = `Picard P = ${gnn.picard_number.toFixed(2)}`;
+  }
+
+  // Update Symbolic Regression
+  const sym = res.tasks.SymbolicRegression?.discovered_formulas;
+  if (sym) {
+    document.getElementById('ml-sym-w0').innerText = sym.w0_formula;
+  }
+
+  // Update Neural ODE
+  const node = res.tasks.NeuralODE;
+  if (node) {
+    document.getElementById('ml-node-period').innerText = `y = ${node.integrated_period_integral.toFixed(5)}`;
+  }
+
+  document.getElementById('ml-raw-json').innerText = JSON.stringify(res, null, 2);
 }
 
 // Initial Load

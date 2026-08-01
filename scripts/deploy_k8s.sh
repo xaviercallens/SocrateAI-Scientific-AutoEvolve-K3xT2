@@ -14,6 +14,9 @@ kubectl apply -f gcp_infrastructure/k8s/redis-ledger.yaml
 echo "Deploying AlphaEvolve Worker & HPA..."
 kubectl apply -f gcp_infrastructure/k8s/alpha-evolve-worker.yaml
 
+echo "Deploying Prometheus ServiceMonitors..."
+kubectl apply -f gcp_infrastructure/k8s/prometheus-servicemonitor.yaml
+
 echo "=========================================================="
 echo "Deployment initiated."
 echo "To monitor autoscaling, run: kubectl get hpa -n alpha-evolve"
