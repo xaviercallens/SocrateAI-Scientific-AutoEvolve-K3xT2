@@ -28,6 +28,13 @@ import logging
 from dataclasses import dataclass
 from typing import Optional
 
+from src.mcmc.observational_constants import (
+    S8_EUCLID_Q1_MEAN, S8_EUCLID_Q1_SIGMA,
+    S8_KIDS_MEAN, S8_KIDS_SIGMA,
+    S8_DES_MEAN, S8_DES_SIGMA,
+    S8_PLANCK_MEAN, S8_PLANCK_SIGMA,
+)
+
 logger = logging.getLogger(__name__)
 
 
@@ -35,20 +42,20 @@ logger = logging.getLogger(__name__)
 class S8LikelihoodConfig:
     """Configuration for the S₈ likelihood term."""
     # Euclid Q1 derived constraint (from MER_FINAL_CATALOG real data)
-    euclid_s8_mean: float = 0.828
-    euclid_s8_sigma: float = 0.011  # Extracted from morphological variance
+    euclid_s8_mean: float = S8_EUCLID_Q1_MEAN
+    euclid_s8_sigma: float = S8_EUCLID_Q1_SIGMA
     
     # KiDS-1000 constraint (Asgari et al. 2021)
-    kids_s8_mean:  float = 0.759
-    kids_s8_sigma: float = 0.024
+    kids_s8_mean:  float = S8_KIDS_MEAN
+    kids_s8_sigma: float = S8_KIDS_SIGMA
 
     # DES-Y3 constraint (Amon et al. 2022)
-    des_s8_mean:   float = 0.776
-    des_s8_sigma:  float = 0.017
+    des_s8_mean:   float = S8_DES_MEAN
+    des_s8_sigma:  float = S8_DES_SIGMA
 
     # Planck 2018 CMB (baseline)
-    planck_s8_mean:  float = 0.832
-    planck_s8_sigma: float = 0.013
+    planck_s8_mean:  float = S8_PLANCK_MEAN
+    planck_s8_sigma: float = S8_PLANCK_SIGMA
 
     # Which dataset(s) to include
     use_euclid: bool = True     # Use the real ESA Euclid Q1 open data
@@ -103,6 +110,9 @@ class S8Likelihood:
         s8_model = phenotype.get("s8_gradient", 0.83)
         log_l = 0.0
         chi2_euclid = None
+        chi2_kids = None
+        chi2_des = None
+        chi2_planck = None
 
         if self.config.use_euclid:
             chi2_euclid = ((s8_model - self.config.euclid_s8_mean)

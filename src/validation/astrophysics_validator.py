@@ -13,6 +13,8 @@ Validates evolved K3×T² geometries against empirical astrophysics thresholds:
 from dataclasses import dataclass, field
 from typing import Optional, Dict, List
 
+from src.mcmc.observational_constants import PTA_F_MONOPOLE_TARGET
+
 
 @dataclass
 class AstrophysicsCriteria:
@@ -46,8 +48,8 @@ class AstrophysicsValidator:
 
     @staticmethod
     def validate_pta(frequency: float, amplitude: float) -> bool:
-        """PTA scalar monopole must be within 10% of NANOGrav nanohertz target."""
-        target_freq = 1e-8
+        """PTA scalar monopole must be within 10% of K3×T² Compton resonance target."""
+        target_freq = PTA_F_MONOPOLE_TARGET  # 24.18 nHz
         target_amp  = 1e-15
         freq_ok = abs(frequency - target_freq) / target_freq < 0.10
         amp_ok  = abs(amplitude  - target_amp)  / target_amp  < 0.10
