@@ -235,10 +235,26 @@ class DESILikelihoodEngine:
         
         return log_l_pta, chi2_pta
 
+    def euclid_log_likelihood(self, phenotype: Dict[str, float]) -> Tuple[float, float]:
+        """
+        Evaluate the Euclid / KiDS Weak Lensing likelihood.
+        Constrains the S_8 parameter (structure growth).
+        """
+        s8_model = phenotype.get("s8_gradient", 0.8)
+        
+        # Target S8 (e.g. Euclid DR1 / KiDS-1000 consensus)
+        target_s8 = 0.766
+        sigma_s8 = 0.014
+        
+        chi2_euclid = ((s8_model - target_s8) / sigma_s8) ** 2
+        log_l_euclid = -0.5 * chi2_euclid - 0.5 * math.log(2 * math.pi * sigma_s8**2)
+        
+        return log_l_euclid, chi2_euclid
+
     def log_likelihood(self, phenotype: Dict[str, float]) -> DESILikelihoodResult:
         """
         Evaluate the combined multivariate Gaussian log-likelihood:
-            log 𝓛 = log 𝓛_DESI + log 𝓛_NanoGrav
+            log 𝓛 = log 𝓛_DESI + log 𝓛_NanoGrav + log 𝓛_Euclid
         """
         # DESI BAO log-likelihood
         model = self.predict_bao_distances(phenotype)
@@ -257,13 +273,16 @@ class DESILikelihoodEngine:
         # NanoGrav 15yr log-likelihood
         log_l_pta, chi2_pta = self.nanograv_log_likelihood(phenotype)
         
-        total_log_l = log_l_desi + log_l_pta
-        total_chi2 = chi2_desi + chi2_pta
+        # Euclid Weak Lensing log-likelihood
+        log_l_euclid, chi2_euclid = self.euclid_log_likelihood(phenotype)
+        
+        total_log_l = log_l_desi + log_l_pta + log_l_euclid
+        total_chi2 = chi2_desi + chi2_pta + chi2_euclid
 
         return DESILikelihoodResult(
             log_likelihood=total_log_l,
             chi2=total_chi2,
-            ndof=self._ndof + 1,  # Added PTA constraint degree of freedom
+            ndof=self._ndof + 2,  # Added PTA and Euclid constraint DOFs
             residuals=delta,
             model_predictions=model,
         )
