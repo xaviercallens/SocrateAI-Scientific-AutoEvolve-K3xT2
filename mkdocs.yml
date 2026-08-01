@@ -1,0 +1,28 @@
+site_name: SocrateAI AlphaEvolve K3×T²
+site_description: Documentation for the cosmological geometry evolutionary discovery pipeline.
+theme:
+  name: material
+  palette:
+    primary: deep purple
+    accent: teal
+  features:
+    - navigation.sections
+    - navigation.top
+
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Tutorials:
+    - Evolution Pipeline: tutorials/01_evolution_pipeline.md
+  - API Reference:
+    - MCMC Likelihood: api/mcmc.md
+    - Alpha Evolve: api/alpha_evolve.md
+    - Lean Oracle: api/lean_oracle.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [src]

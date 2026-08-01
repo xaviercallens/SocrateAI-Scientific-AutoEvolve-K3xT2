@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alphaevolve-grafana-dashboard
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+data:
+  k3xt2-dashboard.json: |-
+    {
+      "title": "AlphaEvolve K3xT2 Evolution Metrics",
+      "panels": [
+        {
+          "type": "timeseries",
+          "title": "Best Chi-Squared Loss",
+          "targets": [
+            {
+              "expr": "alphaevolve_best_chi2_loss",
+              "legendFormat": "Global Best Chi2"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "Generation Pass/Fail Rates (Lean 4)",
+          "targets": [
+            {
+              "expr": "alphaevolve_lean4_passed_total",
+              "legendFormat": "Passed"
+            },
+            {
+              "expr": "alphaevolve_lean4_failed_total",
+              "legendFormat": "Failed"
+            }
+          ]
+        }
+      ]
+    }
