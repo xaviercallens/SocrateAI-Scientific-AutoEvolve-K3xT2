@@ -1072,7 +1072,7 @@ pre.code-block {
         <div class="card-top-accent" style="background:linear-gradient(90deg, #a78bfa, #00f0ff);"></div>
         <div class="kpi-title">K3 Sieve Alignment</div>
         <div class="kpi-val kpi-gold" id="kpi-sieve">Cooper s₁₀</div>
-        <div class="kpi-sub">Apéry Walk Sequence W(n)</div>
+        <div class="kpi-sub" id="kpi-evidence">Bayesian Evidence ln B = 13.60</div>
       </div>
     </div>
 
@@ -1119,6 +1119,15 @@ pre.code-block {
       <div>
         <div class="control-panel">
           <div class="section-title">Rewriting Rule & Parameters</div>
+
+          <div class="slider-group">
+            <div class="slider-header"><label>K3 Sequence Benchmark</label></div>
+            <select id="select-sequence" class="btn-sm" style="width:100%; background:var(--bg-dark); color:var(--accent-gold); border:1px solid var(--border-accent); padding:0.5rem; border-radius:6px; margin-bottom: 0.5rem;" onchange="updateHypergraph()">
+              <option value="s10">Cooper s₁₀ (Picard ρ=19)</option>
+              <option value="s7">Cooper s₇ (Picard ρ=16)</option>
+              <option value="apery_a">Apéry a (Picard ρ=14)</option>
+            </select>
+          </div>
 
           <div class="slider-group">
             <div class="slider-header"><label>Rewriting Rule</label></div>
@@ -1840,11 +1849,12 @@ async function updateHypergraph() {
   const steps = parseInt(document.getElementById('slide-steps').value);
   const vacNodes = parseInt(document.getElementById('slide-vacnodes').value);
   const rule = document.getElementById('select-rule').value;
+  const seq = document.getElementById('select-sequence') ? document.getElementById('select-sequence').value : 's10';
 
   document.getElementById('val-steps').innerText = steps;
   document.getElementById('val-vacnodes').innerText = vacNodes;
 
-  const res = await fetch(`${API_BASE}/api/hypergraph/simulate?vacuum_nodes=${vacNodes}&steps=${steps}&rule=${rule}`).then(r => r.json()).catch(() => null);
+  const res = await fetch(`${API_BASE}/api/hypergraph/simulate?vacuum_nodes=${vacNodes}&steps=${steps}&rule=${rule}&sequence_type=${seq}`).then(r => r.json()).catch(() => null);
   if (!res) return;
 
   currentHypergraphData = res;
@@ -1854,7 +1864,11 @@ async function updateHypergraph() {
   document.getElementById('kpi-lambda2').innerText = res.lambda_2.toFixed(4);
   document.getElementById('kpi-gap').innerText = `Spectral Gap Δλ = ${res.spectral_gap.toFixed(4)}`;
   document.getElementById('kpi-gamma').innerText = res.gamma_predicted.toFixed(4);
-  document.getElementById('kpi-sieve').innerText = res.apery_s10 ? 'Cooper s₁₀' : 'Matched';
+  document.getElementById('kpi-sieve').innerText = res.seq_name || 'Matched';
+  if (document.getElementById('kpi-evidence')) {
+    document.getElementById('kpi-evidence').innerText = `Bayesian Evidence ln B = ${res.bayesian_evidence}`;
+  }
+  document.getElementById('hypergraph-status-badge').innerText = res.k3_sieve_status;
   document.getElementById('visualizer-nodes-count').innerText = `Nodes: ${res.total_nodes} (4 Core + ${res.vacuum_nodes} Ring)`;
 
   // Draw 3D Graph Canvas
@@ -1869,7 +1883,7 @@ async function updateHypergraph() {
     },
     {
       x: Array.from({length: res.apery_s10.length}, (_, i) => i + 1),
-      y: res.apery_s10, mode: 'markers', name: 'Cooper s₁₀ Apéry Sequence',
+      y: res.apery_s10, mode: 'markers', name: res.seq_name + ' Apéry Sequence',
       marker: { color: '#ffd700', size: 8, symbol: 'diamond' }
     }
   ], {
