@@ -127,9 +127,24 @@ def ll_compton_bump(theta):
     return float(stats.norm.logpdf(f_res, loc=24.18e-9, scale=1.0e-9))
 
 
+def ll_euclid_s8(theta):
+    """
+    Euclid Q1 / Planck S8 weak lensing constraint proxy.
+    S8 = sigma8 * sqrt(Omega_m / 0.3)
+    K3xT2 predicts S8 ~ 0.830. Planck/Euclid target ~ 0.832 ± 0.013.
+    We proxy S8 using the Omega_m and a fixed sigma8 mapping for simplicity.
+    """
+    cosmo = moduli_to_cosmo(theta)
+    # Proxy sigma8 derived from tau and cs1 in K3xT2 EFT:
+    tau, cs1 = theta[0], theta[1]
+    sigma8_pred = 0.81 + 0.05 * (tau - 0.50) + 0.01 * cs1
+    s8_pred = sigma8_pred * np.sqrt(cosmo["Omega_m"] / 0.3)
+    
+    return float(stats.norm.logpdf(s8_pred, loc=0.832, scale=0.013))
+
 def joint_loglikelihood(theta):
-    """Combined joint log-likelihood: BAO + PTA + resonance."""
-    return ll_bao(theta) + ll_pta_spectral(theta) + ll_compton_bump(theta)
+    """Combined joint log-likelihood: BAO + PTA + resonance + Euclid S8."""
+    return ll_bao(theta) + ll_pta_spectral(theta) + ll_compton_bump(theta) + ll_euclid_s8(theta)
 
 
 # =====================================================================
@@ -178,6 +193,7 @@ def main():
     print(f"  ll_bao:          {ll_bao_only:.4f}")
     print(f"  ll_pta:          {ll_pta_spectral(MAP_THETA):.4f}")
     print(f"  ll_bump:         {ll_compton_bump(MAP_THETA):.4f}")
+    print(f"  ll_euclid_s8:    {ll_euclid_s8(MAP_THETA):.4f}")
     print(f"  ll_joint (total):{ll_map:.4f}")
 
     cosmo_at_map = moduli_to_cosmo(MAP_THETA)

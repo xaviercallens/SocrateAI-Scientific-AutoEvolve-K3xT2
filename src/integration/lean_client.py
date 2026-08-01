@@ -42,19 +42,26 @@ class LeanOracleClient:
         
         try:
             resp = json.loads(response_str)
-            resp["_ipc_latency_ms"] = round((t1 - t0) * 1000, 3)
+            if isinstance(resp, list):
+                # Optionally inject latency into each element, or just skip it
+                pass 
+            else:
+                resp["_ipc_latency_ms"] = round((t1 - t0) * 1000, 3)
             return resp
         except json.JSONDecodeError:
             logger.error(f"Failed to decode Lean output: {response_str}")
-            return {"passed_swampland": False, "formal_reason": "RPC Decode Error", "penalty_score": 9999.9}
+            return {"passed_swampland": False, "formal_reason": f"RPC Decode Error: {response_str}", "penalty_score": 9999.9}
 
     def evaluate_candidate(self, candidate_data: Dict[str, Any]) -> Dict[str, Any]:
         """Alias for send_and_receive for backwards compatibility."""
         return self.send_and_receive(candidate_data)
 
     def batch_evaluate(self, candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Evaluates all Tier 1 survivors in a high-speed batch."""
-        return [self.send_and_receive(cand) for cand in candidates]
+        """Evaluates all Tier 1 survivors in a high-speed batch via a single JSON-RPC call."""
+        if not candidates:
+            return []
+        # The Lean daemon now supports receiving an array of candidates natively
+        return self.send_and_receive(candidates)
 
     def close(self):
         """Safely terminates the Oracle daemon."""

@@ -1,0 +1,129 @@
+2026-07-30 21:00:31,847 - INFO - ═══════════════════════════════════════════════════════
+2026-07-30 21:00:31,848 - INFO -   Phase 7: MCMC Posterior Characterization
+2026-07-30 21:00:31,848 - INFO -   Candidate: cooper_s10_g120_39 (Deep Burn Gen 150)
+2026-07-30 21:00:31,848 - INFO - ═══════════════════════════════════════════════════════
+2026-07-30 21:00:31,849 - INFO - Loading seed candidate from gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0150.json
+2026-07-30 21:00:36,773 - INFO - Seed candidate: cooper_s10_g120_39
+2026-07-30 21:00:36,773 - INFO - Seed χ² = 1.9774028401080412e-06
+2026-07-30 21:00:36,774 - INFO - Loaded 12 DESI DR1 BAO data points from /home/xavkal/xdev/SocrateAI-Scientific-AutoEvolve-K3*T2/scripts/../data/desi_dr1/desi_2024_gaussian_bao_ALL_GCcomb_mean.txt
+2026-07-30 21:00:36,779 - INFO - Loaded 12×12 DESI covariance matrix from /home/xavkal/xdev/SocrateAI-Scientific-AutoEvolve-K3*T2/scripts/../data/desi_dr1/desi_2024_gaussian_bao_ALL_GCcomb_cov.txt (log|C| = -23.4796)
+2026-07-30 21:00:36,780 - INFO - Launching 4-chain MCMC with iterative convergence control...
+2026-07-30 21:00:36,781 - INFO - ═══════════════════════════════════════════════════════
+  Multi-Node MCMC Coordinator
+  Candidate:    cooper_s10_g120_39
+  Chains:       4
+  Steps/chain:  10000
+  Burn-in:      2000
+  Thin factor:  5
+  R̂ threshold:  1.05
+  Workers:      1
+═══════════════════════════════════════════════════════
+2026-07-30 21:00:36,781 - INFO - ━━━ Convergence Iteration 1/5 ━━━
+2026-07-30 21:00:36,790 - INFO - Chain 0: Starting 10000 steps (burn-in=2000, thin=5)
+2026-07-30 21:00:41,111 - INFO - Chain 0: Step 1000/10000 | acceptance=0.225 | log_post=15.5159
+2026-07-30 21:00:46,028 - INFO - Chain 0: Step 2000/10000 | acceptance=0.147 | log_post=16.1213
+2026-07-30 21:00:50,365 - INFO - Chain 0: Step 3000/10000 | acceptance=0.115 | log_post=14.9579
+2026-07-30 21:00:55,645 - INFO - Chain 0: Step 4000/10000 | acceptance=0.098 | log_post=15.0071
+2026-07-30 21:00:58,695 - INFO - Chain 0: Step 5000/10000 | acceptance=0.089 | log_post=14.7812
+2026-07-30 21:01:02,583 - INFO - Chain 0: Step 6000/10000 | acceptance=0.082 | log_post=15.2319
+2026-07-30 21:01:05,946 - INFO - Chain 0: Step 7000/10000 | acceptance=0.075 | log_post=13.7020
+2026-07-30 21:01:08,846 - INFO - Chain 0: Step 8000/10000 | acceptance=0.071 | log_post=15.4834
+2026-07-30 21:01:11,857 - INFO - Chain 0: Step 9000/10000 | acceptance=0.066 | log_post=15.8013
+2026-07-30 21:01:15,127 - INFO - Chain 0: Step 10000/10000 | acceptance=0.063 | log_post=14.8028
+2026-07-30 21:01:15,128 - INFO - Chain 0: Complete. Acceptance=0.063, Kept 1600 samples
+2026-07-30 21:01:15,147 - INFO - Chain 1: Starting 10000 steps (burn-in=2000, thin=5)
+2026-07-30 21:01:25,973 - INFO - Chain 1: Step 1000/10000 | acceptance=0.288 | log_post=15.8837
+2026-07-30 21:01:32,460 - INFO - Chain 1: Step 2000/10000 | acceptance=0.183 | log_post=15.0327
+2026-07-30 21:01:36,569 - INFO - Chain 1: Step 3000/10000 | acceptance=0.138 | log_post=15.8673
+2026-07-30 21:01:40,846 - INFO - Chain 1: Step 4000/10000 | acceptance=0.120 | log_post=14.5974
+2026-07-30 21:01:45,606 - INFO - Chain 1: Step 5000/10000 | acceptance=0.104 | log_post=15.5370
+2026-07-30 21:01:49,690 - INFO - Chain 1: Step 6000/10000 | acceptance=0.096 | log_post=14.9386
+2026-07-30 21:01:54,135 - INFO - Chain 1: Step 7000/10000 | acceptance=0.088 | log_post=15.4274
+2026-07-30 21:01:57,913 - INFO - Chain 1: Step 8000/10000 | acceptance=0.082 | log_post=14.3187
+2026-07-30 21:02:01,656 - INFO - Chain 1: Step 9000/10000 | acceptance=0.079 | log_post=15.0897
+2026-07-30 21:02:06,166 - INFO - Chain 1: Step 10000/10000 | acceptance=0.076 | log_post=15.6635
+2026-07-30 21:02:06,166 - INFO - Chain 1: Complete. Acceptance=0.076, Kept 1600 samples
+2026-07-30 21:02:06,175 - INFO - Chain 2: Starting 10000 steps (burn-in=2000, thin=5)
+2026-07-30 21:02:11,561 - INFO - Chain 2: Step 1000/10000 | acceptance=0.291 | log_post=15.6688
+2026-07-30 21:02:15,049 - INFO - Chain 2: Step 2000/10000 | acceptance=0.180 | log_post=15.8146
+2026-07-30 21:02:19,206 - INFO - Chain 2: Step 3000/10000 | acceptance=0.144 | log_post=15.5139
+2026-07-30 21:02:22,962 - INFO - Chain 2: Step 4000/10000 | acceptance=0.124 | log_post=15.7371
+2026-07-30 21:02:26,055 - INFO - Chain 2: Step 5000/10000 | acceptance=0.114 | log_post=14.9959
+2026-07-30 21:02:29,183 - INFO - Chain 2: Step 6000/10000 | acceptance=0.104 | log_post=13.5794
+2026-07-30 21:02:32,101 - INFO - Chain 2: Step 7000/10000 | acceptance=0.096 | log_post=15.6847
+2026-07-30 21:02:34,832 - INFO - Chain 2: Step 8000/10000 | acceptance=0.090 | log_post=15.4770
+2026-07-30 21:02:37,730 - INFO - Chain 2: Step 9000/10000 | acceptance=0.086 | log_post=15.5290
+2026-07-30 21:02:40,764 - INFO - Chain 2: Step 10000/10000 | acceptance=0.083 | log_post=13.1306
+2026-07-30 21:02:40,764 - INFO - Chain 2: Complete. Acceptance=0.083, Kept 1600 samples
+2026-07-30 21:02:40,772 - INFO - Chain 3: Starting 10000 steps (burn-in=2000, thin=5)
+2026-07-30 21:02:45,774 - INFO - Chain 3: Step 1000/10000 | acceptance=0.291 | log_post=15.5374
+2026-07-30 21:02:49,929 - INFO - Chain 3: Step 2000/10000 | acceptance=0.176 | log_post=15.4189
+2026-07-30 21:02:55,432 - INFO - Chain 3: Step 3000/10000 | acceptance=0.134 | log_post=16.2754
+2026-07-30 21:02:58,216 - INFO - Chain 3: Step 4000/10000 | acceptance=0.112 | log_post=10.6777
+2026-07-30 21:03:00,942 - INFO - Chain 3: Step 5000/10000 | acceptance=0.097 | log_post=15.3476
+2026-07-30 21:03:04,587 - INFO - Chain 3: Step 6000/10000 | acceptance=0.086 | log_post=14.8393
+2026-07-30 21:03:08,600 - INFO - Chain 3: Step 7000/10000 | acceptance=0.080 | log_post=14.9492
+2026-07-30 21:03:11,756 - INFO - Chain 3: Step 8000/10000 | acceptance=0.076 | log_post=15.8783
+2026-07-30 21:03:15,010 - INFO - Chain 3: Step 9000/10000 | acceptance=0.072 | log_post=13.9470
+2026-07-30 21:03:18,212 - INFO - Chain 3: Step 10000/10000 | acceptance=0.070 | log_post=13.1203
+2026-07-30 21:03:18,213 - INFO - Chain 3: Complete. Acceptance=0.070, Kept 1600 samples
+2026-07-30 21:03:18,229 - INFO - Saved 4 chain checkpoints to outputs/mcmc/chains (iteration 1)
+2026-07-30 21:03:18,229 - INFO - Running convergence diagnostics on 4 chains...
+2026-07-30 21:03:18,261 - INFO - Convergence: ✅ PASSED
+2026-07-30 21:03:18,262 - INFO -   t2_modulus_tau: R̂=1.0189, n_eff=196
+2026-07-30 21:03:18,262 - INFO -   cs_1: R̂=1.0463, n_eff=247
+2026-07-30 21:03:18,263 - INFO -   cs_2: R̂=1.0227, n_eff=223
+2026-07-30 21:03:18,263 - INFO -   cs_3: R̂=1.0261, n_eff=225
+2026-07-30 21:03:18,263 - INFO -   picard_offset: R̂=1.0132, n_eff=265
+2026-07-30 21:03:18,263 - INFO - ╔══════════════════════════════════════════════════════════════╗
+║               MCMC Convergence Diagnostics                  ║
+╠══════════════════════════════════════════════════════════════╣
+║ ✅ t2_modulus_tau     R̂=1.0189  n_eff=    196  τ_int=  33.4  Geweke_z= +3.66 ║
+║ ✅ cs_1               R̂=1.0463  n_eff=    247  τ_int=  26.8  Geweke_z= +7.01 ║
+║ ✅ cs_2               R̂=1.0227  n_eff=    223  τ_int=  29.3  Geweke_z= +1.81 ║
+║ ✅ cs_3               R̂=1.0261  n_eff=    225  τ_int=  27.4  Geweke_z= +5.55 ║
+║ ✅ picard_offset      R̂=1.0132  n_eff=    265  τ_int=  23.3  Geweke_z= +3.16 ║
+╠══════════════════════════════════════════════════════════════╣
+║ Overall: ✅ CONVERGED                                        ║
+╚══════════════════════════════════════════════════════════════╝
+2026-07-30 21:03:18,264 - INFO - ✅ Convergence achieved at iteration 1. Finalizing results.
+2026-07-30 21:03:18,264 - INFO - MCMC completed in 166.4s (0.05h)
+2026-07-30 21:03:18,264 - INFO - Convergence iterations: 1
+2026-07-30 21:03:18,265 - INFO - Total merged samples: (6400, 5)
+2026-07-30 21:03:18,265 - INFO - Computing posterior summary statistics...
+2026-07-30 21:03:18,266 - INFO -   t2_modulus_tau: mean=0.57009 ± 0.29780  68% HPD=[0.25109, 0.72146]  95% HPD=[0.01854, 1.23084]
+2026-07-30 21:03:18,268 - INFO -   cs_1: mean=0.09333 ± 1.76909  68% HPD=[-1.07037, 2.81674]  95% HPD=[-2.98069, 2.70125]
+2026-07-30 21:03:18,269 - INFO -   cs_2: mean=0.07986 ± 1.69454  68% HPD=[-1.13336, 2.66734]  95% HPD=[-2.89645, 2.66734]
+2026-07-30 21:03:18,270 - INFO -   cs_3: mean=0.12784 ± 1.73611  68% HPD=[-0.86703, 2.96754]  95% HPD=[-2.70336, 2.96754]
+2026-07-30 21:03:18,271 - INFO -   picard_offset: mean=1.02222 ± 1.14326  68% HPD=[-0.48914, 1.99835]  95% HPD=[-0.62975, 2.99950]
+2026-07-30 21:03:18,274 - INFO - Posterior summary saved to outputs/mcmc/posterior_cooper_s10_g120_39.json
+2026-07-30 21:03:18,275 - INFO - LaTeX table saved to outputs/mcmc/latex_table_cooper_s10_g120_39.tex
+2026-07-30 21:03:18,275 - INFO - Generating publication corner plot...
+2026-07-30 21:03:41,061 - INFO - Corner plot saved to paper/figures/dual_track_corner.pdf
+2026-07-30 21:03:41,062 - INFO - Archiving results to GCS Data Lake...
+2026-07-30 21:04:01,280 - INFO - ═══════════════════════════════════════════════════════
+2026-07-30 21:04:01,281 - INFO -   Phase 7 MCMC COMPLETE
+2026-07-30 21:04:01,281 - INFO -   Runtime: 166.4s
+2026-07-30 21:04:01,282 - INFO -   Converged: True
+2026-07-30 21:04:01,282 - INFO -   Effective samples: 6400
+2026-07-30 21:04:01,282 - INFO - ═══════════════════════════════════════════════════════
+
+============================================================
+  POSTERIOR SUMMARY
+============================================================
+  t2_modulus_tau      : 0.57009 ± 0.29780
+                        68% HPD: [0.25109, 0.72146]
+                        95% HPD: [0.01854, 1.23084]
+  cs_1                : 0.09333 ± 1.76909
+                        68% HPD: [-1.07037, 2.81674]
+                        95% HPD: [-2.98069, 2.70125]
+  cs_2                : 0.07986 ± 1.69454
+                        68% HPD: [-1.13336, 2.66734]
+                        95% HPD: [-2.89645, 2.66734]
+  cs_3                : 0.12784 ± 1.73611
+                        68% HPD: [-0.86703, 2.96754]
+                        95% HPD: [-2.70336, 2.96754]
+  picard_offset       : 1.02222 ± 1.14326
+                        68% HPD: [-0.48914, 1.99835]
+                        95% HPD: [-0.62975, 2.99950]
+============================================================

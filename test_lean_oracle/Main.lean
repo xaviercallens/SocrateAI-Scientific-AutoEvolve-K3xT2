@@ -35,15 +35,23 @@ partial def rpcLoop (stdin stdout : IO.FS.Stream) : IO Unit := do
 
   match Json.parse line with
   | Except.ok j =>
-    match fromJson? j (α := K3Candidate) with
-    | Except.ok candidate =>
-      let result := verifySwamplandBounds candidate
-      stdout.putStrLn (toJson result |>.compress)
+    match fromJson? j (α := Array K3Candidate) with
+    | Except.ok candidates =>
+      -- Batch Mode
+      let results := candidates.map verifySwamplandBounds
+      stdout.putStrLn (toJson results |>.compress)
       stdout.flush
-    | Except.error err =>
-      let errJson := Json.mkObj [("error", Json.str s!"Schema mismatch: {err}")]
-      stdout.putStrLn errJson.compress
-      stdout.flush
+    | Except.error _ =>
+      -- Fallback to Single Candidate Mode
+      match fromJson? j (α := K3Candidate) with
+      | Except.ok candidate =>
+        let result := verifySwamplandBounds candidate
+        stdout.putStrLn (toJson result |>.compress)
+        stdout.flush
+      | Except.error err =>
+        let errJson := Json.mkObj [("error", Json.str s!"Schema mismatch (expected candidate or array of candidates): {err}")]
+        stdout.putStrLn errJson.compress
+        stdout.flush
   | Except.error err =>
     let errJson := Json.mkObj [("error", Json.str s!"Invalid JSON: {err}")]
     stdout.putStrLn errJson.compress

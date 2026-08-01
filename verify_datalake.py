@@ -20,11 +20,16 @@ import sys
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 
-BUCKET = "socrateai-datalake-gen-lang-client-0625573011"
+import os
+
+BUCKET = os.getenv("GCS_BUCKET", "socrateai-datalake-gen-lang-client-0625573011")
+STORAGE_DIR = os.getenv("STORAGE_DIR", BUCKET)
+
 STREAMS = {
-    "DESI DR1 BAO Likelihoods":   f"{BUCKET}/stream3_desi_dr1",
-    "Euclid Q2 Tensors":           f"{BUCKET}/stream3_euclid_q2",
-    "Calabi-Yau ML Datasets":      f"{BUCKET}/stream2_cy4_ml",
+    "DESI DR1 BAO Likelihoods":   f"{STORAGE_DIR}/stream3_desi_dr1",
+    "Euclid Q2 Tensors":           f"{STORAGE_DIR}/stream3_euclid_q2",
+    "Calabi-Yau ML Datasets":      f"{STORAGE_DIR}/stream2_cy4_ml",
+    "Euclid Q1 Catalogs":          f"{STORAGE_DIR}/euclid_q1",
 }
 
 SIZE_THRESHOLD_REAL_MB = 0.1   # > 100 KB assumed real data

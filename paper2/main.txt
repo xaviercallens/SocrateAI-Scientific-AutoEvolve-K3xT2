@@ -134,7 +134,7 @@ Each node in the K_4 clique carries a physical mass determined by the volume of 
     
 ]
 
-where \kappa_{10}^2 = (2\pi)^7 \alpha'^4 is the 10-dimensional gravitational coupling and \tau is the T^2 complex structure modulus.  At the Cooper s_{10} fixed point with \tau = 0.50 and Picard number P = 19, the volume integral over the K3 K\"ahler class is determined by the h^{1,1} = 19 harmonic 2-forms.
+where \kappa_{10}^2 = (2\pi)^7 \alpha'^4 is the 10-dimensional gravitational coupling and \tau is the T^2 complex structure modulus.  At the Cooper s_{10} fixed point with \tau = 0.50 and Picard number P = 19, the volume integral over the K3 K\"ahler class is determined by the h^{1,1} = 19 harmonic 2-forms. The cosmological background evolution and the stabilization of \tau are derived via the 4D effective field theory in our companion paper~[Callens2026Paper1].
 
 The crucial point is that m_i \propto Vol(K3)_i is _derived from the compactification geometry_, not assigned ad hoc.  The specific numerical value is an output of the theory, not an input.  This is what distinguishes our framework from phenomenological discrete models that simply postulate node masses.
 
@@ -311,7 +311,7 @@ with \lambda_1 = 3 and \lambda_2 = -1 (the K_4 eigenvalues from Eq.~(eq:K4_eigen
     
 ]
 
-encoding the Picard-number-dependent correction from the K3 fibre volume modulation.
+encoding the Picard-number-dependent correction from the K3 fibre volume modulation. Here, \log without a subscript denotes the natural logarithm \ln (noting that ratios of unsubscripted logarithms such as \log(10)/\log(3) = \log_3(10) are invariant under any choice of base), while \log_3 2 \equiv \ln(2)/\ln(3) \approx 0.63093 explicitly specifies base 3.
 
 The base spectral contribution evaluates to
 

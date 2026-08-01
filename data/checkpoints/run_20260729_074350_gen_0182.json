@@ -1,0 +1,336 @@
+{
+  "run_id": "20260729_074350",
+  "generation": 182,
+  "best_candidate": {
+    "name": "Cooper_s10",
+    "picard_fuchs_coefficients": [
+      0.5,
+      -1.8,
+      1.2,
+      -0.3
+    ],
+    "hodge_numbers": {
+      "h11": 3,
+      "h21": 19,
+      "h22": 156
+    },
+    "kodaira_fiber_type": "II",
+    "complex_structure_tau": [
+      0.1,
+      1.5
+    ],
+    "kahler_modulus_rho": [
+      2.0,
+      0.8
+    ],
+    "candidate_id": "cooper_s10_g120_39",
+    "picard_number": 19,
+    "moduli_stabilization": 0.75,
+    "complex_structure": [
+      0.1442076635760447,
+      -1.4270030737098205,
+      0.968729155608357
+    ],
+    "t2_modulus_tau": 0.4999066173136379,
+    "formal_reason": "Distance and dS conjectures satisfied.",
+    "phenotype": {
+      "w0": -0.999953308656819,
+      "omega_m": 0.3,
+      "h0": 67.39744127758337,
+      "pta_f_monopole": 9.99990661731364e-10,
+      "s8_gradient": 0.83,
+      "pta_anisotropy": 0.04970988472560064,
+      "lya_spectral_tilt": -7.16070573997119e-06,
+      "gw_polarisation": 0.8244896093649469,
+      "cs_magnitude": 1.730771446360558,
+      "cs_theta_rad": 0.9767611675560857,
+      "cs_phi_rad": -1.4700819335481747
+    },
+    "likelihood": {
+      "chi2": 1.9774028401080412e-06,
+      "fitness": 0.99999802260107,
+      "chi2_w0": 3.4063773875756447e-07,
+      "chi2_om": 0.0,
+      "chi2_h0": 1.636765101350477e-06
+    },
+    "chi2_loss": 1.9774028401080412e-06,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  "population": [
+    {
+      "name": "Cooper_s10",
+      "picard_fuchs_coefficients": [
+        0.5,
+        -1.8,
+        1.2,
+        -0.3
+      ],
+      "hodge_numbers": {
+        "h11": 3,
+        "h21": 19,
+        "h22": 156
+      },
+      "kodaira_fiber_type": "II",
+      "complex_structure_tau": [
+        0.1,
+        1.5
+      ],
+      "kahler_modulus_rho": [
+        2.0,
+        0.8
+      ],
+      "candidate_id": "cooper_s10_g120_39",
+      "picard_number": 19,
+      "moduli_stabilization": 0.75,
+      "complex_structure": [
+        0.1442076635760447,
+        -1.4270030737098205,
+        0.968729155608357
+      ],
+      "t2_modulus_tau": 0.4999066173136379,
+      "formal_reason": "Distance and dS conjectures satisfied.",
+      "phenotype": {
+        "w0": -0.999953308656819,
+        "omega_m": 0.3,
+        "h0": 67.39744127758337,
+        "pta_f_monopole": 9.99990661731364e-10,
+        "s8_gradient": 0.83,
+        "pta_anisotropy": 0.04970988472560064,
+        "lya_spectral_tilt": -7.16070573997119e-06,
+        "gw_polarisation": 0.8244896093649469,
+        "cs_magnitude": 1.730771446360558,
+        "cs_theta_rad": 0.9767611675560857,
+        "cs_phi_rad": -1.4700819335481747
+      },
+      "likelihood": {
+        "chi2": 1.9774028401080412e-06,
+        "fitness": 0.99999802260107,
+        "chi2_w0": 3.4063773875756447e-07,
+        "chi2_om": 0.0,
+        "chi2_h0": 1.636765101350477e-06
+      },
+      "chi2_loss": 1.9774028401080412e-06,
+      "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+    },
+    {
+      "name": "Cooper_s10",
+      "picard_fuchs_coefficients": [
+        0.5,
+        -1.8,
+        1.2,
+        -0.3
+      ],
+      "hodge_numbers": {
+        "h11": 3,
+        "h21": 19,
+        "h22": 156
+      },
+      "kodaira_fiber_type": "II",
+      "complex_structure_tau": [
+        0.1,
+        1.5
+      ],
+      "kahler_modulus_rho": [
+        2.0,
+        0.8
+      ],
+      "candidate_id": "cooper_s10_g182_6",
+      "picard_number": 19,
+      "moduli_stabilization": 0.75,
+      "complex_structure": [
+        0.14007540822460698,
+        -1.4045163390463193,
+        0.9777009365973487
+      ],
+      "t2_modulus_tau": 0.5030853276571966,
+      "formal_reason": "Distance and dS conjectures satisfied.",
+      "phenotype": {
+        "w0": -1.0015426638285982,
+        "omega_m": 0.3,
+        "h0": 67.3699551042894,
+        "pta_f_monopole": 1.0003085327657198e-09,
+        "s8_gradient": 0.83,
+        "pta_anisotropy": 0.04932165732671621,
+        "lya_spectral_tilt": -8.554000436289421e-05,
+        "gw_polarisation": 0.817992510782181,
+        "cs_magnitude": 1.7170283597135776,
+        "cs_theta_rad": 0.9650028257737985,
+        "cs_phi_rad": -1.4713928976648232
+      },
+      "likelihood": {
+        "chi2": 0.0005975195158254671,
+        "fitness": 0.9994028373005416,
+        "chi2_w0": 0.00037184557626021813,
+        "chi2_om": 0.0,
+        "chi2_h0": 0.00022567393956524903
+      },
+      "chi2_loss": 0.0005975195158254671,
+      "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+    },
+    {
+      "name": "Cooper_s10",
+      "picard_fuchs_coefficients": [
+        0.5,
+        -1.8,
+        1.2,
+        -0.3
+      ],
+      "hodge_numbers": {
+        "h11": 3,
+        "h21": 19,
+        "h22": 156
+      },
+      "kodaira_fiber_type": "II",
+      "complex_structure_tau": [
+        0.1,
+        1.5
+      ],
+      "kahler_modulus_rho": [
+        2.0,
+        0.8
+      ],
+      "candidate_id": "cooper_s10_g182_24",
+      "picard_number": 19,
+      "moduli_stabilization": 0.75,
+      "complex_structure": [
+        0.1405223109408289,
+        -1.3884358702751791,
+        1.034300123768802
+      ],
+      "t2_modulus_tau": 0.4950980843480992,
+      "formal_reason": "Distance and dS conjectures satisfied.",
+      "phenotype": {
+        "w0": -0.9975490421740496,
+        "omega_m": 0.3,
+        "h0": 67.40996080903778,
+        "pta_f_monopole": 9.9950980843481e-10,
+        "s8_gradient": 0.83,
+        "pta_anisotropy": 0.049888909925766486,
+        "lya_spectral_tilt": 2.9655385432696156e-05,
+        "gw_polarisation": 0.799315441549489,
+        "cs_magnitude": 1.7370312120877691,
+        "cs_theta_rad": 0.932981498004123,
+        "cs_phi_rad": -1.4699307136236681
+      },
+      "likelihood": {
+        "chi2": 0.0009634285330135674,
+        "fitness": 0.9990374987681363,
+        "chi2_w0": 0.0009386241038417949,
+        "chi2_om": 0.0,
+        "chi2_h0": 2.4804429171772548e-05
+      },
+      "chi2_loss": 0.0009634285330135674,
+      "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+    },
+    {
+      "name": "Cooper_s10",
+      "picard_fuchs_coefficients": [
+        0.5,
+        -1.8,
+        1.2,
+        -0.3
+      ],
+      "hodge_numbers": {
+        "h11": 3,
+        "h21": 19,
+        "h22": 156
+      },
+      "kodaira_fiber_type": "II",
+      "complex_structure_tau": [
+        0.1,
+        1.5
+      ],
+      "kahler_modulus_rho": [
+        2.0,
+        0.8
+      ],
+      "candidate_id": "cooper_s10_g182_25",
+      "picard_number": 19,
+      "moduli_stabilization": 0.75,
+      "complex_structure": [
+        0.1588275934251036,
+        -1.3995100548605797,
+        0.9911136235743829
+      ],
+      "t2_modulus_tau": 0.5052815022470253,
+      "formal_reason": "Distance and dS conjectures satisfied.",
+      "phenotype": {
+        "w0": -1.0026407511235127,
+        "omega_m": 0.3,
+        "h0": 67.38040753010998,
+        "pta_f_monopole": 1.0005281502247027e-09,
+        "s8_gradient": 0.83,
+        "pta_anisotropy": 0.04940009991219131,
+        "lya_spectral_tilt": -5.637483603218869e-05,
+        "gw_polarisation": 0.8126034775035708,
+        "cs_magnitude": 1.7222545726238663,
+        "cs_theta_rad": 0.9576120713770612,
+        "cs_phi_rad": -1.4577918224461295
+      },
+      "likelihood": {
+        "chi2": 0.0011855859841500387,
+        "fitness": 0.9988158179654727,
+        "chi2_w0": 0.0010896197650521204,
+        "chi2_om": 0.0,
+        "chi2_h0": 9.596621909791831e-05
+      },
+      "chi2_loss": 0.0011855859841500387,
+      "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+    },
+    {
+      "name": "Cooper_s10",
+      "picard_fuchs_coefficients": [
+        0.5,
+        -1.8,
+        1.2,
+        -0.3
+      ],
+      "hodge_numbers": {
+        "h11": 3,
+        "h21": 19,
+        "h22": 156
+      },
+      "kodaira_fiber_type": "II",
+      "complex_structure_tau": [
+        0.1,
+        1.5
+      ],
+      "kahler_modulus_rho": [
+        2.0,
+        0.8
+      ],
+      "candidate_id": "cooper_s10_g182_17",
+      "picard_number": 19,
+      "moduli_stabilization": 0.75,
+      "complex_structure": [
+        0.15831102139542674,
+        -1.4514301755184553,
+        0.975202540821099
+      ],
+      "t2_modulus_tau": 0.49439894140438384,
+      "formal_reason": "Distance and dS conjectures satisfied.",
+      "phenotype": {
+        "w0": -0.997199470702192,
+        "omega_m": 0.3,
+        "h0": 67.44744045610373,
+        "pta_f_monopole": 9.994398941404384e-10,
+        "s8_gradient": 0.83,
+        "pta_anisotropy": 0.050385914684403156,
+        "lya_spectral_tilt": 0.00013174853779754963,
+        "gw_polarisation": 0.8266625579714687,
+        "cs_magnitude": 1.7557710356207397,
+        "cs_theta_rad": 0.9819200264678317,
+        "cs_phi_rad": -1.4621533692271333
+      },
+      "likelihood": {
+        "chi2": 0.001788112398188905,
+        "fitness": 0.9982150792407505,
+        "chi2_w0": 0.001225463179356447,
+        "chi2_om": 0.0,
+        "chi2_h0": 0.0005626492188324579
+      },
+      "chi2_loss": 0.001788112398188905,
+      "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+    }
+  ]
+}

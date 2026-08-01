@@ -44,35 +44,40 @@ class BigQueryTool:
 # Initialize Vertex AI for project if SDK available
 if aiplatform is not None:
     try:
+        project_id = os.environ.get("GCP_PROJECT_ID", "gen-lang-client-0625573011")
+        location = os.environ.get("GCP_REGION", "us-east4")
         aiplatform.init(
-            project="gen-lang-client-0625573011",
-            location="us-east4",
+            project=project_id,
+            location=location,
         )
     except Exception as e:
         print(f"Vertex AI Init Note: {e}")
 
+from src.utils.redis_ledger import DistributedRedisLedger
 
 class SocrateAICoordinator:
     """
     Multi-model T1 Coordinator leveraging Gemini low-tier models (Flash) for task routing,
     Pro for intermediate reasoning, and Ultra for complex scientific discoveries.
+    With fault-tolerance via Redis Ledger.
     """
 
     def __init__(
         self,
-        project_id: str = "gen-lang-client-0625573011",
+        project_id: str = None,
         router: Optional[ModelRouter] = None,
         classifier: Optional[TierClassifier] = None,
         cost_tracker: Optional[CostTracker] = None,
         escalation_protocol: Optional[EscalationProtocol] = None,
     ):
-        self.project_id = project_id
+        self.project_id = project_id or os.environ.get("GCP_PROJECT_ID", "gen-lang-client-0625573011")
         self.router = router or ModelRouter()
         self.classifier = classifier or TierClassifier()
         self.cost_tracker = cost_tracker or CostTracker()
         self.escalation = escalation_protocol or EscalationProtocol(
             router=self.router, cost_tracker=self.cost_tracker
         )
+        self.ledger = DistributedRedisLedger()
 
         self.tools = [
             GCPComputeTool(project_id=self.project_id),
@@ -80,11 +85,24 @@ class SocrateAICoordinator:
             BigQueryTool(project_id=self.project_id),
         ]
 
-    def dispatch_directive(self, directive: str) -> Dict[str, Any]:
+    def dispatch_directive(self, directive: str, max_retries: int = 3) -> Dict[str, Any]:
         """
         Main entry point for processing incoming natural language directives with
-        tiered model routing, budget check, and escalation fallback.
+        tiered model routing, budget check, and fault-tolerant escalation fallback.
         """
+        import hashlib
+        # Create a unique task ID for idempotency and resume capability
+        task_id = hashlib.md5(directive.encode('utf-8')).hexdigest()
+        
+        # Check if already processed
+        cached_state = self.ledger.get_task_state(task_id)
+        if cached_state:
+            import json
+            state = json.loads(cached_state)
+            if state.get("status") == "COMPLETED":
+                print(f"Task {task_id} already completed, returning cached result.")
+                return state.get("result", {})
+
         # 1. Check budget ceiling
         if self.cost_tracker.is_over_budget():
             print("WARNING: Monthly budget limit reached. Routing restricted.")
@@ -122,14 +140,38 @@ class SocrateAICoordinator:
                 "llm_ready": llm_instance is not None,
             }
 
-        # 5. Execute with escalation fallback
-        res = self.escalation.execute_with_escalation(
-            action=action,
-            execution_func=execute_task,
-            validator_func=lambda r: r is not None and r.get("status") == "DISPATCHED",
-        )
-
-        return res
+        # 5. Execute with fault-tolerant retries and escalation fallback
+        attempt = 0
+        last_error = None
+        while attempt < max_retries:
+            try:
+                res = self.escalation.execute_with_escalation(
+                    action=action,
+                    execution_func=execute_task,
+                    validator_func=lambda r: r is not None and r.get("status") == "DISPATCHED",
+                )
+                
+                # Save success state
+                import json
+                self.ledger.set_task_state(
+                    task_id,
+                    json.dumps({"status": "COMPLETED", "result": res}),
+                    expire_secs=86400 # Expire in 1 day
+                )
+                return res
+            except Exception as e:
+                attempt += 1
+                last_error = e
+                print(f"⚠️ Task {task_id} failed on attempt {attempt}/{max_retries}: {e}")
+                import time
+                time.sleep(2 ** attempt) # Exponential backoff
+                
+        # If all retries fail
+        return {
+            "status": "FAILED",
+            "error": str(last_error),
+            "directive": directive
+        }
 
 
 def initialize_socrateai_coordinator(
