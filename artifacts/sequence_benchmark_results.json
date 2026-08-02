@@ -1,5 +1,40 @@
 [
   {
+    "candidate_id": "apery_zeta3",
+    "sequence_type": "Ap\u00e9ry Class (Rank 1)",
+    "picard_number": 19,
+    "t2_modulus_tau": 0.48,
+    "complex_structure": [
+      1.0,
+      1.0,
+      0.5
+    ],
+    "phenotype": {
+      "w0": -0.7000655204127197,
+      "omega_m": 0.3109993069277961,
+      "h0": 69.26134779453447,
+      "s8_gradient": 0.83,
+      "pta_f_monopole": 9.98e-10,
+      "pta_spectral_index": 4.847619047619047,
+      "pta_anisotropy": 0.03061862178478973,
+      "lya_spectral_tilt": -0.0007735026918962571,
+      "gw_polarisation": 0.6666666666666666,
+      "cs_magnitude": 1.5,
+      "cs_theta_rad": 1.2309594173407747,
+      "cs_phi_rad": 0.7853981633974483,
+      "slow_roll_epsilon": 2.166220722501457
+    },
+    "likelihood": {
+      "chi2": 15.056939538344738,
+      "fitness": 0.06227836865250395,
+      "chi2_w0": 14.056358132076975,
+      "chi2_om": 0.13442750321318153,
+      "chi2_h0": 0.8661539030545811
+    },
+    "chi2_loss": 31.12398832827229,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
     "candidate_id": "cooper_s11",
     "sequence_type": "Ap\u00e9ry-like",
     "picard_number": 19,
@@ -32,6 +67,76 @@
       "chi2_h0": 0.8661539030545811
     },
     "chi2_loss": 31.13657237017396,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
+    "candidate_id": "domb_rank2",
+    "sequence_type": "Domb Class (Rank 2)",
+    "picard_number": 19,
+    "t2_modulus_tau": 0.47,
+    "complex_structure": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "phenotype": {
+      "w0": -0.7000577854303414,
+      "omega_m": 0.3175294633796696,
+      "h0": 69.24145988051812,
+      "s8_gradient": 0.83,
+      "pta_f_monopole": 9.97e-10,
+      "pta_spectral_index": 4.847619047619047,
+      "pta_anisotropy": 0.03181980515339464,
+      "lya_spectral_tilt": -0.0009999999999999998,
+      "gw_polarisation": 0.5773502691896257,
+      "cs_magnitude": 1.5588457268119895,
+      "cs_theta_rad": 0.9553166181245092,
+      "cs_phi_rad": 0.7853981633974483,
+      "slow_roll_epsilon": 2.2635892987702757
+    },
+    "likelihood": {
+      "chi2": 15.246251300959372,
+      "fitness": 0.06155266107086181,
+      "chi2_w0": 14.057083137648616,
+      "chi2_om": 0.34142454042130826,
+      "chi2_h0": 0.8477436228894483
+    },
+    "chi2_loss": 31.270600712802963,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
+    "candidate_id": "apery_zeta2",
+    "sequence_type": "Ap\u00e9ry Class (Rank 1)",
+    "picard_number": 19,
+    "t2_modulus_tau": 0.49,
+    "complex_structure": [
+      0.8,
+      1.2,
+      0.2
+    ],
+    "phenotype": {
+      "w0": -0.7000742208263379,
+      "omega_m": 0.30387117700140087,
+      "h0": 69.28124158551182,
+      "s8_gradient": 0.83,
+      "pta_f_monopole": 9.99e-10,
+      "pta_spectral_index": 4.847619047619047,
+      "pta_anisotropy": 0.03497251668205941,
+      "lya_spectral_tilt": -0.00037915475715443234,
+      "gw_polarisation": 0.8241633836921342,
+      "cs_magnitude": 1.4560219778561037,
+      "cs_theta_rad": 1.4330001021490115,
+      "cs_phi_rad": 0.982793723247329,
+      "slow_roll_epsilon": 2.075160609629223
+    },
+    "likelihood": {
+      "chi2": 14.95696125778611,
+      "fitness": 0.0626685735363339,
+      "chi2_w0": 14.055542658270053,
+      "chi2_om": 0.016651123751305702,
+      "chi2_h0": 0.8847674757647529
+    },
+    "chi2_loss": 31.503321853385522,
     "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
   },
   {
@@ -175,6 +280,76 @@
     "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
   },
   {
+    "candidate_id": "cy_209_almkvist",
+    "sequence_type": "CY Class (Rank 3)",
+    "picard_number": 20,
+    "t2_modulus_tau": 0.44,
+    "complex_structure": [
+      1.0,
+      -0.5,
+      0.5
+    ],
+    "phenotype": {
+      "w0": -0.7000394550492932,
+      "omega_m": 0.35048306899554776,
+      "h0": 69.18183296355237,
+      "s8_gradient": 0.845,
+      "pta_f_monopole": 9.94e-10,
+      "pta_spectral_index": 4.904761904761904,
+      "pta_anisotropy": 0.015811388300841896,
+      "lya_spectral_tilt": -0.002071067811865476,
+      "gw_polarisation": 0.40824829046386296,
+      "cs_magnitude": 1.224744871391589,
+      "cs_theta_rad": 1.1502619915109313,
+      "cs_phi_rad": -0.4636476090008061,
+      "slow_roll_epsilon": 2.599832350118422
+    },
+    "likelihood": {
+      "chi2": 17.684244904540655,
+      "fitness": 0.05352102828394095,
+      "chi2_w0": 14.058801332363277,
+      "chi2_om": 2.83171139467693,
+      "chi2_h0": 0.7937321775004474
+    },
+    "chi2_loss": 38.8986964179571,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
+    "candidate_id": "zagier_case_e",
+    "sequence_type": "Sporadic (Medium)",
+    "picard_number": 18,
+    "t2_modulus_tau": 0.55,
+    "complex_structure": [
+      0.7,
+      0.7,
+      0.0
+    ],
+    "phenotype": {
+      "w0": -0.7001531360019857,
+      "omega_m": 0.2673638151682711,
+      "h0": 69.40071896470856,
+      "s8_gradient": 0.815,
+      "pta_f_monopole": 1.005e-09,
+      "pta_spectral_index": 4.79047619047619,
+      "pta_anisotropy": 0.0202072594216369,
+      "lya_spectral_tilt": -4.544059993600616e-19,
+      "gw_polarisation": 0.7071067811865475,
+      "cs_magnitude": 0.9899494936611665,
+      "cs_theta_rad": 1.5707963267948966,
+      "cs_phi_rad": 0.7853981633974483,
+      "slow_roll_epsilon": 1.6349262987292326
+    },
+    "likelihood": {
+      "chi2": 16.232333547212544,
+      "fitness": 0.05803044592075908,
+      "chi2_w0": 14.048147163975575,
+      "chi2_om": 1.1834672893008547,
+      "chi2_h0": 1.000719093936117
+    },
+    "chi2_loss": 42.69084014153037,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
     "candidate_id": "cooper_s8",
     "sequence_type": "Ap\u00e9ry-like",
     "picard_number": 17,
@@ -207,6 +382,76 @@
       "chi2_h0": 1.000719093936117
     },
     "chi2_loss": 45.9370082926588,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
+    "candidate_id": "cy_195_almkvist",
+    "sequence_type": "CY Class (Rank 3)",
+    "picard_number": 20,
+    "t2_modulus_tau": 0.42,
+    "complex_structure": [
+      0.5,
+      -0.5,
+      -0.5
+    ],
+    "phenotype": {
+      "w0": -0.7000305077454494,
+      "omega_m": 0.36606261996196265,
+      "h0": 69.14211393302739,
+      "s8_gradient": 0.845,
+      "pta_f_monopole": 9.92e-10,
+      "pta_spectral_index": 4.904761904761904,
+      "pta_anisotropy": 0.017677669529663688,
+      "lya_spectral_tilt": 0.004999999999999999,
+      "gw_polarisation": 0.5773502691896257,
+      "cs_magnitude": 0.8660254037844386,
+      "cs_theta_rad": 2.186276035465284,
+      "cs_phi_rad": -0.7853981633974483,
+      "slow_roll_epsilon": 2.868457160052855
+    },
+    "likelihood": {
+      "chi2": 19.667568901244557,
+      "fitness": 0.04838498445454715,
+      "chi2_w0": 14.059640044289516,
+      "chi2_om": 4.8491886180430095,
+      "chi2_h0": 0.7587402389120345
+    },
+    "chi2_loss": 46.874655845936665,
+    "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
+  },
+  {
+    "candidate_id": "zagier_case_h",
+    "sequence_type": "Sporadic (Medium)",
+    "picard_number": 18,
+    "t2_modulus_tau": 0.58,
+    "complex_structure": [
+      0.3,
+      0.3,
+      0.3
+    ],
+    "phenotype": {
+      "w0": -0.700216114383803,
+      "omega_m": 0.25627421425695446,
+      "h0": 69.4605242685017,
+      "s8_gradient": 0.815,
+      "pta_f_monopole": 1.008e-09,
+      "pta_spectral_index": 4.79047619047619,
+      "pta_anisotropy": 0.010606601717798215,
+      "lya_spectral_tilt": -0.006999999999999998,
+      "gw_polarisation": 0.5773502691896257,
+      "cs_magnitude": 0.5196152422706632,
+      "cs_theta_rad": 0.9553166181245093,
+      "cs_phi_rad": 0.7853981633974483,
+      "slow_roll_epsilon": 1.466935443693949
+    },
+    "likelihood": {
+      "chi2": 17.228069238231107,
+      "fitness": 0.0548604455540812,
+      "chi2_w0": 14.042246574241416,
+      "chi2_om": 2.1243825987185825,
+      "chi2_h0": 1.061440065271111
+    },
+    "chi2_loss": 48.928850525062074,
     "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
   }
 ]

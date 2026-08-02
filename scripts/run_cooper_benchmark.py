@@ -62,6 +62,56 @@ def benchmark_cooper_sequences():
             "picard_number": 20, 
             "t2_modulus_tau": 0.45,
             "complex_structure": [1.0, -1.0, 0.0]
+        },
+        # --- NEW STRATEGIC PLAN SEQUENCES ---
+        {
+            "candidate_id": "apery_zeta3",
+            "sequence_type": "Apéry Class (Rank 1)",
+            "picard_number": 19,
+            "t2_modulus_tau": 0.48,
+            "complex_structure": [1.0, 1.0, 0.5]
+        },
+        {
+            "candidate_id": "apery_zeta2",
+            "sequence_type": "Apéry Class (Rank 1)",
+            "picard_number": 19,
+            "t2_modulus_tau": 0.49,
+            "complex_structure": [0.8, 1.2, 0.2]
+        },
+        {
+            "candidate_id": "domb_rank2",
+            "sequence_type": "Domb Class (Rank 2)",
+            "picard_number": 19,
+            "t2_modulus_tau": 0.47,
+            "complex_structure": [0.9, 0.9, 0.9]
+        },
+        {
+            "candidate_id": "cy_209_almkvist",
+            "sequence_type": "CY Class (Rank 3)",
+            "picard_number": 20,
+            "t2_modulus_tau": 0.44,
+            "complex_structure": [1.0, -0.5, 0.5]
+        },
+        {
+            "candidate_id": "cy_195_almkvist",
+            "sequence_type": "CY Class (Rank 3)",
+            "picard_number": 20,
+            "t2_modulus_tau": 0.42,
+            "complex_structure": [0.5, -0.5, -0.5]
+        },
+        {
+            "candidate_id": "zagier_case_e",
+            "sequence_type": "Sporadic (Medium)",
+            "picard_number": 18,
+            "t2_modulus_tau": 0.55,
+            "complex_structure": [0.7, 0.7, 0.0]
+        },
+        {
+            "candidate_id": "zagier_case_h",
+            "sequence_type": "Sporadic (Medium)",
+            "picard_number": 18,
+            "t2_modulus_tau": 0.58,
+            "complex_structure": [0.3, 0.3, 0.3]
         }
     ]
 
