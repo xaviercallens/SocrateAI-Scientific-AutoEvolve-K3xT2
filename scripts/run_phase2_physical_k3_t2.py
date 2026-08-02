@@ -13,6 +13,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'p
 from utils.mlops_logger import EvolutionCheckpoint
 from integration.lean_client import LeanOracleClient
 from alpha_evolve.phenotype_mapper import map_k3_to_cosmology
+from mcmc.jwst_likelihood import compute_jwst_fdm_likelihood
 
 # Import the actual TPU Dispatcher
 try:
@@ -67,7 +68,19 @@ def evaluate_k3_physical(candidates: list) -> list:
 
     for cand in evaluated_candidates:
         likelihood = cand.get("likelihood", {})
-        cand["chi2_loss"] = likelihood.get("chi2", cand.get("chi2_loss", 9999.9))
+        base_chi2 = likelihood.get("chi2", cand.get("chi2_loss", 9999.9))
+        
+        # Add JWST High-z FDM constraints (Phase 5)
+        pheno = cand.get("phenotype", {})
+        jwst_ll = compute_jwst_fdm_likelihood(
+            omega_m=pheno.get("omega_m", 0.3),
+            gamma_gap=pheno.get("pta_spectral_index", 4.333)
+        )
+        
+        # log-likelihood to chi2 mapping: chi2 = -2 * log(L)
+        jwst_chi2 = -2.0 * jwst_ll
+        
+        cand["chi2_loss"] = base_chi2 + jwst_chi2
         
     return evaluated_candidates
 
