@@ -37,6 +37,30 @@ class AgoraRAGRetriever:
         return self.knowledge_base[:top_k]
 
 
+class MistralLeanAgent:
+    """
+    The main agent that formulates and repairs Lean 4 tactics using Mistral AI.
+    Used when LLM_PROVIDER=mistral.
+    """
+    def __init__(self, api_key: str = None):
+        self.api_key = api_key or os.environ.get("MISTRAL_API_KEY", "mock-mistral-key")
+        self.model = "mistral-large-latest"
+        self.endpoint = "https://api.mistral.ai/v1/chat/completions"
+
+    def draft_proof(self, theorem_statement: str, premises: List[str]) -> str:
+        """Drafts the initial Chain-of-Thought proof."""
+        prompt = f"Using premises: {premises}, prove: {theorem_statement}\nOutput ONLY valid Lean 4 tactics line-by-line."
+        logger.info(f"Mistral drafting proof for: {theorem_statement}")
+        # Mock LLM Call
+        return "intro h\napply swampland_distance\nexact h\n"
+
+    def repair_proof(self, tactic: str, error_msg: str, proof_state: str) -> str:
+        """Acts as the Critic Agent, repairing failed tactics."""
+        logger.info(f"Mistral repairing tactic '{tactic}' due to error.")
+        # Mock LLM Call
+        return "simp [h]"
+
+
 class GeminiLeanAgent:
     """
     The main agent that formulates and repairs Lean 4 tactics using Google Gemini.
@@ -82,12 +106,20 @@ class GeminiLeanAgent:
         return "simp [h]"
 
 
+def get_llm_agent():
+    """Factory to select the LLM provider based on environment config."""
+    provider = os.environ.get("LLM_PROVIDER", "gemini").lower()
+    if provider == "mistral":
+        return MistralLeanAgent()
+    return GeminiLeanAgent()
+
+
 def run_autoformalization(theorem_statement: str, max_retries: int = 5) -> Dict[str, Any]:
     """
     The main execution loop for Process-Driven Autoformalization.
     """
     rag = AgoraRAGRetriever()
-    llm = GeminiLeanAgent()
+    llm = get_llm_agent()
     repl = LeanInteractiveREPL()
     
     # 1. Retrieve Knowledge
