@@ -9,6 +9,9 @@ and topological mass gap gamma).
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.distributed as dist
+from torch.nn.parallel import DistributedDataParallel as DDP
+from torch.cuda.amp import autocast, GradScaler
 import numpy as np
 from typing import Dict, Tuple, Any
 
@@ -102,20 +105,48 @@ def train_gnn_on_k4_rewriting(n_steps: int = 200, save_pretrained: bool = True) 
     """
     Simulates K4 hypergraph rewritings and trains the Equivariant GNN to learn
     the continuous limit properties. Saves/loads pretrained model weights.
+    
+    AUDIT FIX (TASK-09/B4): This function is explicitly marked as a SYNTHETIC
+    PRE-TRAINING HARNESS. It generates mock adjacency matrices (`A_noisy`) to test
+    the permutation-equivariant architecture of the GNN. It DOES NOT read live
+    topological data from the Lean 4 hypergraph engine, and therefore the loss metrics
+    produced here do not validate physical K3 geometry.
     """
-    model = HypergraphGNNPredictor(node_dim=16, hidden_dim=64)
+    import logging
+    logging.getLogger(__name__).warning(
+        "GNN training pipeline is running in SYNTHETIC PRE-TRAINING mode. "
+        "Generated adjacency matrices are mock data (TASK-09)."
+    )
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    is_distributed = False
+    
+    if "WORLD_SIZE" in os.environ and torch.cuda.is_available():
+        if not dist.is_initialized():
+            dist.init_process_group("nccl")
+        local_rank = int(os.environ.get("LOCAL_RANK", 0))
+        torch.cuda.set_device(local_rank)
+        device = torch.device(f"cuda:{local_rank}")
+        is_distributed = True
+        
+    model = HypergraphGNNPredictor(node_dim=16, hidden_dim=64).to(device)
     pretrained_path = Path("models/pretrained/gnn_k4_pretrained.pt")
     
     # Load pretrained weights if available
     if pretrained_path.exists():
         try:
-            model.load_state_dict(torch.load(pretrained_path, weights_only=True))
+            # Handle DDP state dict loading if necessary
+            state_dict = torch.load(pretrained_path, weights_only=True, map_location=device)
+            model.load_state_dict(state_dict)
             model.eval()
             print(f"📥 Loaded pretrained Equivariant GNN weights from {pretrained_path}")
         except Exception as e:
             print(f"⚠️ Could not load pretrained weights: {e}")
 
+    if is_distributed:
+        model = DDP(model, device_ids=[local_rank])
+
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    scaler = GradScaler(enabled=torch.cuda.is_available())
     
     import glob
     import json
@@ -200,16 +231,25 @@ def train_gnn_on_k4_rewriting(n_steps: int = 200, save_pretrained: bool = True) 
     losses = []
     for step in range(n_steps):
         adj, t_l1, t_p, t_gap = generate_batch(batch_size=32)
+        adj, t_l1, t_p, t_gap = adj.to(device), t_l1.to(device), t_p.to(device), t_gap.to(device)
+        
         optimizer.zero_grad()
         
-        pred_l1, pred_p, pred_gap = model(adj)
+        # Phase 1: Mixed Precision (AMP) & Sparse Tensor Support
+        with autocast(enabled=torch.cuda.is_available()):
+            # Sparse Tensor Conversion (torch.sparse)
+            if adj.shape[1] > 100:
+                adj = adj.to_sparse()
+                
+            pred_l1, pred_p, pred_gap = model(adj)
+            
+            loss = (F.mse_loss(pred_l1, t_l1) + 
+                    F.mse_loss(pred_p, t_p) + 
+                    F.mse_loss(pred_gap, t_gap))
         
-        loss = (F.mse_loss(pred_l1, t_l1) + 
-                F.mse_loss(pred_p, t_p) + 
-                F.mse_loss(pred_gap, t_gap))
-        
-        loss.backward()
-        optimizer.step()
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
         losses.append(loss.item())
 
     # Save pretrained weights
