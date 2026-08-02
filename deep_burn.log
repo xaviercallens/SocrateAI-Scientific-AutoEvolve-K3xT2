@@ -3,387 +3,13 @@ INFO - 🔥 INITIATING 24-HOUR LOCAL DEEP BURN (GPU SECURED)
 INFO - ==================================================
 INFO - Initializing Phase 2: Dual-Scale K3xT2 Physical Compute Evolution (Generations=150, PopSize=40)
 INFO - Lean 4 Symbolic Oracle daemon initialized from ./test_lean_oracle/.lake/build/bin/rpc_server.
+WARNING - Could not connect to Redis ledger: Error 111 connecting to localhost:6379. Connection refused.. Falling back to single-node (in-memory mock).
 INFO - ☁️  GCS checkpointing enabled via gcloud CLI token → gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints
-INFO - ☁️  Resuming from Cloud Checkpoint: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0075.json
-INFO - Resumed from generation 75. Starting at generation 76.
-INFO - --- Generation 76/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 76 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0076.json
-INFO - --- Generation 77/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 77 Best Chi2: 0.0001 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0077.json
-INFO - --- Generation 78/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 78 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0078.json
-INFO - --- Generation 79/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 79 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0079.json
-INFO - --- Generation 80/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 80 Best Chi2: 0.0003 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0080.json
-INFO - --- Generation 81/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 81 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0081.json
-INFO - --- Generation 82/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 82 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0082.json
-INFO - --- Generation 83/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 83 Best Chi2: 0.0008 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0083.json
-INFO - --- Generation 84/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 84 Best Chi2: 0.0007 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0084.json
-INFO - --- Generation 85/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 85 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0085.json
-INFO - --- Generation 86/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 86 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0086.json
-INFO - --- Generation 87/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 87 Best Chi2: 0.0003 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0087.json
-INFO - --- Generation 88/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 88 Best Chi2: 0.0002 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0088.json
-INFO - --- Generation 89/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 89 Best Chi2: 0.0003 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0089.json
-INFO - --- Generation 90/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 90 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0090.json
-INFO - --- Generation 91/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 91 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0091.json
-INFO - --- Generation 92/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 92 Best Chi2: 0.0002 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0092.json
-INFO - --- Generation 93/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 93 Best Chi2: 0.0001 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0093.json
-INFO - --- Generation 94/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 94 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0094.json
-INFO - --- Generation 95/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 95 Best Chi2: 0.0002 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0095.json
-INFO - --- Generation 96/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 96 Best Chi2: 0.0001 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0096.json
-INFO - --- Generation 97/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 97 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0097.json
-INFO - --- Generation 98/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 98 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0098.json
-INFO - --- Generation 99/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 99 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0099.json
-INFO - --- Generation 100/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 100 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0100.json
-INFO - --- Generation 101/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 101 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0101.json
-INFO - --- Generation 102/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 102 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0102.json
-INFO - --- Generation 103/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 103 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0103.json
-INFO - --- Generation 104/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 104 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0104.json
-INFO - --- Generation 105/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 105 Best Chi2: 0.0004 | Phenotype: w0=-0.998, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0105.json
-INFO - --- Generation 106/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 106 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0106.json
-INFO - --- Generation 107/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 107 Best Chi2: 0.0004 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0107.json
-INFO - --- Generation 108/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 108 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0108.json
-INFO - --- Generation 109/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 109 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0109.json
-INFO - --- Generation 110/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 110 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0110.json
-INFO - --- Generation 111/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 111 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0111.json
-INFO - --- Generation 112/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 112 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0112.json
-INFO - --- Generation 113/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 113 Best Chi2: 0.0005 | Phenotype: w0=-0.998, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0113.json
-INFO - --- Generation 114/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 114 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0114.json
-INFO - --- Generation 115/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 115 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0115.json
-INFO - --- Generation 116/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 116 Best Chi2: 0.0003 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0116.json
-INFO - --- Generation 117/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 117 Best Chi2: 0.0005 | Phenotype: w0=-0.998, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0117.json
-INFO - --- Generation 118/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 118 Best Chi2: 0.0003 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0118.json
-INFO - --- Generation 119/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 119 Best Chi2: 0.0004 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0119.json
-INFO - --- Generation 120/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 120 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0120.json
-INFO - --- Generation 121/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 121 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0121.json
-INFO - --- Generation 122/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 122 Best Chi2: 0.0009 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0122.json
-INFO - --- Generation 123/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 123 Best Chi2: 0.0006 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0123.json
-INFO - --- Generation 124/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 124 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0124.json
-INFO - --- Generation 125/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 125 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0125.json
-INFO - --- Generation 126/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 126 Best Chi2: 0.0003 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0126.json
-INFO - --- Generation 127/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 127 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0127.json
-INFO - --- Generation 128/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 128 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0128.json
-INFO - --- Generation 129/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 129 Best Chi2: 0.0002 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0129.json
-INFO - --- Generation 130/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 130 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0130.json
-INFO - --- Generation 131/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 131 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0131.json
-INFO - --- Generation 132/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 132 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0132.json
-INFO - --- Generation 133/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 133 Best Chi2: 0.0002 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0133.json
-INFO - --- Generation 134/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 134 Best Chi2: 0.0005 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0134.json
-INFO - --- Generation 135/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 135 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0135.json
-INFO - --- Generation 136/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 136 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0136.json
-INFO - --- Generation 137/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 137 Best Chi2: 0.0003 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0137.json
-INFO - --- Generation 138/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 138 Best Chi2: 0.0001 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0138.json
-INFO - --- Generation 139/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 139 Best Chi2: 0.0001 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0139.json
-INFO - --- Generation 140/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 140 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0140.json
-INFO - --- Generation 141/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 141 Best Chi2: 0.0003 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0141.json
-INFO - --- Generation 142/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 142 Best Chi2: 0.0003 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0142.json
-INFO - --- Generation 143/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 143 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0143.json
-INFO - --- Generation 144/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 144 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0144.json
-INFO - --- Generation 145/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 145 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0145.json
-INFO - --- Generation 146/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 146 Best Chi2: 0.0002 | Phenotype: w0=-0.999, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0146.json
-INFO - --- Generation 147/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 147 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0147.json
-INFO - --- Generation 148/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 148 Best Chi2: 0.0001 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0148.json
-INFO - --- Generation 149/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 149 Best Chi2: 0.0000 | Phenotype: w0=-1.000, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0149.json
-INFO - --- Generation 150/150 ---
-INFO - Tier 2 (Lean 4) Survivors: 40/40
-INFO - Dispatching 40 Lean-verified geometries to Antigravity TPU...
-INFO - Gen 150 Best Chi2: 0.0002 | Phenotype: w0=-1.001, Om=0.300 | PTA Freq: 1.00e-09 Hz | S_8: 0.830
-INFO - ☁️  Cloud Checkpoint saved: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0150.json
+INFO - ☁️  Resuming from Cloud Checkpoint: gs://socrateai-datalake-gen-lang-client-0625573011/checkpoints/run_20260729_074350_gen_0300.json
+INFO - Resumed from generation 300. Starting at generation 301.
 INFO - ========================================
 INFO - PHASE 2 PHYSICAL EVOLUTION COMPLETE
-INFO - Total Time: 78.22s
+INFO - Total Time: 0.00s
 INFO - Global Optimal Physical Candidate:
 INFO - {
   "name": "Cooper_s10",
@@ -407,40 +33,40 @@ INFO - {
     2.0,
     0.8
   ],
-  "candidate_id": "cooper_s10_g120_39",
+  "candidate_id": "cooper_s10_g300_1",
   "picard_number": 19,
   "moduli_stabilization": 0.75,
   "complex_structure": [
-    0.1442076635760447,
-    -1.4270030737098205,
-    0.968729155608357
+    0.1453811545918901,
+    -1.4360395156412553,
+    0.9579981478503856
   ],
-  "t2_modulus_tau": 0.4999066173136379,
+  "t2_modulus_tau": 0.49983216520980056,
   "formal_reason": "Distance and dS conjectures satisfied.",
   "phenotype": {
-    "w0": -0.999953308656819,
+    "w0": -0.9999160826049003,
     "omega_m": 0.3,
-    "h0": 67.39744127758337,
-    "pta_f_monopole": 9.99990661731364e-10,
+    "h0": 67.40063827228722,
+    "pta_f_monopole": 9.999832165209803e-10,
     "s8_gradient": 0.83,
-    "pta_anisotropy": 0.04970988472560064,
-    "lya_spectral_tilt": -7.16070573997119e-06,
-    "gw_polarisation": 0.8244896093649469,
-    "cs_magnitude": 1.730771446360558,
-    "cs_theta_rad": 0.9767611675560857,
-    "cs_phi_rad": -1.4700819335481747
+    "pta_anisotropy": 0.04975489254702027,
+    "lya_spectral_tilt": 1.7648183957561657e-06,
+    "gw_polarisation": 0.8289450650268188,
+    "cs_magnitude": 1.7323699437124886,
+    "cs_theta_rad": 0.9848374005691878,
+    "cs_phi_rad": -1.4699025057223056
   },
   "likelihood": {
-    "chi2": 1.9774028401080412e-06,
-    "fitness": 0.99999802260107,
-    "chi2_w0": 3.4063773875756447e-07,
+    "chi2": 1.2021805657082974e-06,
+    "fitness": 0.9999987978208795,
+    "chi2_w0": 1.1003326875503825e-06,
     "chi2_om": 0.0,
-    "chi2_h0": 1.636765101350477e-06
+    "chi2_h0": 1.0184787815791487e-07
   },
-  "chi2_loss": 1.9774028401080412e-06,
+  "chi2_loss": 1.2021805657082974e-06,
   "gcs_stream_uri": "gs://socrateai-datalake-gen-lang-client-0625573011/stream3_desi_dr1/desi_dr1_bao_cov.json"
 }
 INFO - ========================================
 INFO - ==================================================
-INFO - 🏁 DEEP BURN CONCLUDED. Total Runtime: 0.02 Hours.
+INFO - 🏁 DEEP BURN CONCLUDED. Total Runtime: 0.00 Hours.
 INFO - ==================================================

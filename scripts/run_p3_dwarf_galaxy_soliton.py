@@ -58,16 +58,38 @@ def soliton_velocity(r, r_c, rho_c):
     return v_arr[0] if is_scalar else v_arr
 
 def load_sparc_galaxy(name="DDO154"):
-    """Loads actual SPARC rotation curve data for a dwarf galaxy."""
+    """Loads actual SPARC rotation curve data for a dwarf galaxy from the GCP Datalake."""
     filepath = f"data/sparc/{name}_rotmod.dat"
+    gcs_uri = f"gs://socrateai-datalake-gen-lang-client-0625573011/sparc/{name}_rotmod.dat"
+    
+    import subprocess
+    try:
+        logger.info(f"Attempting to fetch latest SPARC data from {gcs_uri}...")
+        subprocess.run(["gcloud", "storage", "cp", gcs_uri, filepath], check=True, capture_output=True)
+        logger.info("Successfully synced from GCP Data Lake.")
+    except Exception as e:
+        logger.warning(f"Could not fetch from GCP datalake, using local fallback if available. Error: {e}")
+        
     if not os.path.exists(filepath):
-        raise FileNotFoundError(f"SPARC data file not found: {filepath}. Please download it.")
+        raise FileNotFoundError(f"SPARC data file not found locally or on GCP: {filepath}")
     
     data = np.loadtxt(filepath, comments='#')
     # Column 0: Radius (kpc), Column 1: V_obs (km/s), Column 2: err_V (km/s)
     r_obs = data[:, 0]
     v_obs = data[:, 1]
     err_obs = data[:, 2]
+    
+    # Validate against Pydantic schema
+    import sys
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+    from data_staging.schema_validators import SPARCSchema, SPARCDataPoint
+    
+    data_points = []
+    for r, v, err in zip(r_obs, v_obs, err_obs):
+        data_points.append(SPARCDataPoint(radius=r, velocity=v, velocity_err=err))
+        
+    schema = SPARCSchema(galaxy_name=name, data_points=data_points)
+    logger.info(f"Successfully validated {len(schema.data_points)} points via Pydantic SPARCSchema.")
     
     return r_obs, v_obs, err_obs
 

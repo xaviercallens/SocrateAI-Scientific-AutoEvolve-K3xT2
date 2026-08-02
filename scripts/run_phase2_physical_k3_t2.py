@@ -92,9 +92,9 @@ def execute_phase2(generations: int = 75, pop_size: int = 40):
         os.makedirs(os.path.dirname(seed_path), exist_ok=True)
         seeds = {
           "generation_0_seeds": [
-            {"candidate_id": "cooper_s7", "picard_number": 19, "moduli_stabilization": 0.85, "complex_structure": [1.0, -0.5, 0.25], "t2_modulus_tau": 0.6},
-            {"candidate_id": "cooper_s10", "picard_number": 18, "moduli_stabilization": 0.60, "complex_structure": [0.8, -0.2, 0.1], "t2_modulus_tau": 0.7},
-            {"candidate_id": "cooper_s22", "picard_number": 20, "moduli_stabilization": 0.45, "complex_structure": [0.5, 0.0, 0.0], "t2_modulus_tau": 0.4}
+            {"candidate_id": "cooper_s11", "picard_number": 19, "moduli_stabilization": 0.85, "complex_structure": [0.5, 0.5, 1.0], "t2_modulus_tau": 0.48},
+            {"candidate_id": "cooper_s10", "picard_number": 19, "moduli_stabilization": 0.60, "complex_structure": [1.0, 0.0, 0.0], "t2_modulus_tau": 0.50},
+            {"candidate_id": "cooper_s7", "picard_number": 19, "moduli_stabilization": 0.45, "complex_structure": [1.0, 1.0, 1.0], "t2_modulus_tau": 0.50}
           ]
         }
         with open(seed_path, 'w') as f:

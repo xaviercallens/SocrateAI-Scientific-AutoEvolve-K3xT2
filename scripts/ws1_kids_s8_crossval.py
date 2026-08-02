@@ -36,12 +36,26 @@ def main():
     
     logger.info(f"Loaded KiDS-1000 EE bandpowers, shape {bandpowers_EE.shape}")
     
-    # K3xT2 predictions
-    s8_k3t2 = 0.830
-    omega_m = 0.300
-    h0 = 67.40
+    # K3xT2 predictions from dynamic MCMC
+    res_path = Path("outputs/nested_sampling/phase9_joint_results.json")
+    if res_path.exists():
+        with open(res_path, "r") as f:
+            mcmc_res = json.load(f)
+        theta_map = mcmc_res["posterior_mean_theta"]
+        tau, cs1 = theta_map[0], theta_map[1]
+        omega_m = mcmc_res["posterior_cosmology"]["Omega_m"]
+        h0 = mcmc_res["posterior_cosmology"]["H0"]
+        sigma8_pred = 0.81 + 0.05 * (tau - 0.50) + 0.01 * cs1
+        s8_k3t2 = sigma8_pred * np.sqrt(omega_m / 0.3)
+        logger.info(f"Loaded dynamic K3xT2 predictions: tau={tau:.4f}, Omega_m={omega_m:.4f}, s8_k3t2={s8_k3t2:.4f}")
+    else:
+        # Fallback
+        s8_k3t2 = 0.830
+        omega_m = 0.300
+        h0 = 67.40
+        logger.warning("phase9_joint_results.json not found, using hardcoded fallback.")
     
-    # Compute theoretical prediction at S_8 = 0.830
+    # Compute theoretical prediction
     theory_k3t2 = limber_cl_ee(s8_k3t2, omega_m, h0, ell_centres, bandpowers_EE)
     
     # 1.5 Scan S_8 in [0.70, 0.90] in steps of 0.005

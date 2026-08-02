@@ -24,3 +24,9 @@ __pycache__/
 outputs/
 data/euclid_q1/tile_*
 .env
+releases/
+results/
+
+releases/
+results/
+dist/

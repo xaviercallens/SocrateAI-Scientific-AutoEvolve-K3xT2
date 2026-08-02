@@ -110,15 +110,25 @@ def map_k3_to_cosmology(candidate: dict) -> dict:
     gw_pol = abs(math.sin(cs_theta) * math.sin(cs_phi))
 
     return {
-        "w0": max(-1.2, min(-0.8, w_0)),
-        "omega_m": max(0.2, min(0.4, omega_m)),
-        "h0": max(65.0, min(75.0, h_0)),
+        # Standard cosmology (EFT-derived)
+        # AUDIT FIX (TASK-10/C3): removed hard max/min clipping which silently
+        # truncated the posterior and biased Bayesian evidence. Values are now
+        # physically bounded via soft tanh squashing:
+        #   w0  in (-1.3, -0.7) via tanh centred on -1.0 with half-range 0.3
+        #   omega_m in (0.1, 0.5) via tanh centred on 0.3 with half-range 0.2
+        #   h0  in (60, 80) via tanh centred on 70 with half-range 10
+        "w0":         float(-1.0 + 0.3 * math.tanh((w_0 + 1.0) / 0.3)),
+        "omega_m":    float(0.3  + 0.2 * math.tanh((omega_m - 0.3) / 0.2)),
+        "h0":         float(70.0 + 10.0 * math.tanh((h_0 - 70.0) / 10.0)),
         "s8_gradient": s8,
+        # PTA predictions (EFT-derived)
         "pta_f_monopole": f_pta,
         "pta_spectral_index": gamma_pta,
+        # Anisotropic signatures
         "pta_anisotropy": pta_anisotropy,
         "lya_spectral_tilt": lya_tilt,
         "gw_polarisation": gw_pol,
+        # Diagnostics
         "cs_magnitude": cs_mag,
         "cs_theta_rad": cs_theta,
         "cs_phi_rad": cs_phi,

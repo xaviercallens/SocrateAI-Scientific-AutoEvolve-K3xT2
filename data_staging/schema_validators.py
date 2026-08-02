@@ -64,3 +64,12 @@ class TensorMetadataSchema(BaseModel):
         if v not in allowed:
             raise ValueError(f"Unsupported dtype: {v}")
         return v
+
+class SPARCDataPoint(BaseModel):
+    radius: float = Field(..., ge=0.0, description="Radius in kpc")
+    velocity: float = Field(..., ge=0.0, description="Rotation velocity in km/s")
+    velocity_err: float = Field(..., ge=0.0, description="1-sigma uncertainty in velocity")
+
+class SPARCSchema(BaseModel):
+    galaxy_name: str
+    data_points: List[SPARCDataPoint]

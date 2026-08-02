@@ -61,9 +61,9 @@ def build_simulator():
         candidate = {
             "candidate_id": "sbi_sample",
             "t2_modulus_tau": float(t[0]),
-            "complex_structure": [float(t[1]), float(t[2]), 0.96], # Using fixed 3rd comp for simplicity
+            "complex_structure": [float(t[1]), float(t[2]), float(t[4])], # TASK-10/B7: removed hardcoded 0.96 bias
             "picard_number": float(t[3]),
-            "moduli_stabilization": float(t[4]),
+            "moduli_stabilization": 0.0, # Not used in map_k3_to_cosmology directly
         }
         
         # Map to cosmology
@@ -86,8 +86,8 @@ def generate_sbi_corner_plot(samples: np.ndarray, output_path: str):
     
     n_params = samples.shape[1]
     fig, axes = plt.subplots(n_params, n_params, figsize=(10, 10))
-    labels = [r"$\tau_{T^2}$", r"$\mathrm{Re}(\tau_{K3})$", 
-              r"$\mathrm{Im}(\tau_{K3})$", r"$\rho_{K3}$", r"$\delta P$"]
+    labels = [r"$\tau_{T^2}$", r"$cs_1$", 
+              r"$cs_2$", r"$\rho_{K3}$", r"$cs_3$"]
     
     for i in range(n_params):
         for j in range(n_params):
@@ -144,7 +144,7 @@ def main():
         try:
             # Note: For production with `sbi`, it's safer to load state_dicts, 
             # but for demonstration we use torch.load
-            posterior = torch.load(pretrained_path)
+            posterior = torch.load(pretrained_path, weights_only=False)
             logger.info("✅ Pretrained Posterior loaded successfully.")
         except Exception as e:
             logger.error(f"⚠️ Failed to load pretrained posterior: {e}")

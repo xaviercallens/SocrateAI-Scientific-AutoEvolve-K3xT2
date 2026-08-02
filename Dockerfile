@@ -36,7 +36,9 @@ RUN pip install --no-cache-dir \
     "jax[cuda11_cudnn86]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html \
     cobaya \
     pyyaml \
-    deap
+    deap \
+    torch \
+    pysr
 
 # ── Compile Lean 4 Oracle binary ─────────────────────────────────────
 RUN if [ -d "test_lean_oracle" ]; then \

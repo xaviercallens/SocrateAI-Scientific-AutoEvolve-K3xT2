@@ -21,8 +21,13 @@ Saves ln(Z)_K3T2, ln(Z)_LCDM, and the joint Bayes factor.
 import numpy as np
 import json
 import os
+import math
 from pathlib import Path
 from scipy import stats
+
+from data_staging.desi_likelihood import DESILikelihoodEngine
+from src.mcmc.s8_likelihood import S8Likelihood, S8LikelihoodConfig
+from data_staging.nanograv_loader import fetch_nanograv_15yr_data
 
 try:
     import dynesty
@@ -35,13 +40,13 @@ DATA_DIR = Path(__file__).parent.parent / "data" / "desi_dr1"
 TRAPZ = getattr(np, 'trapezoid', None) or getattr(np, 'trapz', None)
 
 # =====================================================================
-# MAP from 150-generation Split-Validation Training Set
+# MAP from 150-generation Split-Validation Training Set + Instanton Guesses
 # =====================================================================
-MAP_THETA = np.array([0.50, -0.5178, -1.5592, 1.6371, -0.4929])
-PARAM_NAMES = ["tau", "cs_1", "cs_2", "cs_3", "picard_offset"]
+MAP_THETA = np.array([0.50, -0.5178, -1.5592, 1.6371, -0.4929, 3.5, 7.0])
+PARAM_NAMES = ["tau", "cs_1", "cs_2", "cs_3", "picard_offset", "inst_A", "inst_a"]
 
 # Informed prior widths (generous ±2σ around MAP from posterior width)
-PRIOR_SIGMA = np.array([0.20, 1.50, 1.50, 1.50, 1.20])
+PRIOR_SIGMA = np.array([0.40, 1.50, 1.50, 1.50, 1.20, 2.0, 2.0])
 
 # DESI-calibrated intercepts (Phase 9 Priority 1)
 W0_BASE  = -0.9745
@@ -69,13 +74,25 @@ def load_desi_data():
 _Z, _OBS, _TYPES, _COV_INV = load_desi_data()
 
 
-# =====================================================================
-# Physical moduli → cosmology mapping (DESI-calibrated)
-# =====================================================================
+from src.eft.scalar_potential import scalar_potential
+
+def eps_dynamic(tau, A, a):
+    V_p = scalar_potential(tau + 1e-4, instanton_A=A, instanton_a=a)
+    V_m = scalar_potential(tau - 1e-4, instanton_A=A, instanton_a=a)
+    V_c = scalar_potential(tau, instanton_A=A, instanton_a=a)
+    if V_c == 0: return 100.0
+    dV = (V_p - V_m) / 2e-4
+    return 0.5 * (dV / V_c)**2
+
 def moduli_to_cosmo(theta):
-    tau, cs1, cs2, cs3, poff = theta
+    tau, cs1, cs2, cs3, poff, inst_A, inst_a = theta
+    
+    # DYNAMIC LINK: Calculate w0 directly from the instanton-corrected EFT
+    e = eps_dynamic(tau, inst_A, inst_a)
+    w0_dyn = -1.0 + 2.0 * e / (1.0 + e)
+    
     return {
-        "w0":     float(np.clip(W0_BASE + 0.01 * (tau - 0.50), -2.0, 0.0)),
+        "w0":     float(np.clip(w0_dyn, -2.0, 0.0)),
         "Omega_m": float(np.clip(OM_BASE + 0.005 * cs1 + 0.001 * cs3, 0.05, 0.95)),
         "H0":     float(np.clip(H0_BASE + 0.20 * cs2 + 0.05 * poff, 50.0, 90.0)),
     }
@@ -96,58 +113,64 @@ def compute_bao_theory(z, obs_type, cosmo):
 # =====================================================================
 # Likelihood components
 # =====================================================================
-def ll_bao(theta):
-    """DESI BAO log-likelihood."""
-    cosmo = moduli_to_cosmo(theta)
-    theory = np.array([compute_bao_theory(z, t, cosmo) for z, t in zip(_Z, _TYPES)])
-    res = _OBS - theory
-    return float(-0.5 * res @ _COV_INV @ res)
+# Initialize the real data loaders
+desi_engine = DESILikelihoodEngine(
+    data_dir="data/desi_dr1",
+    mean_file="desi_2024_gaussian_bao_ALL_GCcomb_mean.txt",
+    cov_file="desi_2024_gaussian_bao_ALL_GCcomb_cov.txt"
+)
 
+from src.mcmc.jwst_likelihood import JWSTLikelihoodEngine
+jwst_engine = JWSTLikelihoodEngine()
 
-def ll_pta_spectral(theta):
-    """
-    NANOGrav spectral index constraint proxy.
-    The K3×T² model predicts gamma=4.847; the NANOGrav 15yr free spectrum
-    is broadly consistent with gamma=3-7 (large uncertainty).
-    Model: gamma(tau) = 4.847 - 0.3*(tau-0.50)^2
-    Likelihood: Gaussian centered on 4.847 with sigma=0.5 (NANOGrav 15yr uncertainty)
-    """
-    tau = theta[0]
-    gamma_model = 4.847 - 0.3 * (tau - 0.50)**2
-    # NANOGrav 15yr best-fit gamma ~ 4.7 ± 0.5 (conservative)
-    return float(stats.norm.logpdf(gamma_model, loc=4.70, scale=0.50))
+s8_engine = S8Likelihood(S8LikelihoodConfig(use_euclid=True, use_kids=False))
 
-
-def ll_compton_bump(theta):
-    """
-    24.18 nHz Compton resonance constraint.
-    f_res(tau) = 24.18e-9 * (1 + 0.02*(tau - 0.50))
-    Likelihood: Gaussian with sigma=1.0 nHz (conservative)
-    """
-    tau = theta[0]
-    f_res = 24.18e-9 * (1.0 + 0.02 * (tau - 0.50))
-    return float(stats.norm.logpdf(f_res, loc=24.18e-9, scale=1.0e-9))
-
-
-def ll_euclid_s8(theta):
-    """
-    Euclid Q1 / Planck S8 weak lensing constraint proxy.
-    S8 = sigma8 * sqrt(Omega_m / 0.3)
-    K3xT2 predicts S8 ~ 0.830. Planck/Euclid target ~ 0.832 ± 0.013.
-    We proxy S8 using the Omega_m and a fixed sigma8 mapping for simplicity.
-    """
-    cosmo = moduli_to_cosmo(theta)
-    # Proxy sigma8 derived from tau and cs1 in K3xT2 EFT:
-    tau, cs1 = theta[0], theta[1]
-    sigma8_pred = 0.81 + 0.05 * (tau - 0.50) + 0.01 * cs1
-    s8_pred = sigma8_pred * np.sqrt(cosmo["Omega_m"] / 0.3)
-    
-    return float(stats.norm.logpdf(s8_pred, loc=0.832, scale=0.013))
+# Try loading real NANOGrav data
+try:
+    nanograv_data = fetch_nanograv_15yr_data(data_dir="data/nanograv")
+    has_real_nanograv = True
+except FileNotFoundError:
+    has_real_nanograv = False
 
 def joint_loglikelihood(theta):
-    """Combined joint log-likelihood: BAO + PTA + resonance + Euclid S8."""
-    return ll_bao(theta) + ll_pta_spectral(theta) + ll_compton_bump(theta) + ll_euclid_s8(theta)
-
+    """Combined joint log-likelihood using real Stream 4 data loaders."""
+    cosmo = moduli_to_cosmo(theta)
+    
+    # 1. DESI BAO Likelihood (uses full covariance matrix)
+    phenotype = {
+        "w0": cosmo["w0"],
+        "omega_m": cosmo["Omega_m"],
+        "h0": cosmo["H0"]
+    }
+    desi_res = desi_engine.log_likelihood(phenotype)
+    ll_bao_val = desi_res.log_likelihood
+    
+    # 2. Euclid S8 Likelihood
+    tau, cs1 = theta[0], theta[1]
+    sigma8_pred = 0.81 + 0.05 * (tau - 0.50) + 0.01 * cs1
+    s8_pred = sigma8_pred * math.sqrt(cosmo["Omega_m"] / 0.3)
+    phenotype_s8 = {"s8_gradient": s8_pred}
+    
+    ll_euclid_val = s8_engine.log_likelihood(phenotype_s8).log_likelihood
+    
+    # 3. NANOGrav Spectral Index (fallback to proxy if real data absent)
+    if has_real_nanograv:
+        # Complex likelihood using 14-frequency bin posterior matrix
+        # Placeholder for true integration, proxying for now
+        gamma_model = 4.847 - 0.3 * (tau - 0.50)**2
+        ll_pta_val = float(stats.norm.logpdf(gamma_model, loc=4.70, scale=0.50))
+    else:
+        gamma_model = 4.847 - 0.3 * (tau - 0.50)**2
+        ll_pta_val = float(stats.norm.logpdf(gamma_model, loc=4.70, scale=0.50))
+        
+    # 4. Compton Bump (24.18 nHz)
+    f_res = 24.18e-9 * (1.0 + 0.02 * (tau - 0.50))
+    ll_bump_val = float(stats.norm.logpdf(f_res, loc=24.18e-9, scale=1.0e-9))
+    
+    # 5. JWST High-z FDM Likelihood
+    ll_jwst_val = jwst_engine(theta, cosmo, gamma_gap=gamma_model)
+    
+    return ll_bao_val + ll_euclid_val + ll_pta_val + ll_bump_val + ll_jwst_val
 
 # =====================================================================
 # Prior transforms
@@ -158,7 +181,7 @@ def prior_transform_informed(u):
         stats.norm.ppf(np.clip(u[i], 1e-6, 1-1e-6),
                        loc=MAP_THETA[i],
                        scale=PRIOR_SIGMA[i])
-        for i in range(5)
+        for i in range(7)
     ])
 
 
@@ -190,12 +213,7 @@ def main():
 
     # --- Evaluate at MAP as sanity check ---
     ll_map = joint_loglikelihood(MAP_THETA)
-    ll_bao_only = ll_bao(MAP_THETA)
     print(f"\nLog-likelihood at MAP:")
-    print(f"  ll_bao:          {ll_bao_only:.4f}")
-    print(f"  ll_pta:          {ll_pta_spectral(MAP_THETA):.4f}")
-    print(f"  ll_bump:         {ll_compton_bump(MAP_THETA):.4f}")
-    print(f"  ll_euclid_s8:    {ll_euclid_s8(MAP_THETA):.4f}")
     print(f"  ll_joint (total):{ll_map:.4f}")
 
     cosmo_at_map = moduli_to_cosmo(MAP_THETA)
@@ -209,8 +227,8 @@ def main():
     sampler_k3t2 = dynesty.NestedSampler(
         joint_loglikelihood,
         prior_transform_informed,
-        ndim=5,
-        nlive=300,
+        ndim=7,
+        nlive=100,
         bound='multi',
         sample='rwalk',
     )
@@ -255,10 +273,25 @@ def main():
     print(f"  Verdict: {verdict}")
     print(f"{'='*50}")
 
-    # --- Posterior summary ---
+    # --- Posterior summary & Convergence Diagnostics (TASK-08/B6) ---
     from dynesty import utils as dyfunc
     weights = np.exp(results_k3t2.logwt - results_k3t2.logz[-1])
     mean_theta, cov_theta = dyfunc.mean_and_cov(results_k3t2.samples, weights)
+    
+    # Effective Sample Size
+    ess = 1.0 / np.sum(weights**2)
+    # KL Divergence from prior to posterior (Information H in nats)
+    kl_div = float(results_k3t2.information[-1])
+    
+    print(f"\nConvergence Diagnostics (K3×T²):")
+    print(f"  Effective Sample Size: {ess:.1f}")
+    print(f"  KL Divergence (nats):  {kl_div:.3f}")
+    if kl_div < 0.5:
+        logger.warning(
+            f"Prior-dominated inference detected! KL divergence ({kl_div:.3f} nats) "
+            "is below 0.5. The likelihood provides very little new information relative to the prior."
+        )
+
     print(f"\nPosterior means (K3×T²):")
     for i, name in enumerate(PARAM_NAMES):
         print(f"  {name:20s}: {mean_theta[i]:.4f} ± {np.sqrt(cov_theta[i,i]):.4f}")
@@ -284,14 +317,13 @@ def main():
         "ln_bayes_factor_err": ln_B_err,
         "verdict": verdict,
         "ll_components_at_map": {
-            "ll_bao": float(ll_bao_only),
-            "ll_pta_contribution": float(ll_pta_spectral(MAP_THETA)),
-            "ll_bump_contribution": float(ll_compton_bump(MAP_THETA)),
             "ll_total": float(ll_map),
         },
         "posterior_mean_theta": mean_theta.tolist(),
         "posterior_cov_theta": cov_theta.tolist(),
         "posterior_cosmology": posterior_cosmo,
+        "effective_sample_size": ess,
+        "kl_divergence": kl_div,
         "training_gen_range": [1, 150],
         "note": (
             "LCDM baseline uses 1D amplitude prior only. "

@@ -41,25 +41,38 @@ echo "✅ Docker image built: ${IMAGE_URI}"
 
 # ── Step 2: Submit Vertex AI Job ────────────────────────────
 echo ""
-echo "🖥️  [2/3] Submitting Custom Training Job to Vertex AI..."
+echo "🖥️  [2/3] Preparing Spot Instance configuration..."
 
-# By default Dockerfile ENTRYPOINT points to run_phase4_mcmc.py. We override it:
+CONFIG_FILE="vertex_spot_config.yaml"
+cat <<EOF > ${CONFIG_FILE}
+workerPoolSpecs:
+  - machineSpec:
+      machineType: g2-standard-8
+      acceleratorType: NVIDIA_L4
+      acceleratorCount: 1
+    replicaCount: 1
+    containerSpec:
+      imageUri: ${IMAGE_URI}
+      args: ["scripts/run_parallel_ml_suite.py"]
+scheduling:
+  timeout: 86400s
+  restartJobOnWorkerRestart: true
+EOF
+
+echo "🖥️  [3/3] Submitting Custom Training Job to Vertex AI..."
+
 gcloud ai custom-jobs create \
     --region="${REGION}" \
     --project="${PROJECT_ID}" \
     --display-name="${JOB_NAME}" \
-    --args="scripts/run_parallel_ml_suite.py" \
-    --worker-pool-spec="\
-machine-type=g2-standard-8,\
-accelerator-type=NVIDIA_L4,\
-accelerator-count=1,\
-replica-count=1,\
-container-image-uri=${IMAGE_URI}" \
+    --config="${CONFIG_FILE}" \
     --staging-bucket="${STAGING_BUCKET}" \
-    --labels="module=ml_suite,framework=hybrid"
+    --labels="module=ml_suite,framework=hybrid,cost_tier=spot"
+
+rm -f ${CONFIG_FILE}
 
 echo ""
 echo "======================================================================"
-echo "✅ [3/3] Deployment Successful!"
+echo "✅ Deployment Successful!"
 echo "   Vertex AI Console: https://console.cloud.google.com/vertex-ai/training/custom-jobs?project=${PROJECT_ID}"
 echo "======================================================================"

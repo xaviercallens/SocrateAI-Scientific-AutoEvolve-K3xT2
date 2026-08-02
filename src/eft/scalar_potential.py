@@ -155,7 +155,7 @@ def kahler_potential(tau: float, x: float = 0.01, n_terms: int = 20) -> float:
 def scalar_potential(tau: float, picard: int = 19,
                      flux_n: int = 1, x: float = 0.01,
                      instanton_A: float = 0.1, instanton_a: float = 2.0 * math.pi) -> float:
-    \"\"\"Compute the F-term scalar potential V(τ) with Non-Perturbative Corrections.
+    """Compute the F-term scalar potential V(τ) with Non-Perturbative Corrections.
 
     V = e^K (|DW|² - 3|W|²)
 
@@ -164,7 +164,7 @@ def scalar_potential(tau: float, picard: int = 19,
     
     Now includes D-brane instanton corrections to the superpotential:
     W_np = A * exp(-a * τ)
-    \"\"\"
+    """
     K = kahler_potential(tau, x)
     pi0, pi1, pi2 = picard_fuchs_periods(x)
 
