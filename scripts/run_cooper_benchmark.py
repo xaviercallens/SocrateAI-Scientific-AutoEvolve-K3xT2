@@ -112,6 +112,27 @@ def benchmark_cooper_sequences():
             "picard_number": 18,
             "t2_modulus_tau": 0.58,
             "complex_structure": [0.3, 0.3, 0.3]
+        },
+        {
+            "candidate_id": "zagier_case_epsilon",
+            "sequence_type": "Sporadic (Medium)",
+            "picard_number": 18,
+            "t2_modulus_tau": 0.57,
+            "complex_structure": [0.4, 0.4, 0.4]
+        },
+        {
+            "candidate_id": "limit_17",
+            "sequence_type": "Research Frontier",
+            "picard_number": 20,
+            "t2_modulus_tau": 0.40,
+            "complex_structure": [1.0, 1.0, -1.0]
+        },
+        {
+            "candidate_id": "limit_34",
+            "sequence_type": "Research Frontier",
+            "picard_number": 20,
+            "t2_modulus_tau": 0.41,
+            "complex_structure": [0.9, -1.0, -1.0]
         }
     ]
 
