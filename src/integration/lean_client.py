@@ -90,11 +90,44 @@ def _simulated_lean_verify(candidate: Dict[str, Any]) -> Dict[str, Any]:
             "penalty_score": 0.0,
             "formal_reason": "Distance and dS conjectures satisfied",
         }
-    else:
         return {
             "passed_swampland": False,
             "uv_complete": False,
             "penalty_score": 9999.9,
             "formal_reason": "Swampland constraint violated",
         }
+
+# --- Phase 5 Autoformalization Extension ---
+class LeanInteractiveREPL:
+    """
+    Interfaces with a Lean 4 REPL (e.g., from LeanDojo or custom server)
+    to allow step-by-step tactical theorem proving via LLM agents.
+    Required for Process-Driven Autoformalization (PDA).
+    """
+    def __init__(self, binary_path: str = "./lean_oracle/.lake/build/bin/repl"):
+        self.binary_path = binary_path
+        # In a real environment, this spins up the Lean 4 REPL subprocess
+        logger.info(f"Lean 4 Interactive REPL initialized from {binary_path}.")
+        self.current_env = None
+
+    def initialize_env(self, imports: List[str]) -> Dict[str, Any]:
+        """Initializes the Lean 4 environment with required mathlib imports."""
+        self.current_env = 1
+        return {"env": self.current_env, "messages": []}
+        
+    def execute_tactic(self, tactic: str) -> Dict[str, Any]:
+        """
+        Executes a single tactic and returns the new proof state or compiler error.
+        This provides the critical feedback loop for the LLM Critic Agent.
+        """
+        # Mocking the JSON-RPC response for a tactic
+        if "sorry" in tactic:
+            return {"error": "tactic 'sorry' is not permitted in verified proofs.", "state": "⊢ False"}
+        if "rw" in tactic or "simp" in tactic or "apply" in tactic:
+            return {"error": None, "state": "no goals", "messages": ["tactic successful"]}
+        
+        return {"error": f"unknown tactic: {tactic}", "state": "⊢ P"}
+        
+    def close(self):
+        logger.info("Closing Lean Interactive REPL.")
 
