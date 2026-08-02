@@ -153,28 +153,35 @@ def kahler_potential(tau: float, x: float = 0.01, n_terms: int = 20) -> float:
 
 
 def scalar_potential(tau: float, picard: int = 19,
-                     flux_n: int = 1, x: float = 0.01) -> float:
-    """Compute the F-term scalar potential V(τ).
+                     flux_n: int = 1, x: float = 0.01,
+                     instanton_A: float = 0.1, instanton_a: float = 2.0 * math.pi) -> float:
+    \"\"\"Compute the F-term scalar potential V(τ) with Non-Perturbative Corrections.
 
     V = e^K (|DW|² - 3|W|²)
 
     With tadpole constraint ½Σnₐ² ≤ χ(K3)/24 = 1,
     at most one unit of flux can be turned on.
-    """
+    
+    Now includes D-brane instanton corrections to the superpotential:
+    W_np = A * exp(-a * τ)
+    \"\"\"
     K = kahler_potential(tau, x)
     pi0, pi1, pi2 = picard_fuchs_periods(x)
 
-    # Superpotential: W = n_flux × Π₀ (dominant term)
-    W = flux_n * pi0
+    # Superpotential: W = W_flux + W_np
+    W_flux = flux_n * pi0
+    W_np = instanton_A * math.exp(-instanton_a * tau)
+    W = W_flux + W_np
 
     # Kähler metric component K_ττ̄ = ∂²K/∂τ∂τ̄ = 1/τ₂²
     K_tt = 1.0 / max(tau**2, 1e-20)
 
     # Covariant derivative DW = ∂W/∂τ + (∂K/∂τ)W
-    # At the self-dual point, ∂W/∂τ = 0 (W is independent of τ)
-    # ∂K_T²/∂τ = -1/τ
+    # ∂W_flux/∂τ = 0 (W_flux is independent of τ)
+    # ∂W_np/∂τ = -a * W_np
+    dW_dtau = -instanton_a * W_np
     dK_dtau = -1.0 / max(tau, 1e-10)
-    DW = dK_dtau * W
+    DW = dW_dtau + dK_dtau * W
 
     # F-term potential
     V = math.exp(K) * (abs(DW)**2 / K_tt - 3 * abs(W)**2)
