@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 import numpy as np
+from src.mcmc.observational_constants import PTA_F_MONOPOLE_TARGET
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +97,13 @@ class AutoEvolveK3:
             score += 0.30
         if c.partner_ode is not None:
             score += 0.30        # Sym² structure confirmed
-        return min(score, 1.0)
+            
+        # AUDIT FIX (Stream 5): Picard Rank Cap. Penalize P >= 19 to avoid 
+        # terminal singularity collapse and force the search to P <= 18.
+        if c.picard_rank is not None and c.picard_rank >= 19:
+            score -= 1.0         # Severe topological penalty
+            
+        return min(max(score, 0.0), 1.0)
 
     def _empirical_score(self, c: K3Candidate) -> float:
         score = 0.0
@@ -107,7 +114,7 @@ class AutoEvolveK3:
                 score += 0.30
             else:
                 score += 0.20
-        if c.pta_frequency is not None and abs(c.pta_frequency - 1e-8) / 1e-8 < 0.10:
+        if c.pta_frequency is not None and abs(c.pta_frequency - PTA_F_MONOPOLE_TARGET) / PTA_F_MONOPOLE_TARGET < 0.10:
             score += 0.30
         if c.pta_amplitude is not None and abs(c.pta_amplitude - 1e-15) / 1e-15 < 0.10:
             score += 0.30
@@ -258,8 +265,8 @@ class AutoEvolveK3:
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
     seeds = [
-        K3Candidate("cooper_s7",  3, [13, 4, -27, 3], "A279619", 4, 18, ["II", "II"], 47.0, 1e-8, 1e-15, 0.50),
-        K3Candidate("cooper_s10", 3, [6, 2, -64, 4],  None,      4, 18, ["II", "II"], 33.0, 1e-8, 1e-15, 0.46),
+        K3Candidate("cooper_s7",  3, [13, 4, -27, 3], "A279619", 4, 18, ["II", "II"], 47.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.50),
+        K3Candidate("cooper_s10", 3, [6, 2, -64, 4],  None,      4, 18, ["II", "II"], 33.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.46),
         K3Candidate("cooper_s22", 3, [1, 1, 1, 1],    None,      None, None, None,    None, None, None,  None),
         K3Candidate("cooper_s18", 3, [2, 3, -5, 1],   None,      None, None, None,    None, None, None,  None),  # should be filtered
     ]

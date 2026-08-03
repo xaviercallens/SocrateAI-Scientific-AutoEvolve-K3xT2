@@ -48,10 +48,22 @@ class JWSTLikelihoodEngine:
         """
         omega_m = cosmo.get("Omega_m", 0.300)
         
-        # We map the topological mass gap gamma to a physical mass scale proxy:
-        # m_fdm_proxy ~ 1e-22 * (gamma_gap / 4.847)^2
-        # (This implies a scaling from the string scale to the eV scale for the soliton)
-        m_fdm_proxy = 1e-22 * (gamma_gap / 4.847)**2
+        # AUDIT FIX (TASK 11-02): Use first-principles axion mass derived from 
+        # string instanton action and topological cycle volumes.
+        import sys
+        import os
+        sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+        from src.eft.scalar_potential import fdm_axion_mass
+        
+        if len(theta) >= 5:
+            tau = float(theta[0])
+            picard_offset = float(theta[4])
+            picard = 19 + picard_offset
+        else:
+            tau = 0.50
+            picard = 19
+            
+        m_fdm_proxy = fdm_axion_mass(int(round(picard)), tau)
         
         # We penalize configurations that yield FDM masses below the JWST threshold.
         # If m_FDM >= 3e-22 eV, structure is NOT suppressed at z~10, so it matches JWST.

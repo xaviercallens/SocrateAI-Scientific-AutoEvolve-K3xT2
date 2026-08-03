@@ -295,6 +295,24 @@ class DeterministicK3Generator:
 
     # ─── Internal Methods ─────────────────────────────────────────────────
 
+    def _passes_maximal_singularity_filter(self, descriptor: K3SurfaceDescriptor) -> bool:
+        """
+        Maximal Singularity Pre-Filter.
+        
+        Evaluates the Néron-Severi lattice to prevent terminal Weierstrass 
+        singularities (f >= 4, g >= 5, Δ >= 10) which trigger tensionless 
+        strings and destroy the 4D EFT (Swampland Distance Conjecture).
+        
+        Candidates with P > 18 are mathematically quarantined.
+        """
+        if descriptor.picard_number > 18:
+            logger.warning(
+                f"⚠️ QUARANTINED: Candidate {descriptor.name} (P={descriptor.picard_number}) "
+                f"violates UV consistency. Triggers terminal Weierstrass singularity collapse."
+            )
+            return False
+        return True
+
     def _match_spectral_radius(self, lambda_1: float) -> K3SurfaceDescriptor:
         """
         Find the K3 surface whose Apéry sequence spectral radius is
@@ -304,6 +322,10 @@ class DeterministicK3Generator:
         best_distance = float('inf')
 
         for key, descriptor in self.catalog.items():
+            # Apply Maximal Singularity Pre-Filter (Swampland Constraint)
+            if not self._passes_maximal_singularity_filter(descriptor):
+                continue
+                
             # Use log-scale distance for exponentially-spaced radii
             if descriptor.spectral_radius > 0 and lambda_1 > 0:
                 distance = abs(
@@ -354,11 +376,22 @@ class DeterministicK3Generator:
             - "standard": M' = (M² + M) ⊙ mask (topology-preserving)
             - "expansion": M' = M² ⊙ mask + perturbation (topology-exploring)
             - "contraction": M' = M ⊙ M^T (symmetrization)
+            - "mum_locked": M' = M² ⊙ mask + I (Maximum Unipotent Monodromy preservation)
         """
         if rule_name == "standard":
             mask = (M > 0).astype(np.float64)
             for _ in range(n_steps):
                 M = (M @ M + M) * mask
+                norm = np.abs(M).max()
+                if norm > 1e6:
+                    M = M / norm
+        elif rule_name == "mum_locked":
+            # AUDIT FIX (Stream 5): Monodromy-Locked Evolution.
+            # Strictly restricts node replacement to preserve the Maximum Unipotent 
+            # Monodromy (MUM) topological core by reinforcing the identity cycle.
+            for _ in range(n_steps):
+                mask = (M > 0).astype(np.float64)
+                M = (M @ M) * mask + np.eye(M.shape[0]) * 2.0
                 norm = np.abs(M).max()
                 if norm > 1e6:
                     M = M / norm
@@ -507,7 +540,7 @@ if __name__ == "__main__":
     print("=" * 70)
 
     M = gen._construct_k4(vacuum_nodes=11)
-    for rule in ["standard", "expansion", "contraction"]:
+    for rule in ["standard", "mum_locked", "expansion", "contraction"]:
         k3_new, meta = gen.from_rewriting_rule(M.copy(), rule_name=rule, n_steps=3)
         print(f"\n  Rule '{rule}': λ₁ = {meta['post_spectral_radius']:.4f} "
               f"→ {k3_new.name} (P={k3_new.picard_number})")

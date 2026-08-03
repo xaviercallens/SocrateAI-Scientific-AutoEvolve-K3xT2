@@ -90,6 +90,7 @@ def _simulated_lean_verify(candidate: Dict[str, Any]) -> Dict[str, Any]:
             "penalty_score": 0.0,
             "formal_reason": "Distance and dS conjectures satisfied",
         }
+    else:
         return {
             "passed_swampland": False,
             "uv_complete": False,

@@ -221,41 +221,11 @@ class DESILikelihoodEngine:
 
     # ------------------------------------------------------------------
     # Likelihood Evaluation
-    # ------------------------------------------------------------------
-
-    def nanograv_log_likelihood(self, phenotype: Dict[str, float]) -> Tuple[float, float]:
-        """
-        Evaluate the NanoGrav 15yr free spectrum likelihood.
-        Simulates the cross-correlation constraint for the PTA frequency spectrum.
-        """
-        # NANOGrav 15yr spectral shape likelihood
-        # K3×T² Compton resonance prediction: 24.18 nHz (Section 5)
-        f_mono = phenotype.get("pta_f_monopole", 2.418e-8)
-
-        chi2_pta = ((f_mono - PTA_F_MONOPOLE_TARGET) / PTA_F_MONOPOLE_SIGMA) ** 2
-        log_l_pta = -0.5 * chi2_pta - 0.5 * math.log(2 * math.pi * PTA_F_MONOPOLE_SIGMA**2)
-        
-        return log_l_pta, chi2_pta
-
-    def euclid_log_likelihood(self, phenotype: Dict[str, float]) -> Tuple[float, float]:
-        """
-        Evaluate the Euclid Q1 Weak Lensing likelihood.
-        Constrains the S_8 parameter (structure growth).
-
-        Uses the unified target from observational_constants.py
-        (Euclid Q1 morphological proxy: S₈ = 0.828 ± 0.011).
-        """
-        s8_model = phenotype.get("s8_gradient", 0.8)
-
-        chi2_euclid = ((s8_model - S8_EUCLID_Q1_MEAN) / S8_EUCLID_Q1_SIGMA) ** 2
-        log_l_euclid = -0.5 * chi2_euclid - 0.5 * math.log(2 * math.pi * S8_EUCLID_Q1_SIGMA**2)
-
-        return log_l_euclid, chi2_euclid
-
     def log_likelihood(self, phenotype: Dict[str, float]) -> DESILikelihoodResult:
         """
-        Evaluate the combined multivariate Gaussian log-likelihood:
-            log 𝓛 = log 𝓛_DESI + log 𝓛_NanoGrav + log 𝓛_Euclid
+        Evaluate the multivariate Gaussian log-likelihood for DESI BAO data.
+        AUDIT FIX (TASK 12-01): Removed double-counting of Euclid and PTA monopole,
+        and removed mock anisotropic constraints to return strictly DESI BAO data.
         """
         # DESI BAO log-likelihood
         model = self.predict_bao_distances(phenotype)
@@ -270,20 +240,11 @@ class DESILikelihoodEngine:
         chi2_desi = float(delta @ cinv_delta)
         log_norm = -0.5 * self._ndof * math.log(2 * math.pi) - 0.5 * self._log_det_cov
         log_l_desi = -0.5 * chi2_desi + log_norm
-        
-        # NanoGrav 15yr log-likelihood
-        log_l_pta, chi2_pta = self.nanograv_log_likelihood(phenotype)
-        
-        # Euclid Weak Lensing log-likelihood
-        log_l_euclid, chi2_euclid = self.euclid_log_likelihood(phenotype)
-        
-        total_log_l = log_l_desi + log_l_pta + log_l_euclid
-        total_chi2 = chi2_desi + chi2_pta + chi2_euclid
 
         return DESILikelihoodResult(
-            log_likelihood=total_log_l,
-            chi2=total_chi2,
-            ndof=self._ndof + 2,  # Added PTA and Euclid constraint DOFs
+            log_likelihood=log_l_desi,
+            chi2=chi2_desi,
+            ndof=self._ndof,
             residuals=delta,
             model_predictions=model,
         )

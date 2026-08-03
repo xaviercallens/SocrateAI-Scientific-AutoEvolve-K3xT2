@@ -25,7 +25,7 @@ import math
 from pathlib import Path
 from scipy import stats
 
-from data_staging.desi_likelihood import DESILikelihoodEngine
+from src.mcmc.desi_likelihood import DESILikelihoodEngine
 from src.mcmc.s8_likelihood import S8Likelihood, S8LikelihoodConfig
 from data_staging.nanograv_loader import fetch_nanograv_15yr_data
 
@@ -42,11 +42,14 @@ TRAPZ = getattr(np, 'trapezoid', None) or getattr(np, 'trapz', None)
 # =====================================================================
 # MAP from 150-generation Split-Validation Training Set + Instanton Guesses
 # =====================================================================
-MAP_THETA = np.array([0.50, -0.5178, -1.5592, 1.6371, -0.4929, 3.5, 7.0])
-PARAM_NAMES = ["tau", "cs_1", "cs_2", "cs_3", "picard_offset", "inst_A", "inst_a"]
+# Added flux integers for Task 11-04 (n1, n2, n3)
+MAP_THETA = np.array([0.50, -0.5178, -1.5592, 1.6371, -0.4929, 3.5, 7.0, 1.0, 0.0, 0.0])
+PARAM_NAMES = ["tau", "cs_1", "cs_2", "cs_3", "picard_offset", "inst_A", "inst_a", "flux_n1", "flux_n2", "flux_n3"]
 
 # Informed prior widths (generous ±2σ around MAP from posterior width)
-PRIOR_SIGMA = np.array([0.40, 1.50, 1.50, 1.50, 1.20, 2.0, 2.0])
+# Fluxes are sampled uniformly across [-2, 2], so we don't use gaussian for them in the transform, 
+# but we pad PRIOR_SIGMA for length match.
+PRIOR_SIGMA = np.array([0.40, 1.50, 1.50, 1.50, 1.20, 2.0, 2.0, 2.0, 2.0, 2.0])
 
 # DESI-calibrated intercepts (Phase 9 Priority 1)
 W0_BASE  = -0.9745
@@ -76,19 +79,21 @@ _Z, _OBS, _TYPES, _COV_INV = load_desi_data()
 
 from src.eft.scalar_potential import scalar_potential
 
-def eps_dynamic(tau, A, a):
-    V_p = scalar_potential(tau + 1e-4, instanton_A=A, instanton_a=a)
-    V_m = scalar_potential(tau - 1e-4, instanton_A=A, instanton_a=a)
-    V_c = scalar_potential(tau, instanton_A=A, instanton_a=a)
-    if V_c == 0: return 100.0
+def eps_dynamic(tau, A, a, flux_vec=(1, 0, 0)):
+    # AUDIT FIX (TASK 11-04): Pass discrete flux vector
+    V_p = scalar_potential(tau + 1e-4, flux_vec=flux_vec, instanton_A=A, instanton_a=a)
+    V_m = scalar_potential(tau - 1e-4, flux_vec=flux_vec, instanton_A=A, instanton_a=a)
+    V_c = scalar_potential(tau, flux_vec=flux_vec, instanton_A=A, instanton_a=a)
+    if abs(V_c) < 1e-250: return 100.0
     dV = (V_p - V_m) / 2e-4
     return 0.5 * (dV / V_c)**2
 
 def moduli_to_cosmo(theta):
-    tau, cs1, cs2, cs3, poff, inst_A, inst_a = theta
+    tau, cs1, cs2, cs3, poff, inst_A, inst_a, fn1, fn2, fn3 = theta
+    n1, n2, n3 = int(round(fn1)), int(round(fn2)), int(round(fn3))
     
     # DYNAMIC LINK: Calculate w0 directly from the instanton-corrected EFT
-    e = eps_dynamic(tau, inst_A, inst_a)
+    e = eps_dynamic(tau, inst_A, inst_a, flux_vec=(n1, n2, n3))
     w0_dyn = -1.0 + 2.0 * e / (1.0 + e)
     
     return {
@@ -134,6 +139,11 @@ except FileNotFoundError:
 
 def joint_loglikelihood(theta):
     """Combined joint log-likelihood using real Stream 4 data loaders."""
+    # Flux tadpole constraint: 1/2 sum(n^2) <= 1 -> sum(n^2) <= 2
+    n1, n2, n3 = int(round(theta[7])), int(round(theta[8])), int(round(theta[9]))
+    if n1**2 + n2**2 + n3**2 > 2:
+        return -1e30  # Hard rejection for unphysical flux vacua
+        
     cosmo = moduli_to_cosmo(theta)
     
     # 1. DESI BAO Likelihood (uses full covariance matrix)
@@ -176,13 +186,16 @@ def joint_loglikelihood(theta):
 # Prior transforms
 # =====================================================================
 def prior_transform_informed(u):
-    """Informed Gaussian prior centred on MAP with Deep Burn posterior widths."""
-    return np.array([
-        stats.norm.ppf(np.clip(u[i], 1e-6, 1-1e-6),
-                       loc=MAP_THETA[i],
-                       scale=PRIOR_SIGMA[i])
-        for i in range(7)
-    ])
+    """Informed Gaussian prior for continuous vars, Uniform for flux."""
+    p = np.zeros(10)
+    # Continuous moduli (0 to 6)
+    for i in range(7):
+        p[i] = stats.norm.ppf(np.clip(u[i], 1e-6, 1-1e-6),
+                              loc=MAP_THETA[i], scale=PRIOR_SIGMA[i])
+    # Discrete flux variables (7 to 9), uniform over [-2.5, 2.5] to round to [-2, -1, 0, 1, 2]
+    for i in range(7, 10):
+        p[i] = u[i] * 5.0 - 2.5
+    return p
 
 
 def prior_transform_flat(u):
@@ -227,7 +240,7 @@ def main():
     sampler_k3t2 = dynesty.NestedSampler(
         joint_loglikelihood,
         prior_transform_informed,
-        ndim=7,
+        ndim=10,
         nlive=100,
         bound='multi',
         sample='rwalk',

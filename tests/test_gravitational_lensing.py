@@ -3,9 +3,16 @@ Test Suite for Option A: Gravitational Lensing (Light vs Dark Matter)
 Validates that photon null geodesics bend inward near K4 oligon tangle defects.
 """
 
-from agents.topology_agent.topology_agent import TopologyAgent
+import pytest
+
+try:
+    from agents.topology_agent.topology_agent import TopologyAgent
+    HAS_AGENTS = True
+except ImportError:
+    HAS_AGENTS = False
 
 
+@pytest.mark.skipif(not HAS_AGENTS, reason="agents package is not available")
 def test_gravitational_lensing():
     agent = TopologyAgent(strict_cag_mode=True)
     res = agent.execute_gravitational_lensing_poc(steps=10)

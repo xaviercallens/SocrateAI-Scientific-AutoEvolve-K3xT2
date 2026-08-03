@@ -638,6 +638,13 @@ def hypergraph_simulate(vacuum_nodes: int = 11, steps: int = 5, rule: str = "k4_
     import numpy as np
 
     seq_data = {
+        "az_1": {
+            "name": "Almkvist-Zudilin #1",
+            "picard": 18,
+            "lambda_2": 27.0,
+            "gamma": 4.56,
+            "apery_seq": [1, 6, 54, 564, 6318, 72588, 853002, 10185984]
+        },
         "s10": {
             "name": "Cooper s₁₀",
             "picard": 19,
@@ -669,7 +676,7 @@ def hypergraph_simulate(vacuum_nodes: int = 11, steps: int = 5, rule: str = "k4_
             "apery_seq": [1, 5, 73, 1445, 33001, 819005, 21460825, 584307365]
         }
     }
-    s_info = seq_data.get(sequence_type, seq_data["s10"])
+    s_info = seq_data.get(sequence_type, seq_data["az_1"])
 
     total_nodes = 4 + max(4, min(vacuum_nodes, 30))
     M = np.zeros((total_nodes, total_nodes), dtype=np.float64)
