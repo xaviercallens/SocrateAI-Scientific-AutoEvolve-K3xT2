@@ -15,6 +15,7 @@ from evolution.auto_evolve_k3_selection import (
     AutoEvolveK3, K3Candidate, EvolutionParameters, BLOCKED_CANDIDATES
 )
 from validation.astrophysics_validator import AstrophysicsValidator, AstrophysicsCriteria
+from mcmc.observational_constants import PTA_F_MONOPOLE_TARGET
 
 
 # ------------------------------------------------------------------ #
@@ -24,8 +25,8 @@ from validation.astrophysics_validator import AstrophysicsValidator, Astrophysic
 @pytest.fixture
 def seeds():
     return [
-        K3Candidate("cooper_s7",  3, [13.0, 4.0, -27.0, 3.0], "A279619", 4, 18, ["II","II"], 47.0, 1e-8, 1e-15, 0.50),
-        K3Candidate("cooper_s10", 3, [6.0, 2.0, -64.0, 4.0],  None,      4, 18, ["II","II"], 33.0, 1e-8, 1e-15, 0.46),
+        K3Candidate("cooper_s7",  3, [13.0, 4.0, -27.0, 3.0], "A279619", 4, 18, ["II","II"], 47.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.50),
+        K3Candidate("cooper_s10", 3, [6.0, 2.0, -64.0, 4.0],  None,      4, 18, ["II","II"], 33.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.46),
         K3Candidate("cooper_s22", 3, [1.0, 1.0,  1.0,  1.0],  None,      None,None,None,     None,None, None, None),
     ]
 
@@ -116,10 +117,10 @@ class TestAstrophysicsValidator:
         assert AstrophysicsValidator.validate_weak_lensing(47.0) is True
 
     def test_pta_exact_target(self):
-        assert AstrophysicsValidator.validate_pta(1e-8, 1e-15) is True
+        assert AstrophysicsValidator.validate_pta(PTA_F_MONOPOLE_TARGET, 1e-15) is True
 
     def test_pta_fail_frequency(self):
-        assert AstrophysicsValidator.validate_pta(2e-8, 1e-15) is False
+        assert AstrophysicsValidator.validate_pta(PTA_F_MONOPOLE_TARGET * 2, 1e-15) is False
 
     def test_chameleon_pass(self):
         assert AstrophysicsValidator.validate_chameleon(0.46) is True
@@ -153,7 +154,7 @@ class TestAstrophysicsValidator:
         validator = AstrophysicsValidator()
         criteria = AstrophysicsCriteria(
             delta_obs=47.0,
-            pta_frequency=1e-8,
+            pta_frequency=PTA_F_MONOPOLE_TARGET,
             pta_amplitude=1e-15,
             alpha_eff=0.50,
             gd1_heating_bounds={"rate": 0.05},

@@ -62,7 +62,7 @@ def build_simulator():
             "candidate_id": "sbi_sample",
             "t2_modulus_tau": float(t[0]),
             "complex_structure": [float(t[1]), float(t[2]), float(t[4])], # TASK-10/B7: removed hardcoded 0.96 bias
-            "picard_number": float(t[3]),
+            "picard_number": int(round(float(t[3]))),
             "moduli_stabilization": 0.0, # Not used in map_k3_to_cosmology directly
         }
         
@@ -132,7 +132,7 @@ def main():
     simulator = build_simulator()
     
     # 4. Generate training data from the forward model
-    num_simulations = 2000  # Lightweight for demonstration
+    num_simulations = 100000  # AUDIT FIX (TASK 12-03): Scaled from 2k to 100k for 5D convergence
     logger.info(f"Running {num_simulations} forward simulations...")
     theta, x = simulate_for_sbi(simulator, proposal=prior, num_simulations=num_simulations)
     

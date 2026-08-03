@@ -62,10 +62,10 @@ class TestAdvancedMLModules(unittest.TestCase):
         solver = EulerNeuralODESolver(ode_func)
         
         z_span = torch.linspace(0.001, 0.02, steps=10)
-        y0 = torch.tensor([[1.0, 0.0]], dtype=torch.float32)
+        y0 = torch.tensor([[1.0, 0.0, 0.0]], dtype=torch.float32)
         
         traj = solver.integrate(y0, z_span)
-        self.assertEqual(traj.shape, (1, 10, 2))
+        self.assertEqual(traj.shape, (1, 10, 3))
         
         # Test differentiability
         loss = traj.sum()

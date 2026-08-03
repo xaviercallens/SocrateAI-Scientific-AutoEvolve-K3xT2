@@ -73,14 +73,14 @@ def main():
     
     func = lambda t: get_log_likelihood(t, engine, base_candidate)
     
-    logger.info("Computing 5D Hessian...")
+    logger.info("Computing 4D Continuous Hessian (ignoring discrete picard_offset)...")
     
-    # We may need to adapt epsilon for different parameters due to different scales.
-    # picard_offset is an integer in the sampler usually, but treated as continuous here.
-    epsilons = [1e-3, 1e-3, 1e-3, 1e-3, 1e-2]
+    # We only compute FIM for the first 4 continuous parameters
+    theta_continuous = theta_map[:4]
+    epsilons = [1e-3, 1e-3, 1e-3, 1e-3]
     
     # Custom hessian with variable epsilon
-    n = len(theta_map)
+    n = 4
     hessian = np.zeros((n, n))
     f0 = func(theta_map)
     
@@ -143,8 +143,8 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     
     results = {
-        "parameters": SPHER_PARAM_NAMES,
-        "MAP_point": theta_map.tolist(),
+        "parameters": SPHER_PARAM_NAMES[:4],
+        "MAP_point": theta_continuous.tolist(),
         "fisher_matrix": fisher.tolist(),
         "covariance_matrix": cov.tolist(),
         "correlation_matrix": corr.tolist(),

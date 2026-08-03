@@ -1,25 +1,33 @@
 {
-  "generation_0_seeds": [
+  "seeds": [
     {
       "candidate_id": "cooper_s11",
-      "picard_number": 19,
-      "moduli_stabilization": 0.85,
-      "complex_structure": [0.5, 0.5, 1.0],
-      "t2_modulus_tau": 0.48
+      "picard_fuchs_coefficients": [0.5, -1.8, 1.2, -0.3],
+      "complex_structure_tau": [0.1, 1.5],
+      "kahler_modulus_rho": [2.0, 0.8],
+      "hodge_numbers": {"h11": 3, "h21": 19, "h22": 156},
+      "kodaira_fiber_type": "I_1"
     },
     {
       "candidate_id": "cooper_s10",
-      "picard_number": 19,
-      "moduli_stabilization": 0.60,
-      "complex_structure": [1.0, 0.0, 0.0],
-      "t2_modulus_tau": 0.50
+      "picard_fuchs_coefficients": [0.5, -1.8, 1.2, -0.3],
+      "complex_structure_tau": [0.1, 1.5],
+      "kahler_modulus_rho": [2.0, 0.8],
+      "hodge_numbers": {"h11": 3, "h21": 19, "h22": 156},
+      "kodaira_fiber_type": "II"
     },
     {
       "candidate_id": "cooper_s7",
-      "picard_number": 19,
-      "moduli_stabilization": 0.45,
-      "complex_structure": [1.0, 1.0, 1.0],
-      "t2_modulus_tau": 0.50
+      "picard_fuchs_coefficients": [0.5, -1.8, 1.2, -0.3],
+      "complex_structure_tau": [0.1, 1.5],
+      "kahler_modulus_rho": [2.0, 0.8],
+      "hodge_numbers": {"h11": 3, "h21": 19, "h22": 156},
+      "kodaira_fiber_type": "IV*"
     }
+  ],
+  "generation_0_seeds": [
+    {"candidate_id": "cooper_s11", "picard_number": 19, "moduli_stabilization": 0.85, "complex_structure": [0.5, 0.5, 1.0], "t2_modulus_tau": 0.48},
+    {"candidate_id": "cooper_s10", "picard_number": 19, "moduli_stabilization": 0.60, "complex_structure": [1.0, 0.0, 0.0], "t2_modulus_tau": 0.50},
+    {"candidate_id": "cooper_s7", "picard_number": 19, "moduli_stabilization": 0.45, "complex_structure": [1.0, 1.0, 1.0], "t2_modulus_tau": 0.50}
   ]
 }

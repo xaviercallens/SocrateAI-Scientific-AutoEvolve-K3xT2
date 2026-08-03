@@ -3,13 +3,13 @@ steps:
     args:
       - build
       - '-t'
-      - 'gcr.io/$PROJECT_ID/k3t2-dashboard:$COMMIT_SHA'
+      - 'gcr.io/$PROJECT_ID/k3t2-dashboard:$BUILD_ID'
       - '-f'
       - 'dashboard/Dockerfile'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/k3t2-dashboard:$COMMIT_SHA']
+    args: ['push', 'gcr.io/$PROJECT_ID/k3t2-dashboard:$BUILD_ID']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -17,7 +17,7 @@ steps:
       - run
       - deploy
       - k3t2-dashboard
-      - '--image=gcr.io/$PROJECT_ID/k3t2-dashboard:$COMMIT_SHA'
+      - '--image=gcr.io/$PROJECT_ID/k3t2-dashboard:$BUILD_ID'
       - '--region=us-east4'
       - '--platform=managed'
       - '--allow-unauthenticated'
@@ -26,4 +26,4 @@ steps:
       - '--set-env-vars=GCS_BUCKET=socrateai-datalake-gen-lang-client-0625573011'
 
 images:
-  - 'gcr.io/$PROJECT_ID/k3t2-dashboard:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/k3t2-dashboard:$BUILD_ID'

@@ -74,7 +74,7 @@ def extract_theta(candidates):
 
 def log_likelihood_joint(theta, engine):
     from src.mcmc.spherical_sampler import spherical_to_candidate
-    base = {"picard_number": 19}
+    base = {"picard_number": 18}
     cand = spherical_to_candidate(theta, base)
     pheno = map_k3_to_cosmology(cand)
     res = engine.log_likelihood(pheno)
@@ -108,7 +108,7 @@ def main():
     engine = DESILikelihoodEngine()
     
     # Generate samples from prior
-    N_samples = 10000
+    N_samples = 1000
     np.random.seed(42)
     prior_samples = np.random.multivariate_normal(mu_prior, cov_prior, size=N_samples)
     

@@ -85,7 +85,7 @@ class TestDESILikelihoodEngine(unittest.TestCase):
         self.assertIsInstance(result, DESILikelihoodResult)
         self.assertTrue(np.isfinite(result.log_likelihood))
         self.assertGreaterEqual(result.chi2, 0.0)
-        self.assertEqual(result.ndof, 13)
+        self.assertEqual(result.ndof, 12)
         self.assertEqual(len(result.residuals), 12)
         self.assertEqual(len(result.model_predictions), 12)
 

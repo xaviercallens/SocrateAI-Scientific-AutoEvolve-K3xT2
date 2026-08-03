@@ -1,0 +1,10 @@
+.git/
+.venv/
+node_modules/
+paper/
+docs/
+specs/
+brief/
+tests/
+__pycache__/
+*.pyc

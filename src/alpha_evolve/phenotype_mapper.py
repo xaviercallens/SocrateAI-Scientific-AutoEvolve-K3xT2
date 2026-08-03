@@ -34,9 +34,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 try:
     from eft.scalar_potential import map_k3_to_cosmology_eft
-except ImportError:
-    # Fallback: if EFT module not available, define inline
-    map_k3_to_cosmology_eft = None
+except ImportError as e:
+    raise RuntimeError(
+        "CRITICAL AUDIT FAILURE (TASK 12-02): EFT scalar potential module could not be loaded. "
+        "The legacy ad-hoc phenotype mapper (v1.0/v2.0) has been permanently removed "
+        "due to scientific invalidity (algebraic contrivance). You must ensure "
+        "'src.eft.scalar_potential' is in your PYTHONPATH."
+    ) from e
 
 
 def map_k3_to_cosmology(candidate: dict) -> dict:
@@ -57,80 +61,4 @@ def map_k3_to_cosmology(candidate: dict) -> dict:
     dict
         Cosmological + astrophysical observables with EFT provenance.
     """
-    if map_k3_to_cosmology_eft is not None:
-        return map_k3_to_cosmology_eft(candidate)
-
-    # ──────────────────────────────────────────────────────────
-    # Fallback: simplified EFT formulae (same physics, no period
-    # computation for environments without the full eft module)
-    # ──────────────────────────────────────────────────────────
-    picard = candidate.get("picard_number", 19)
-    tau = candidate.get("t2_modulus_tau", 0.5)
-    cs = candidate.get("complex_structure", [1.0, 1.0, 1.0])
-
-    cs_mag = math.sqrt(sum(x ** 2 for x in cs))
-    if cs_mag < 1e-10:
-        cs_mag = 1e-10
-
-    cs_theta = math.acos(max(-1.0, min(1.0, cs[2] / cs_mag)))
-    cs_phi = math.atan2(cs[1], cs[0])
-
-    # ── EFT-derived formulae (Section 3b of the paper) ──────
-
-    # Eq. (11): w₀ from slow-roll ε
-    # At the MAP point τ ≈ 0.50, the potential is very flat
-    # ε ≈ 0.013, giving w₀ ≈ -0.974
-    epsilon = 0.013 * (1.0 + (tau - 0.5)**2 / 0.25)
-    w_0 = -1.0 + 2.0 * epsilon / (1.0 + epsilon)
-
-    # Eq. (16): Ωₘ = (ρ/h¹¹) × Ωₘ,Planck + δΩₘ(cs)
-    omega_m_planck = 0.315
-    omega_m = (picard / 20.0) * omega_m_planck
-    delta_om = 0.005 * cs[0] / cs_mag + 0.001 * cs[2] / cs_mag
-    omega_m += delta_om
-
-    # §3.6: H₀ from vacuum energy (calibrated at MAP)
-    h_0 = 69.3 + (tau - 0.50) * 2.0
-
-    # Eq. (18): S₈ from Picard number
-    s8 = 0.830 - 0.015 * (19 - picard)
-
-    # Eq. (19): PTA monopole from T² Compton scale
-    f_pta = 1e-9 * (1.0 + 0.1 * (tau - 0.5))
-
-    # Eq. (20): Spectral index from Picard lattice coupling
-    h11 = 20
-    gamma_smbhb = 13.0 / 3.0
-    c_coupling = 4.0 / 7.0
-    gamma_pta = gamma_smbhb + 2.0 * (picard - h11 / 2.0) / h11 * c_coupling
-
-    # Anisotropic signatures (IMP-01, unchanged)
-    pta_anisotropy = 0.05 * abs(math.sin(cs_phi)) * (cs_mag / math.sqrt(3))
-    lya_tilt = 0.01 * math.cos(cs_theta) * (cs_mag - math.sqrt(3))
-    gw_pol = abs(math.sin(cs_theta) * math.sin(cs_phi))
-
-    return {
-        # Standard cosmology (EFT-derived)
-        # AUDIT FIX (TASK-10/C3): removed hard max/min clipping which silently
-        # truncated the posterior and biased Bayesian evidence. Values are now
-        # physically bounded via soft tanh squashing:
-        #   w0  in (-1.3, -0.7) via tanh centred on -1.0 with half-range 0.3
-        #   omega_m in (0.1, 0.5) via tanh centred on 0.3 with half-range 0.2
-        #   h0  in (60, 80) via tanh centred on 70 with half-range 10
-        "w0":         float(-1.0 + 0.3 * math.tanh((w_0 + 1.0) / 0.3)),
-        "omega_m":    float(0.3  + 0.2 * math.tanh((omega_m - 0.3) / 0.2)),
-        "h0":         float(70.0 + 10.0 * math.tanh((h_0 - 70.0) / 10.0)),
-        "s8_gradient": s8,
-        # PTA predictions (EFT-derived)
-        "pta_f_monopole": f_pta,
-        "pta_spectral_index": gamma_pta,
-        # Anisotropic signatures
-        "pta_anisotropy": pta_anisotropy,
-        "lya_spectral_tilt": lya_tilt,
-        "gw_polarisation": gw_pol,
-        # Diagnostics
-        "cs_magnitude": cs_mag,
-        "cs_theta_rad": cs_theta,
-        "cs_phi_rad": cs_phi,
-        "slow_roll_epsilon": epsilon,
-    }
+    return map_k3_to_cosmology_eft(candidate)

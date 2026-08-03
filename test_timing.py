@@ -10,9 +10,8 @@ sys.path.append(os.path.abspath('src'))
 from scripts.run_phase2_physical_k3_t2 import execute_phase2
 
 # To bypass the resume, let's just monkeypatch the checkpoint loader
-import src.alpha_evolve.coordinator
-original_resume = src.alpha_evolve.coordinator.EvolutionCoordinator.resume_from_checkpoint
-src.alpha_evolve.coordinator.EvolutionCoordinator.resume_from_checkpoint = lambda self: False
+from utils.mlops_logger import EvolutionCheckpoint
+EvolutionCheckpoint.load_latest_checkpoint = lambda self: None
 
 start = time.time()
 execute_phase2(generations=2, pop_size=40)
