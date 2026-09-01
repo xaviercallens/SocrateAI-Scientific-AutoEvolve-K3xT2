@@ -11,3 +11,5 @@ lean_exe «rpc_server» where
 lean_lib «GeneratedK3» where
   roots := #[`GeneratedK3]
 
+lean_lib «MathieuM24» where
+  roots := #[`MathieuM24]

@@ -91,17 +91,16 @@ class AutoEvolveK3:
 
     def _theoretical_score(self, c: K3Candidate) -> float:
         score = 0.0
-        if c.ode_order == 3:
-            score += 0.40        # Must be Order-3 for K3
+        # TIER A: CY4 Geometry Requirement (Weight-5 Sequence / Order-5 ODE)
+        if c.ode_order == 5:
+            score += 0.50        # Prioritize Weight-5 CY4 sequences (like s_20)
+        elif c.ode_order == 3:
+            score -= 1.0         # Heavily penalize Weight-3 (K3 surfaces)
+
         if self._swampland_ok(c):
             score += 0.30
         if c.partner_ode is not None:
-            score += 0.30        # Sym² structure confirmed
-            
-        # AUDIT FIX (Stream 5): Picard Rank Cap. Penalize P >= 19 to avoid 
-        # terminal singularity collapse and force the search to P <= 18.
-        if c.picard_rank is not None and c.picard_rank >= 19:
-            score -= 1.0         # Severe topological penalty
+            score += 0.20        # Sym² structure confirmed
             
         return min(max(score, 0.0), 1.0)
 
@@ -268,6 +267,7 @@ if __name__ == "__main__":
         K3Candidate("cooper_s7",  3, [13, 4, -27, 3], "A279619", 4, 18, ["II", "II"], 47.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.50),
         K3Candidate("cooper_s10", 3, [6, 2, -64, 4],  None,      4, 18, ["II", "II"], 33.0, PTA_F_MONOPOLE_TARGET, 1e-15, 0.46),
         K3Candidate("cooper_s22", 3, [1, 1, 1, 1],    None,      None, None, None,    None, None, None,  None),
+        K3Candidate("callens_s20", 5, [1, 0, -34, 0, 1], None,   None, None, None,    None, None, None,  None),  # Weight-5 CY4 seed
         K3Candidate("cooper_s18", 3, [2, 3, -5, 1],   None,      None, None, None,    None, None, None,  None),  # should be filtered
     ]
     ev = AutoEvolveK3(EvolutionParameters(population_size=10, max_generations=20))

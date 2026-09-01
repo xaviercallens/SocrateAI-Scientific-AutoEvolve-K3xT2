@@ -178,6 +178,14 @@ if __name__ == "__main__":
             "complex_structure": [0.1, 0.9]
         }
         
+        # Test 3: Mathieu M24 Candidate (Should Pass)
+        cand_mathieu = {
+            "candidate_id": "Mathieu_M24",
+            "picard_number": 20,
+            "moduli_stabilization": 1.0,
+            "complex_structure": [0.0, 1.0, 0.0]
+        }
+        
         logger.info("--- Running IPC Tests ---")
         
         res1 = client.send_and_receive(cand_pass)
@@ -185,6 +193,9 @@ if __name__ == "__main__":
         
         res2 = client.send_and_receive(cand_fail)
         logger.info(f"TEST 2 (Failing Candidate): {json.dumps(res2, indent=2)}")
+        
+        res3 = client.send_and_receive(cand_mathieu)
+        logger.info(f"TEST 3 (Mathieu M24 Candidate): {json.dumps(res3, indent=2)}")
         
         client.close()
         logger.info("Tests completed successfully. IPC Bridge is stable.")
