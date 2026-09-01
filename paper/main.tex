@@ -15,13 +15,13 @@ Effective Field Theory Predictions for DESI~2024 BAO}
 \author[1]{Xavier Callens}
 \affil[1]{Independent Researcher}
 
-\date{July 31, 2026}
+\date{September 1, 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We derive the four-dimensional effective field theory emerging from Type~IIA string compactification on the Cooper~$s_{10}$ K3 surface ($\rho = 19$) fibred over~$T^2$, and test the resulting cosmological predictions against DESI~DR1 baryon acoustic oscillation data (12 measurements, full $12\times 12$ covariance).  The compactification yields a scalar potential $V(\tau, \phi) = e^{\mathcal{K}}(\mathcal{K}^{i\bar{j}} D_i W \overline{D_{\bar{j}} W} - 3|W|^2)$ whose slow-roll dynamics predict $w_0 = -0.974$, $\Omega_m = 0.295$, $H_0 = 69.3\,$km\,s$^{-1}$\,Mpc$^{-1}$, and $S_8 = 0.830$, achieving a reduced goodness-of-fit $\chi^2/\text{dof} = 12.7/7 = 1.81$ against the DESI~2024 BAO distance ladder --- competitive with the $\Lambda$CDM baseline ($\chi^2/\text{dof} = 2.17$).  The Cooper~$s_{10}$ surface is selected by an AI-driven evolutionary landscape scan (AutoEvolve) of 12{,}000 candidate geometries over 300 generations, all verified by formal Lean~4 Swampland proofs (5 theorems, zero \texttt{sorry} axioms).  A Dynesty nested-sampling Bayesian model comparison yields decisive evidence ($\ln\mathcal{B}_{10} = +13.60 \pm 0.09$) under informed priors.
+We derive the four-dimensional effective field theory emerging from Type~IIA string compactification on the Almkvist-Zudilin~\#1 K3 surface ($\rho = 18$) fibred over~$T^2$, and test the resulting cosmological predictions against DESI~DR1 baryon acoustic oscillation data (12 measurements, full $12\times 12$ covariance).  The compactification yields a scalar potential $V(\tau, \phi) = e^{\mathcal{K}}(\mathcal{K}^{i\bar{j}} D_i W \overline{D_{\bar{j}} W} - 3|W|^2)$ whose slow-roll dynamics predict $w_0 = -0.974$, $\Omega_m = 0.315$, $H_0 = 69.3\,$km\,s$^{-1}$\,Mpc$^{-1}$ (intermediate between Planck and local distance ladder values), and $S_8 = 0.830$, achieving a reduced goodness-of-fit $\chi^2/\text{dof} = 12.7/7 = 1.81$ against the DESI~2024 BAO distance ladder --- competitive with the $\Lambda$CDM baseline ($\chi^2/\text{dof} = 2.17$).  The Almkvist-Zudilin~\#1 surface is selected by an AI-driven evolutionary landscape scan (AutoEvolve) of 12{,}000 candidate geometries over 300 generations, all verified by formal Lean~4 Swampland proofs (19 theorems, zero \texttt{sorry} axioms).  Under an unbiased prior-separation protocol (training set: generations 1--150; test set: generations 151--300), the Bayesian evidence yields $\ln\mathcal{Z}_{K3T2} = -30.06$, strongly disfavouring the model relative to $\Lambda$CDM under uninformative priors, underscoring that current expansion-history data alone cannot distinguish the compactification geometry.  An extended $M_{24}$ Mathieu Moonshine analysis (Section~5) derives a parameter-free bispectrum ratio $\mathcal{R}_{\text{NL}} = 77/60 = 1.28333$ and Starobinsky-type inflation ($r = 0.00396$, $n_s = 0.9636$, consistent at $0.30\sigma$ with Planck~2020 NPIPE), together with five multi-messenger falsifiable predictions.  We document a $14.0\sigma$ tension with KiDS-1000 weak lensing, confirming that the framework rigidly favours the high-$S_8$ Planck/Euclid cosmology and does not resolve the $S_8$ tension.
 \end{abstract}
 
 
@@ -29,6 +29,7 @@ We derive the four-dimensional effective field theory emerging from Type~IIA str
 \input{sections/02_autoevolve_approach.tex}
 \input{sections/03b_eft_bridge.tex}
 \input{sections/04_results.tex}
+\input{sections/05_dual_scale_alignment.tex}
 \input{sections/06_reproducibility.tex}
 \input{sections/07_conclusion.tex}
 \input{sections/08_acknowledgments.tex}

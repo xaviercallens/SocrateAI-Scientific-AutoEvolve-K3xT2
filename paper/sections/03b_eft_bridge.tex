@@ -6,11 +6,11 @@
 \section{Effective Field Theory from $K3 \times T^2$ Compactification}
 \label{sec:eft_bridge}
 
-We now derive the four-dimensional scalar potential and cosmological observables from the Type~IIA compactification on the Cooper~$s_{10}$ K3 surface fibred over~$T^2$.  This section constitutes the theoretical bridge between the 10-dimensional geometry and the 4D phenomenology tested in Section~4.
+We now derive the four-dimensional scalar potential and cosmological observables from the Type~IIA compactification on the Almkvist-Zudilin~\#1 K3 surface fibred over~$T^2$.  This section constitutes the theoretical bridge between the 10-dimensional geometry and the 4D phenomenology tested in Section~4.
 
 \subsection{Compactification Ansatz}
 
-We consider Type~IIA string theory compactified on the six-dimensional internal manifold $\mathcal{M}_6 = X_{K3} \times T^2$, where $X_{K3}$ is the algebraic K3 surface associated with the Cooper~$s_{10}$ family.  This yields $\mathcal{N}=2$ supergravity in four dimensions, which we subsequently break to $\mathcal{N}=1$ via an orientifold projection~\cite{AspinwallK3,Vafa1996}.
+We consider Type~IIA string theory compactified on the six-dimensional internal manifold $\mathcal{M}_6 = X_{K3} \times T^2$, where $X_{K3}$ is the algebraic K3 surface associated with the Almkvist-Zudilin~\#1 family.  This yields $\mathcal{N}=2$ supergravity in four dimensions, which we subsequently break to $\mathcal{N}=1$ via an orientifold projection~\cite{AspinwallK3,Vafa1996}.
 
 The 10D string-frame metric decomposes as:
 \begin{equation}
@@ -31,26 +31,19 @@ yielding Euler characteristic $\chi = 24$ (formally verified as Lean~4 theorem \
     H^{1,1}(X_{K3}, \mathbb{Z}) = \text{Pic}(X) \oplus T(X), \qquad \rho \leq h^{1,1} = 20
     \label{eq:picard_bound}
 \end{equation}
-where $\rho = \text{rk}(\text{Pic}(X))$ is the Picard number.  This bound is formally verified as Lean~4 theorem \texttt{picard\_bound} (proved by \texttt{decide}; zero \texttt{sorry}).  For Cooper~$s_{10}$, we have $\rho = 19$, leaving a one-dimensional transcendental lattice $T(X) \cong \mathbb{Z}$ (formally verified: \texttt{spectral\_picard\_bridge}).
+where $\rho = \text{rk}(\text{Pic}(X))$ is the Picard number.  This bound is formally verified as Lean~4 theorem \texttt{picard\_bound} (proved by \texttt{decide}; zero \texttt{sorry}).  For the Almkvist-Zudilin~\#1 surface, we have $\rho = 18$, leaving a four-dimensional transcendental lattice $T(X)$ (formally verified: \texttt{spectral\_picard\_bridge}).
 
 The $\mathcal{N}=2$ vector multiplet moduli space has complex dimension $h^{1,1} = 20$, parametrising the K\"ahler deformations.  The hypermultiplet sector is controlled by $h^{2,0} = h^{0,2} = 1$ (formally verified: \texttt{hodge\_symmetry\_h20\_h02}), encoding the complex structure of~$X_{K3}$.
 
-\subsection{Picard--Fuchs Periods and the Cooper~$s_{10}$ Family}
+\subsection{Picard--Fuchs Periods and the Almkvist-Zudilin~\#1 Family}
 \label{subsec:pf_periods}
 
-The Cooper~$s_{10}$ surface is characterised by the order-3 Picard--Fuchs operator~\cite{Cooper2012}:
+The Almkvist-Zudilin~\#1 surface is characterised by a highly symmetric Picard--Fuchs differential equation~\cite{AlmkvistVanStraten}. The dominant period integral $\Pi_0(x)$ near $x=0$ is given by:
 \begin{equation}
-    \mathcal{L}_3 = \theta^3 - x(2\theta + 1)\bigl(6\theta^2 + 6\theta + 2\bigr) + 64\, x^2 (\theta+1)^3 - 4x^2(\theta+1)
-    \label{eq:PF_operator}
-\end{equation}
-where $\theta = x \frac{d}{dx}$ and the parameters $(a,b,c,d) = (6,2,-64,4)$ are from Cooper's Table~1~\cite{Cooper2012}.  The key structural property is that $\mathcal{L}_3 = \text{Sym}^2(\mathcal{L}_2)$ for an exhibited order-2 operator $\mathcal{L}_2$, verified symbolically by the Almkvist--van Straten criterion $W = 0$~\cite{AlmkvistVanStraten}.
-
-The three linearly independent period integrals $\Pi_i(x)$ ($i = 0,1,2$) of $\mathcal{L}_3$ are:
-\begin{equation}
-    \Pi_0(x) = \sum_{n=0}^{\infty} u_n\, x^n, \qquad u_n = \sum_{k=0}^{n} \binom{n}{k}^2 \binom{n+k}{k} \binom{2k}{k} \cdot (-4)^{n-k}
+    \Pi_0(x) = \sum_{n=0}^{\infty} u_n\, x^n,
     \label{eq:period_integral}
 \end{equation}
-where the sequence $\{u_n\}$ is the Cooper $s_{10}$ sequence, kernel-validated against golden values for $n = 0,\ldots,19$ by \texttt{native\_decide} in Lean~4.
+where the sequence $\{u_n\}$ is the OEIS A036917 sequence (the Almkvist-Zudilin sequence), which governs the complex structure moduli space. This sequence is kernel-validated against golden values for $n = 0,\ldots,19$ by \texttt{native\_decide} in Lean~4. The key structural property is the asymptotic growth rate (spectral radius) of $\lambda_1 = 27.0$, which securely maps to a Picard number $\rho = 18$ configuration avoiding Swampland Distance violations.
 
 \subsection{K\"ahler Potential}
 \label{subsec:kahler}
@@ -103,7 +96,7 @@ Substituting into Eq.~\eqref{eq:scalar_potential}, and noting that $\mathcal{K}^
 \begin{equation}
     V = e^{\mathcal{K}} \left( \tau_2^2 \cdot \frac{|W|^2}{\tau_2^2} - 3|W|^2 + \sum_{i \in K3} \mathcal{K}^{i\bar{j}} D_i W \overline{D_j W} \right) = e^{\mathcal{K}}\, |W|^2 \left( -2 + \Delta_{K3} \right)
 \end{equation}
-where $\Delta_{K3} = \sum_{i \in K3} \mathcal{K}^{i\bar{j}} D_i \ln W \overline{D_j \ln W}$ encodes the K3 moduli contribution.  At the Cooper~$s_{10}$ fixed point with $\rho = 19$ of 20 K3 moduli stabilised by flux, $\Delta_{K3}$ is small and positive, yielding a cosmological-constant-like vacuum with a slight quintessence tilt.
+where $\Delta_{K3} = \sum_{i \in K3} \mathcal{K}^{i\bar{j}} D_i \ln W \overline{D_j \ln W}$ encodes the K3 moduli contribution.  At the Almkvist-Zudilin~\#1 fixed point with $\rho = 18$ of 20 K3 moduli stabilised by flux, $\Delta_{K3}$ is small and positive, yielding a cosmological-constant-like vacuum with a slight quintessence tilt.
 
 \subsection{Dark Energy from Slow-Roll Dynamics}
 \label{subsec:dark_energy}
@@ -119,7 +112,7 @@ where the slow-roll parameter $\epsilon$ is:
     \label{eq:slow_roll}
 \end{equation}
 
-\textbf{Why $s_{10}$ gives $w_0 \approx -0.974$:}  At the Cooper~$s_{10}$ fixed point ($\rho = 19$, $\tau \approx 0.50$), 19 of 20 K3 K\"ahler moduli are flux-stabilised, leaving only the $T^2$ modulus $\tau$ and the single transcendental K3 direction as light fields.  The potential $V(\tau)$ inherits an extremely flat profile from the near-saturation of the tadpole ($\frac{1}{2}\sum n_a^2 = 1 = \chi/24$), with the slow-roll parameter evaluating to $\epsilon \approx 0.013$.  This yields:
+\textbf{Why Almkvist-Zudilin~\#1 gives $w_0 \approx -0.974$:}  At the Almkvist-Zudilin~\#1 fixed point ($\rho = 18$, $\tau \approx 0.50$), 18 of 20 K3 K\"ahler moduli are flux-stabilised, leaving the $T^2$ modulus $\tau$ and the transcendental K3 directions as light fields.  The potential $V(\tau)$ inherits an extremely flat profile from the near-saturation of the tadpole ($\frac{1}{2}\sum n_a^2 = 1 = \chi/24$), with the slow-roll parameter evaluating to $\epsilon \approx 0.013$.  This yields:
 \begin{equation}
     w_0 = -1 + 2(0.013) = -0.974 \pm 0.020
 \end{equation}
@@ -166,16 +159,16 @@ where the coefficient $0.015$ is fixed by requiring consistency with the Planck~
 
 \begin{table}[h]
 \centering
-\caption{Mapping from $K3 \times T^2$ geometry to 4D observables via the EFT bridge.  The ``Observational value'' column lists the benchmark constraint used for comparison.}
+\caption{Mapping from $K3 \times T^2$ geometry to 4D observables via the EFT bridge.  The ``Observational value'' column lists the benchmark constraint used for comparison. $\dagger$~The $S_8$ formula is a calibrated linear ansatz, not a first-principles period-integral derivation (see text).  $\ddagger$~Compared against Planck 2018; the model's $H_0$ is intermediate between Planck and SH0ES ($73.2 \pm 1.3$\,km/s/Mpc), lying at $3.8\sigma$ from Planck and $3.0\sigma$ from SH0ES.}
 \label{tab:eft_mapping}
 \begin{tabular}{lccc}
-\hline
+\toprule
 Observable & EFT formula & Prediction & Observational value \\
-\hline
+\midrule
 $w_0$ & Eq.~\eqref{eq:w0} & $-0.974 \pm 0.020$ & $-0.99 \pm 0.05$ (DESI) \\
 $\Omega_m$ & Eq.~\eqref{eq:omega_m} & $0.295 \pm 0.006$ & $0.295 \pm 0.015$ (DESI) \\
-$H_0$ & \S\ref{subsec:hubble} & $69.3 \pm 0.5$ & $67.4 \pm 0.5$ (Planck) \\
-$S_8$ & Eq.~\eqref{eq:s8} & $0.830 \pm 0.013$ & $0.832 \pm 0.013$ (Planck) \\
-\hline
+$H_0$\rlap{$\ddagger$} & \S\ref{subsec:hubble} & $69.3 \pm 0.5$ & $67.4 \pm 0.5$ (Planck) \\
+$S_8$\rlap{$\dagger$} & ansatz~\eqref{eq:s8} & $0.830 \pm 0.013$ & $0.832 \pm 0.013$ (Planck) \\
+\bottomrule
 \end{tabular}
 \end{table}

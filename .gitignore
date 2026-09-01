@@ -30,3 +30,9 @@ results/
 releases/
 results/
 dist/
+
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out

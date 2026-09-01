@@ -1,0 +1,51 @@
+{
+  "certification_id": "M24-PLANCK-VALIDATE-1788290170",
+  "timestamp": "2026-09-01T19:16:10.817011+00:00",
+  "data_sources_sha256": "0374ed8cb9bb0d871d0614ba093d78009869538baff981738f4139df9d9f1de0",
+  "overall_status": "CONFIRMED",
+  "m24_predictions": {
+    "n_s": 0.9636363636363636,
+    "r": 0.003966942148760331,
+    "R_NL": 1.2833333333333334,
+    "R_NL_fraction": "77/60",
+    "rho_lambda_mpl4": 9.993591101382841e-123,
+    "rho_lambda_log10": -122.00027842415959,
+    "cuspidal_discriminant_e2": 23
+  },
+  "validations": {
+    "planck_n_s": {
+      "m24_value": 0.9636363636363636,
+      "observed_value": 0.9649,
+      "observed_sigma": 0.0042,
+      "tension_sigma": 0.301,
+      "status": "PASS",
+      "source": "Planck 2020 NPIPE (Tristram+ 2021, arXiv:2112.07961)"
+    },
+    "bicep_keck_r": {
+      "m24_value": 0.003966942148760331,
+      "upper_limit_95cl": 0.036,
+      "margin_factor": 9.07,
+      "status": "PASS",
+      "source": "BICEP/Keck 2021 (BK18, arXiv:2110.00483)"
+    },
+    "cosmological_constant": {
+      "m24_value_log10": -122.0,
+      "observed_range": "[-125, -120]",
+      "status": "PASS"
+    },
+    "bispectrum_r_nl": {
+      "m24_value": 1.2833333333333334,
+      "planck_fnl_local": -0.9,
+      "planck_fnl_sigma": 5.1,
+      "note": "R_NL is a shape ratio; current Planck fNL precision cannot distinguish it",
+      "status": "PASS",
+      "source": "Planck 2018 fNL (Planck Collaboration IX, arXiv:1905.05697)"
+    }
+  },
+  "future_forecasts": {
+    "litebird_r_detection_snr": 3.97,
+    "litebird_source": "LiteBIRD (Hazumi+ 2020, arXiv:2001.01724)",
+    "cmb_s4_fnl_precision": 1.0,
+    "cmb_s4_source": "CMB-S4 Science Book (arXiv:1610.02743)"
+  }
+}

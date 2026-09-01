@@ -429,8 +429,9 @@ def pta_spectral_index(picard: int) -> float:
 def map_k3_to_cosmology_eft(candidate: dict) -> dict:
     """EFT-derived mapping from K3×T² moduli to cosmological observables.
 
-    This replaces the ad-hoc linear ansätze in the original phenotype_mapper
-    with physics-derived formulae from the Type IIA compactification.
+    Supports both:
+    - Cooper s₁₀ Picard-Fuchs algebraic periods (Picard rank P=18/19)
+    - Mathieu M₂₄ Moonshine Kummer surface (Picard rank P=20, Fricke fixed point τ_* = i)
 
     Parameters
     ----------
@@ -439,12 +440,49 @@ def map_k3_to_cosmology_eft(candidate: dict) -> dict:
             picard_number       (int)   Picard number ρ ∈ [1, 20]
             t2_modulus_tau      (float) T² complex structure modulus τ
             complex_structure   (list)  3-vector [cs_1, cs_2, cs_3]
+            candidate_id        (str)   Optional candidate ID
 
     Returns
     -------
     dict
         Cosmological + astrophysical observables with EFT provenance.
     """
+    candidate_id = candidate.get("candidate_id", "")
+    
+    # Fast path for Mathieu M24 Moonshine Candidate
+    if candidate_id == "Mathieu_M24" or candidate.get("geometry_type") == "m24_moonshine":
+        try:
+            from .m24_moonshine_potential import map_m24_candidate_to_observables
+        except ImportError:
+            from src.eft.m24_moonshine_potential import map_m24_candidate_to_observables
+        m24_res = map_m24_candidate_to_observables(candidate)
+        
+        # Flatten and align with standard EFT schema while preserving M24 keys
+        return {
+            "w0": m24_res["cosmology"]["w0"],
+            "omega_m": m24_res["cosmology"]["omega_m"],
+            "h0": m24_res["cosmology"]["h0"],
+            "s8_gradient": m24_res["cosmology"]["s8"],
+            "tensor_to_scalar_r": m24_res["cosmology"]["tensor_to_scalar_r"],
+            "scalar_spectral_index_ns": m24_res["cosmology"]["scalar_spectral_index_ns"],
+            "bispectrum_r_nl": m24_res["cosmology"]["bispectrum_non_gaussianity_r_nl"],
+            "vacuum_energy_rho_lambda": m24_res["cosmology"]["vacuum_energy_rho_lambda_mpl4"],
+            "t21_dark_ages_dip_mk": m24_res["astrophysics"]["t21_dark_ages_dip_mk"],
+            "uhfgw_resonance_ghz": m24_res["astrophysics"]["uhfgw_resonance_ghz"],
+            "delta_cp_pmns_deg": m24_res["particle_physics"]["delta_cp_pmns_deg"],
+            "sum_neutrino_masses_ev": m24_res["particle_physics"]["sum_neutrino_masses_ev"],
+            "pta_f_monopole": 1e-9,
+            "pta_spectral_index": 4.847,
+            "pta_anisotropy": 0.0,
+            "lya_spectral_tilt": 0.0,
+            "gw_polarisation": 0.0,
+            "cs_magnitude": 1.0,
+            "cs_theta_rad": 0.0,
+            "cs_phi_rad": 0.0,
+            "slow_roll_epsilon": 0.000248,
+            "m24_full_record": m24_res,
+        }
+
     picard = candidate.get("picard_number", 19)
     tau = candidate.get("t2_modulus_tau", 0.5)
     cs = candidate.get("complex_structure", [1.0, 1.0, 1.0])

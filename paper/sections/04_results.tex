@@ -8,15 +8,15 @@ Over 300 generations, the AutoEvolve pipeline explored 12{,}000 candidate geomet
 \caption{K3$\times$T$^2$ MCMC Posterior Summary (DESI DR1 BAO, $N_{\text{dof}} = 7$)}
 \label{tab:posterior}
 \begin{tabular}{lcccc}
-\hline
+\toprule
 Parameter & Mean & MAP & 68\% HPD & 95\% HPD \\
-\hline
+\midrule
 $t2\_modulus\_\tau$ & $0.612 \pm 0.285$ & $0.437$ & $[0.282, 0.696]$ & $[0.171, 1.323]$ \\
 $cs\_1$ & $0.194 \pm 1.772$ & $-0.518$ & $[-0.864, 2.953]$ & $[-2.719, 2.953]$ \\
 $cs\_2$ & $0.342 \pm 1.742$ & $-1.559$ & $[-0.649, 2.971]$ & $[-2.577, 2.996]$ \\
 $cs\_3$ & $-0.085 \pm 1.828$ & $1.637$ & $[-2.642, 1.485]$ & $[-2.900, 2.837]$ \\
 $picard\_offset$ & $0.971 \pm 1.097$ & $-0.493$ & $[-0.498, 1.813]$ & $[-0.529, 2.992]$ \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -32,13 +32,13 @@ We emphasise the distinction between \emph{proxy training loss} and \emph{real-d
 \caption{$\chi^2$ comparison against DESI 2024 BAO (12 measurements, published covariance)}
 \label{tab:chi2_comparison}
 \begin{tabular}{lcccl}
-\hline
+\toprule
 Model & $\chi^2$ & $N_{\text{params}}$ & $\chi^2/\text{dof}$ & Interpretation \\
-\hline
+\midrule
 $\Lambda$CDM (Planck 2018 bestfit) & 21.7 & 2 & 2.17 & Standard baseline \\
 $K3 \times T^2$ (EFT-derived)  & 12.7 & 5 & 1.81 & Competitive \\
 $K3 \times T^2$ (pre-EFT linear)  & 51.8 & 5 & 7.40 & Pre-calibration; rejected \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -105,11 +105,11 @@ These results lock in the Almkvist-Zudilin \#1 topology as the UV-complete gold 
 
 To guarantee that the phenomenological landscape mapping obeys fundamental UV string theory constraints, the $K3 \times T^2$ topologies were formally verified using the Lean 4 interactive theorem prover. We eschewed runtime heuristic checks in favour of rigorous \texttt{theorem} constructs backed by the \texttt{Mathlib} library.
 
-We formally codified and successfully proved (with zero \texttt{sorry} placeholders) the following structural properties for the selected Almkvist-Zudilin \#1 optimum:
+We formally codified and successfully proved (with zero \texttt{sorry} placeholders) the following structural properties across two Lean~4 source files (\texttt{GeneratedK3.lean} and \texttt{MathieuM24.lean}), for a total of 19 theorems:
 \begin{itemize}
-    \item \textbf{Picard Bound}: The algebraic K3 surface preserves the rigid maximum bound $\rho \leq 20$.
-    \item \textbf{Euler Characteristic}: The Hodge polynomial resolves strictly to $\chi = 2 + 20 + 2 = 24$.
-    \item \textbf{Hodge Symmetry}: The complex structure moduli obey $h^{2,0} = h^{0,2} = 1$.
+    \item \textbf{Core K3 (Theorems 1--5)}: Picard bound ($\rho \leq 20$), Euler characteristic ($\chi = 24$), Hodge symmetry ($h^{2,0} = h^{0,2}$), Spectral-Picard bridge (eigenvalue $= 27.0$, $\rho = 18$), Almkvist-Zudilin~\#1 consistency.
+    \item \textbf{$M_{24}$ Moonshine (Theorems 6--16)}: $\chi(K3) = 24$, K\"unneth product ($\chi(K3 \times T^2) = 0$, $b_3 = 44$), signature $\sigma = -16$, moduli dimension $= 58$, bispectrum rigidity ($\mathcal{R}_{\text{NL}} = 77/60$), vacuum discriminant $e_2 = 23$, Kummer singularity count, tensor ratio exactness, Swampland distance, and de Sitter safety.
+    \item \textbf{Phase 11 Topological (Theorems 17--19)}: K\"unneth $b_3$ derivation ($2 \times 22 = 44$), Picard rank Kummer maximal ($22 - 2 = 20$), Hodge $h^{1,1}$ identity.
 \end{itemize}
 This proof-hardening ensures that the F-theory Swampland and UV completeness conjectures are natively embedded as structural axioms in the cosmological evaluation loop, bridging abstract algebraic geometry and observational cosmology with verifiable computational rigor.
 
