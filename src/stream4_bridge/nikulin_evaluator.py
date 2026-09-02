@@ -20,11 +20,13 @@ class NikulinSieveEvaluator:
     def check_weierstrass_singularity(self, ord_f: int, ord_g: int, ord_delta: int) -> Tuple[bool, str, float]:
         """
         Maximum Singularity Pre-Filter:
-        (f < 4, g < 5, Delta < 10) ensures smooth, crepantly resolvable geometry.
+        (ord_f < 4, ord_g < 6, ord_delta < 12) ensures smooth, crepantly resolvable geometry.
+        Vanishing orders (ord_f >= 4, ord_g >= 6, ord_delta >= 12) trigger non-minimal
+        terminal singularities and tensionless string transitions.
         """
-        if ord_f >= 4 and ord_g >= 5 and ord_delta >= 10:
+        if ord_f >= 4 and ord_g >= 6 and ord_delta >= 12:
             penalty = math.inf
-            insight = f"Weierstrass_vanishing_at_({ord_f},{ord_g})_detected"
+            insight = f"Nonminimal_Weierstrass_vanishing_at_({ord_f},{ord_g},{ord_delta})_detected"
             return False, insight, penalty
         return True, "Safe Kodaira fiber", 0.0
 

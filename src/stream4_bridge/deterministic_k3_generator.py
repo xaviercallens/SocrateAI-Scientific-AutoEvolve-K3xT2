@@ -300,7 +300,7 @@ class DeterministicK3Generator:
         Maximal Singularity Pre-Filter.
         
         Evaluates the Néron-Severi lattice to prevent terminal Weierstrass 
-        singularities (f >= 4, g >= 5, Δ >= 10) which trigger tensionless 
+        singularities (f >= 4, g >= 6, Δ >= 12) which trigger tensionless 
         strings and destroy the 4D EFT (Swampland Distance Conjecture).
         
         Candidates with P > 18 are mathematically quarantined.

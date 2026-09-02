@@ -1,6 +1,6 @@
 {
-  "certification_id": "M24-PLANCK-VALIDATE-1788371877",
-  "timestamp": "2026-09-02T17:57:57.468189+00:00",
+  "certification_id": "M24-PLANCK-VALIDATE-1788373538",
+  "timestamp": "2026-09-02T18:25:38.559645+00:00",
   "data_sources_sha256": "0374ed8cb9bb0d871d0614ba093d78009869538baff981738f4139df9d9f1de0",
   "overall_status": "CONFIRMED",
   "m24_predictions": {
