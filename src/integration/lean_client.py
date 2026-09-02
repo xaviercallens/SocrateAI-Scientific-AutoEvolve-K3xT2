@@ -8,10 +8,10 @@ import os
 logger = logging.getLogger(__name__)
 
 class LeanOracleClient:
-    def __init__(self, binary_path: str = "./test_lean_oracle/.lake/build/bin/rpc_server"):
+    def __init__(self, binary_path: str = "./lean_oracle/.lake/build/bin/rpc_server"):
         """Initializes the persistent Lean 4 subprocess."""
         if not os.path.exists(binary_path):
-            alt_path = "./lean_oracle/.lake/build/bin/rpc_server"
+            alt_path = "./test_lean_oracle/.lake/build/bin/rpc_server"
             if os.path.exists(alt_path):
                 binary_path = alt_path
 

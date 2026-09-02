@@ -54,14 +54,22 @@ def tier2_lean_gatekeeper(
             })
 
         verdicts = oracle.batch_evaluate(formatted_payloads)
+        if not isinstance(verdicts, list):
+            if isinstance(verdicts, dict) and "error" in verdicts:
+                log.error(f"Lean 4 batch evaluate returned error: {verdicts['error']}")
+            verdicts = [verdicts if isinstance(verdicts, dict) else {"passed_swampland": False, "formal_reason": str(verdicts)}] * len(tier1_survivors)
 
         proven_survivors = []
         failed_count = 0
         failure_reasons = {}
 
         for candidate, verdict in zip(tier1_survivors, verdicts):
-            passed = verdict.get("passed_swampland", False)
-            reason = verdict.get("formal_reason", "Unknown")
+            if isinstance(verdict, dict):
+                passed = verdict.get("passed_swampland", False)
+                reason = verdict.get("formal_reason", "Unknown")
+            else:
+                passed = False
+                reason = str(verdict)
 
             if passed:
                 if isinstance(candidate, dict):

@@ -91,11 +91,11 @@ class AutoEvolveK3:
 
     def _theoretical_score(self, c: K3Candidate) -> float:
         score = 0.0
-        # TIER A: CY4 Geometry Requirement (Weight-5 Sequence / Order-5 ODE)
-        if c.ode_order == 5:
-            score += 0.50        # Prioritize Weight-5 CY4 sequences (like s_20)
-        elif c.ode_order == 3:
-            score -= 1.0         # Heavily penalize Weight-3 (K3 surfaces)
+        # TIER A: K3 and CY Geometry Requirements
+        if c.ode_order in (3, 4):
+            score += 0.50        # K3 Picard-Fuchs operators (e.g. Order-3/4 for Almkvist-Zudilin / Cooper)
+        elif c.ode_order == 5:
+            score += 0.50        # CY4 sequences (Weight-5)
 
         if self._swampland_ok(c):
             score += 0.30
