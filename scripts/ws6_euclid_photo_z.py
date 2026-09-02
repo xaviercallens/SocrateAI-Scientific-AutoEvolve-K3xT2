@@ -37,7 +37,9 @@ logger = logging.getLogger(__name__)
 OUT_DIR = Path("outputs/ws6")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-FITS_FILES = sorted(glob.glob("/tmp/euclid_fits/EUC_MER_FINAL-CAT_*.fits"))
+FITS_FILES = sorted(glob.glob("data/euclid_q1/tile_*/EUC_MER_FINAL-CAT_*.fits"))
+if not FITS_FILES:
+    FITS_FILES = sorted(glob.glob("/tmp/euclid_fits/EUC_MER_FINAL-CAT_*.fits"))
 
 # ---------------------------------------------------------------------------
 # K3×T² cosmology
