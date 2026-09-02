@@ -151,12 +151,26 @@ A grid scan over the CPL parametrization $w(a) = w_0 + w_a(1-a)$ against the ful
 \paragraph{CA-A4: JWST High-$z$ Stellar Mass Functions $\times$ RAMA Non-BPS Enhancement.}
 We evaluate the K3$\times$T$^2$ prediction for the ``impossibly early galaxy'' tension at $z = 7$--$12$ using a Press-Schechter formalism with the RAMA non-BPS vacuum energy boost ($E_0 = 1700/24 \approx 70.83$, $A_{\rm nb} = 15.2\%$ small-scale power enhancement). Over 14 JWST stellar mass bins, K3$\times$T$^2$ achieves $\chi^2 = 1082.4$ vs $\Lambda$CDM $\chi^2 = 1238.7$ ($\Delta\chi^2 = +156.3$). While both models underpredict the most massive high-$z$ galaxies, the RAMA-enhanced matter power spectrum reduces the deficit significantly at $z = 7$--$9$.
 
-\subsection{Topological Data Analysis: Persistent Homology of the Euclid Q1 Galaxy Distribution}
+\subsection{Topological Data Analysis: Persistent Homology of the Euclid Q1 Galaxy Distribution (v2)}
 \label{subsec:tda}
 
-We computed the Rips complex persistent homology ($H_0$, $H_1$) on 4{,}000 subsampled angular positions from the 80{,}376 Euclid Q1 MER galaxies. The analysis identified 693 $H_1$ cycles (topological loops), of which 346 exhibit above-median persistence lifetimes ($\langle \tau_{H_1} \rangle = 0.00146$ deg). The Alpha complex Euler characteristic transform $\chi(\nu)$ evolves from $\chi = 5{,}000$ (initial vertex-dominated regime) through a monotonically decreasing filtration, consistent with the expected topological signature of large-scale structure emerging from a cosmological point process.
+We computed the Rips complex persistent homology ($H_0$, $H_1$) on 4{,}000 subsampled $\cos\delta$-projected angular positions from the 75{,}857 Euclid Q1 MER galaxies with valid VIS photometry. The filtration scale was calibrated to $\epsilon_{\rm max} = 3 \times \tilde{d}_{\rm NN} = 0.0119$ deg, where $\tilde{d}_{\rm NN} = 14.2$ arcsec is the median nearest-neighbour separation. The analysis identified $\mathbf{495}$ $H_1$ cycles ($\langle \tau_{H_1} \rangle = 0.00111$ deg), probing the void/filament loop topology of the galaxy distribution.
 
-\subsection{Direct Detection Forecast: CRESST-III Ballistic BPS Relic Search}
+\paragraph{Null Comparison (V-A3).} Against 50 Poisson uniform mocks on the same footprint, all mocks yielded \emph{zero} $H_1$ cycles, confirming that the 495 observed loops arise entirely from galaxy clustering (not geometric noise). The real data is decisively separated from the Poisson null ($H_1^{\rm real}/H_1^{\rm mock} = 495/0$).
+
+\paragraph{Flux Stratification (V-A2).} Analysing the faintest quartile (Q1, $F_{\rm VIS} < 0.1$ Jy, $n = 18{,}964$) and brightest quartile (Q4, $F_{\rm VIS} > 0.5$ Jy, $n = 18{,}964$) independently yields $H_1^{\rm faint} = 489$ and $H_1^{\rm bright} = 402$ cycles, with a KS test on lifetime distributions giving $D = 0.071$, $p = 0.20$. This indicates no significant topological dependence on galaxy luminosity at the angular scales probed.
+
+\paragraph{Convergence (V-A4).} Over 20 random resamples, $\langle H_1 \rangle = 472 \pm 16$ (CV $= 3.4\%$, range $[432, 498]$), confirming high stability of the topological signal.
+
+\paragraph{Epistemic Note.} The Euler characteristic $\chi(K3) = 24$ of the abstract K3 surface is a topological invariant of a compact 4-dimensional manifold and does \emph{not} manifest as a peak in the Euler characteristic transform $\chi(\nu)$ of a 2D angular point cloud. Similarly, the $H_1$ cycles detected here are 1-cycles (loops), not the $b_2(K3) = 22$ two-cycles of a K3 surface. The TDA analysis characterizes the topology of the galaxy spatial distribution, not the compactification geometry.
+
+\subsection{Direct Detection Feasibility: CRESST-III Ballistic BPS Relic Estimation (v2)}
 \label{subsec:cresst}
 
-We estimated the expected signal rate for ballistic BPS Planckian relics ($M = 21.76\,\mu$g, $v_{\rm halo} = 220$~km/s) in the CRESST-III cryogenic bolometer array. The inter-crystal timing signature ($\Delta t = 136.4$~ns for 3~cm spacing) provides a virtually background-free discriminant; however, the estimated collinear event rate ($\Phi \sim 5 \times 10^{-13}$~cm$^{-2}$~s$^{-1}$) requires a dramatically increased exposure ($\gtrsim 10^6$~kg$\cdot$days) to yield a detectable signal. The nuclear recoil energy deposit ($E_r \approx 185$~keV on tungsten) is well above the phonon threshold, confirming that the limitation is purely statistical, not technological.
+\emph{Nota bene:} This subsection reports a \textbf{parametric feasibility estimate}, not a data-mining analysis of CRESST-III archival data.
+
+We estimated the expected signal rate for ballistic BPS Planckian relics ($M = 21.76\,\mu$g, $v_{\rm halo} = 220$~km/s) in the CRESST-III CaWO$_4$ bolometer tower. The inter-crystal timing signature ($\Delta t = 136.4$~ns for 3~cm spacing) provides a virtually background-free discriminant. The collinear cone fraction (intercepting $\geq 3$ crystals of $\varnothing 40$~mm) is $f_{\rm col} = \Omega / 4\pi \approx 11.1\%$ of incident directions.
+
+\paragraph{Corrected Energy Deposit (V-B1).} A macroscopic relic ($M \gg m_{\rm nucleus}$) deposits a \emph{nuclear recoil} of $E_r \approx 2 m_N v^2$: $184.6$~keV on tungsten ($A=184$), $40.1$~keV on calcium ($A=40$), and $16.0$~keV on oxygen ($A=16$). The previous 15--80~eV analysis window was erroneous; the correct window is 10--500~keV. All recoil energies are well above the phonon detection threshold ($\sim 30$~eV).
+
+\paragraph{Feasibility.} The BPS relic flux ($\Phi \sim 5.4 \times 10^{-13}$~cm$^{-2}$~s$^{-1}$) yields $\sim 10^{-4}$ single-crystal events over the full CRESST-III Run~34 exposure (5.6~kg$\cdot$day). Detection of 3 collinear events requires $\gtrsim 1.1 \times 10^4$~t$\cdot$days --- far exceeding current and next-generation detector capabilities (DARWIN: $\sim 200$~t$\cdot$yr). The limitation is purely statistical (flux), not technological (energy threshold).
