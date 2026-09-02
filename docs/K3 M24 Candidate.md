@@ -60,7 +60,7 @@ Réseau de Cohomologie Entière H^*(K3, \mathbb{Z}) : Le réseau est pair, unimo
 
 Espace des Modules Réels de K3 : \mathcal{M}_{K3} = O(3, 19; \mathbb{Z}) \backslash O(3, 19; \mathbb{R}) / [SO(3) \times SO(19)] \quad (\text{Dimension réelle } 58 = 3 \times 19 + 1) Ces 58 modules (20 kählériens et 38 de structure complexe) sont stabilisés à haute énergie par les flux G_3 et les corrections non-perturbatives de Siegel \Phi_{10}(\Omega).
 
-Réseau de Picard (Néron-Severi) : \rho = \text{rk}(\text{Pic}(K3)) = \mathbf{20} (Maximal pour une surface de Kummer de type produit). Réseau transcendantal : T(K3) = \text{Pic}(K3)^\perp, \text{rk}(T) = 22 - 20 = \mathbf{2}, \text{Gram} = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}, d_T = 4.
+Réseau de Picard (Néron-Severi) : \rho = \text{rk}(\text{Pic}(K3)) = \mathbf{18} (Sélection UV-complète : Almkvist-Zudilin #1, OEIS A036917 ; la borne maximale géométrique pour une surface de Kummer étant \rho_{\max} = 20). Réseau transcendantal : T(K3) = \text{Pic}(K3)^\perp, \text{rk}(T) = 22 - 18 = \mathbf{4}, \text{Gram} = \operatorname{diag}(2, 2, 2, 2), d_T = 16.
 
 Espace de Siegel de Genre 2 \mathbb{H}_2 : \Omega = \begin{pmatrix} \tau & z \\ z & \sigma \end{pmatrix} \in \mathbb{H}_2, \quad \operatorname{Im}(\Omega) > 0
 \tau \in \mathbb{H}_1 : Module complexe du tore de fibre T^2 (Inflaton \varphi + Axion \theta).
