@@ -8,6 +8,7 @@ import random
 # Ensure src/ is in the path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 from integration.lean_client import LeanOracleClient
+from evolution.population_diversity import population_diversity
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -108,6 +109,7 @@ def execute_phase1():
     GENERATIONS = 25
     POP_SIZE = 60
     best_overall = None
+    diversity_history = []
     
     start_time = time.time()
     
@@ -154,6 +156,14 @@ def execute_phase1():
         if best_overall["candidate_id"] not in [p["candidate_id"] for p in population]:
             population[0] = best_overall.copy()
 
+        # Measure only: fitness diversity among the parents kept. Selection makes
+        # progress in proportion to this variance (H12), and stalls when it is gone.
+        div = population_diversity(population, key="chi2_loss")
+        div["generation"] = gen
+        diversity_history.append(div)
+        logger.info(f"Gen {gen} parent fitness diversity: distinct={div['distinct']} "
+                    f"var={div['variance']:.6g} collapsed={div['collapsed']}")
+
     lean_oracle.close()
     
     elapsed = time.time() - start_time
@@ -162,6 +172,9 @@ def execute_phase1():
     logger.info(f"Total Time: {elapsed:.2f}s")
     logger.info("Global Optimal K3xT2 Candidate:")
     logger.info(json.dumps(best_overall, indent=2))
+    collapsed_gens = [d["generation"] for d in diversity_history if d["collapsed"]]
+    logger.info(f"Parent fitness diversity collapsed in {len(collapsed_gens)}/{len(diversity_history)} "
+                f"generations{': first at gen ' + str(collapsed_gens[0]) if collapsed_gens else ''}")
     logger.info("========================================")
 
 if __name__ == "__main__":
